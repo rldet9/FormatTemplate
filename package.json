@@ -1,19 +1,25 @@
 {
-  "name": "n8n-nodes-evolizapi",
+  "name": "n8n-nodes-format-template",
   "version": "0.1.0",
-  "description": "n8n node to use Evoliz API services.",
+  "description": "n8n node for data transformation and formatting with extensible handlers.",
   "keywords": [
-    "n8n-community-node-package"
+    "n8n-community-node-package",
+    "n8n",
+    "data-transformation",
+    "formatting",
+    "text-case",
+    "phone-formatting",
+    "country-codes"
   ],
   "license": "MIT",
-  "homepage": "https://n8n.io",
+  "homepage": "https://github.com/your-username/n8n-nodes-format-template",
   "author": {
     "name": "Mixtrio",
     "email": "raphael.deret@mixtrio.net"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/rldet9/n8n-node-evoliz.git"
+    "url": "https://github.com/your-username/n8n-nodes-format-template.git"
   },
   "engines": {
     "node": ">=18.10",
@@ -35,11 +41,9 @@
   ],
   "n8n": {
     "n8nNodesApiVersion": 1,
-    "credentials": [
-      "dist/credentials/EvolizApi.credentials.js"
-    ],
+    "credentials": [],
     "nodes": [
-      "dist/nodes/EvolizApi/EvolizApi.node.js"
+      "dist/nodes/FormatTemplate/FormatTemplate.node.js"
     ]
   },
   "devDependencies": {

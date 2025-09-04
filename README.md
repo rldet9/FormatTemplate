@@ -1,866 +1,476 @@
-# Documentation complète du connecteur n8n pour Evoliz API
+# Node FormatTemplate pour n8n
 
 ## Table des matières
-1. Introduction et vue d'ensemble
-2. Statistiques du code
-3. Architecture générale
-4. Composants clés
-5. Système de génération d'interface
-6. Outils et utilitaires
-7. Guide d'extension
-8. Guide d'installation et déploiement
-9. Guide de débogage
-10. Bonnes pratiques
+1. [Introduction et vue d'ensemble](#introduction-et-vue-densemble)
+2. [Installation](#installation)
+3. [Fonctionnalités](#fonctionnalités)
+4. [Architecture technique](#architecture-technique)
+5. [Guide d'utilisation](#guide-dutilisation)
+6. [Handlers disponibles](#handlers-disponibles)
+7. [Guide de développement](#guide-de-développement)
+8. [Contribution](#contribution)
+9. [Support et documentation](#support-et-documentation)
 
 ## Introduction et vue d'ensemble
 
-Le connecteur n8n pour Evoliz API est une implémentation avancée permettant d'intégrer les fonctionnalités de gestion commerciale et comptable d'Evoliz dans les workflows d'automatisation n8n. Ce connecteur est construit sur une architecture extensible permettant de supporter de multiples points d'entrée de l'API Evoliz tout en maintenant une cohérence dans l'interface utilisateur et le traitement des données.
+Le **node FormatTemplate** est un composant n8n avancé conçu pour transformer et formater dynamiquement les données dans vos workflows d'automatisation. Il offre une architecture extensible basée sur des handlers spécialisés qui permettent d'appliquer des transformations complexes sur des champs spécifiques de vos données.
 
-L'architecture adopte une approche orientée objet avec plusieurs niveaux d'abstraction, combinée à un système de génération dynamique d'interface utilisateur basé sur des schémas JSON. Cette approche permet de maintenir un code DRY (Don't Repeat Yourself) tout en facilitant l'ajout de nouvelles fonctionnalités.
+### Problématique résolue
+- **Standardisation des données** : Uniformiser les formats de téléphones, pays, textes
+- **Nettoyage de données** : Transformer et valider les données avant intégration
+- **Cohérence métier** : Appliquer des règles de formatage spécifiques à votre domaine
+- **Interopérabilité** : Préparer les données pour différents systèmes cibles
 
-![Architecture du connecteur Evoliz](./docs/images/n8n_EvolizApi_node_schem_1.png)
+### Avantages clés
+- ✅ **Architecture modulaire** : Ajoutez facilement de nouveaux types de transformations
+- ✅ **Interface dynamique** : L'UI s'adapte automatiquement aux transformations choisies
+- ✅ **Performance optimisée** : Traitement en lot avec gestion robuste des erreurs
+- ✅ **Extensibilité** : Système de plugins pour les transformations personnalisées
 
-## Statistiques du code
+## Installation
+
+### Prérequis
+- n8n version 1.0.0 ou supérieure
+- Node.js version 18.10 ou supérieure
+- pnpm version 9.1 ou supérieure
+
+### Installation via npm
+```bash
+npm install n8n-nodes-format-template
+```
+
+### Installation en développement
+```bash
+# Cloner le repository
+git clone https://github.com/your-username/n8n-nodes-format-template.git
+cd n8n-nodes-format-template
+
+# Installer les dépendances
+pnpm install
+
+# Construire le projet
+pnpm build
+
+# Lier le package localement pour les tests
+pnpm link --global
+```
+
+### Configuration dans n8n
+Après installation, le node "Format Template" apparaîtra automatiquement dans la catégorie "Transform" de votre palette n8n.
+
+## Fonctionnalités
+
+### Transformations disponibles
+
+#### 🔤 Transformation de casse (TextCase)
+- **MAJUSCULES** : Conversion complète en majuscules
+- **minuscules** : Conversion complète en minuscules  
+- **Capitalisation** : Première lettre en majuscule
+- Support des caractères spéciaux français (accents, cédilles)
+
+#### 📱 Formatage de téléphone (Phone)
+- **Formats prédéfinis** :
+  - `+33 (0) 1 23 45 67 89` (français international)
+  - `01 23 45 67 89` (français national)
+  - `(123) 456-7890` (américain)
+- **Patterns personnalisés** : Support de formats sur mesure
+- **Conversion automatique** : International ↔ National
+- **Nettoyage automatique** : Suppression des caractères non-numériques
+
+#### 🌍 Codes pays (Country)
+- **Conversion nom → code ISO2** : "France" → "FR"
+- **Validation codes existants** : Vérification des codes ISO2
+- **API REST Countries** : Données à jour et multilingues
+- **Gestion d'erreurs** : Messages explicites pour pays non trouvés
+
+### Gestion des données imbriquées
+Le node supporte les chemins de propriétés complexes :
+- `client.name` - Propriété simple
+- `contact.address.country` - Propriété profondément imbriquée
+- `items[0].price` - Éléments de tableau (à venir)
+
+## Architecture technique
+
+### Vue d'ensemble
+```
+FormatTemplate Node
+├── FormatTemplate.node.ts        # Point d'entrée principal
+├── TransformHandlerRegistry.ts   # Registre des transformations
+├── AutoDiscovery.ts              # Découverte automatique des handlers
+├── interfaces/
+│   └── TransformHandler.ts       # Interface commune
+└── handlers/                     # Transformations spécialisées
+    ├── TextCaseHandler.ts
+    ├── PhoneHandler.ts
+    └── CountryHandler.ts
+```
+
+### Composants clés
+
+#### 1. Node principal (FormatTemplate.node.ts)
+- **Orchestration** : Coordonne l'exécution des transformations
+- **Validation** : Vérifie les chemins de propriétés et les configurations
+- **Gestion des données** : Traitement sécurisé des objets imbriqués
+- **Interface dynamique** : Génération de l'UI basée sur les handlers disponibles
+
+#### 2. Registre des handlers (TransformHandlerRegistry.ts)
+- **Centralisation** : Point unique de gestion des transformations
+- **Découverte** : Chargement automatique des handlers disponibles
+- **Configuration UI** : Génération des options d'interface utilisateur
+
+#### 3. Système de handlers
+Chaque handler implémente l'interface `ITransformHandler` :
+```typescript
+interface ITransformHandler {
+  type: string;                    // Identifiant unique
+  displayName: string;             // Nom d'affichage
+  description: string;             // Description fonctionnelle
+  properties: INodeProperties[];   // Configuration UI
+  transform(context, value, params): Promise<string>;
+}
+```
+
+## Guide d'utilisation
+
+### Configuration de base
+
+1. **Ajouter le node** : Glissez "Format Template" dans votre workflow
+2. **Configurer un champ** :
+   - **Field Path** : Nom de la propriété (ex: `phone`, `client.country`)
+   - **Type** : Choisir la transformation désirée
+   - **Options spécifiques** : Configurer selon le type choisi
+
+### Exemples pratiques
+
+#### Exemple 1 : Normalisation des données client
+**Données d'entrée** :
+```json
+{
+  "client": {
+    "name": "jean DUPONT",
+    "phone": "0123456789",
+    "country": "France"
+  }
+}
+```
+
+**Configuration** :
+- Field Path: `client.name`, Type: `textCase`, Case: `capitalize`
+- Field Path: `client.phone`, Type: `phone`, Pattern: `{0:+33 (0) # ## ## ## ##}`
+- Field Path: `client.country`, Type: `country`
+
+**Résultat** :
+```json
+{
+  "client": {
+    "name": "Jean Dupont",
+    "phone": "+33 (0) 1 23 45 67 89", 
+    "country": "FR"
+  }
+}
+```
+
+#### Exemple 2 : Traitement de données e-commerce
+**Données d'entrée** :
+```json
+{
+  "order": {
+    "customer_name": "MARIE martin",
+    "billing_country": "united kingdom",
+    "contact_phone": "+44 20 7946 0958"
+  }
+}
+```
+
+**Configuration** :
+- `order.customer_name` → `textCase` → `capitalize`
+- `order.billing_country` → `country`
+- `order.contact_phone` → `phone` → `{0:+## ## #### ####}`
+
+### Gestion des erreurs
+
+Le node utilise une stratégie de résilience :
+- **Traitement individuel** : Chaque item est traité indépendamment
+- **Préservation des données** : En cas d'erreur, les données originales sont conservées
+- **Messages explicites** : Erreurs détaillées pour faciliter le débogage
+
+Types d'erreurs courantes :
+- ❌ **Chemin invalide** : Format du chemin de propriété incorrect
+- ❌ **Valeur non transformable** : Données incompatibles avec la transformation
+- ❌ **Handler manquant** : Type de transformation non disponible
+- ❌ **Erreur réseau** : Problème d'accès aux APIs externes (codes pays)
+
+## Handlers disponibles
+
+### TextCaseHandler
+**Type** : `textCase`  
+**Description** : Transformation de la casse de texte  
+**Options** :
+- `uppercase` : TOUT EN MAJUSCULES
+- `lowercase` : tout en minuscules
+- `capitalize` : Première Lettre En Majuscule
+
+**Support** : Caractères français (accents, cédilles)
+
+### PhoneHandler  
+**Type** : `phone`  
+**Description** : Formatage des numéros de téléphone  
+**Patterns prédéfinis** :
+- `{0:+33 (0) # ## ## ## ##}` - Français international
+- `{0:0# ## ## ## ##}` - Français national
+- `{0:(###) ###-####}` - Américain
+
+**Fonctionnalités** :
+- Conversion automatique international ↔ national
+- Nettoyage des caractères non-numériques
+- Support des patterns personnalisés
+
+### CountryHandler
+**Type** : `country`  
+**Description** : Conversion en codes pays ISO2  
+**Fonctionnalités** :
+- Conversion nom complet → code (ex: "France" → "FR")
+- Validation des codes ISO2 existants
+- Support multilingue via API REST Countries
+- Gestion des erreurs pour pays non reconnus
+
+## Guide de développement
+
+### Ajout d'un nouveau handler
+
+#### 1. Créer la classe handler
+Créez un nouveau fichier dans `nodes/FormatTemplate/handlers/` :
+
+```typescript
+// nodes/FormatTemplate/handlers/EmailHandler.ts
+import { ITransformHandler } from '../interfaces/TransformHandler';
+import { INodeProperties, IExecuteFunctions } from 'n8n-workflow';
+
+export class EmailHandler implements ITransformHandler {
+  type = 'email';
+  displayName = 'Email';
+  description = 'Validates and normalizes email addresses';
+
+  properties: INodeProperties[] = [
+    {
+      displayName: 'Action',
+      name: 'emailAction',
+      type: 'options',
+      default: 'normalize',
+      options: [
+        { name: 'Normalize', value: 'normalize' },
+        { name: 'Validate', value: 'validate' },
+        { name: 'Extract Domain', value: 'domain' },
+      ],
+    },
+  ];
+
+  async transform(
+    executionContext: IExecuteFunctions,
+    value: string,
+    params: Record<string, any>
+  ): Promise<string> {
+    const action = params.emailAction as string;
+    
+    switch (action) {
+      case 'normalize':
+        return value.toLowerCase().trim();
+      case 'validate':
+        return this.isValidEmail(value) ? value : '';
+      case 'domain':
+        return value.split('@')[1] || '';
+      default:
+        return value;
+    }
+  }
+
+  private isValidEmail(email: string): boolean {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
+}
+```
+
+#### 2. Enregistrement automatique
+Le système AutoDiscovery détectera automatiquement votre nouveau handler au démarrage. Aucune configuration supplémentaire n'est nécessaire.
+
+#### 3. Test et validation
+```typescript
+// Tests unitaires recommandés
+describe('EmailHandler', () => {
+  it('should normalize email addresses', async () => {
+    const handler = new EmailHandler();
+    const result = await handler.transform(
+      mockContext, 
+      'Test@EXAMPLE.COM  ', 
+      { emailAction: 'normalize' }
+    );
+    expect(result).toBe('test@example.com');
+  });
+});
+```
+
+### Structure de développement
+
+#### Organisation des fichiers
+```
+nodes/FormatTemplate/
+├── FormatTemplate.node.ts         # ✨ Node principal
+├── TransformHandlerRegistry.ts    # 📋 Registre central
+├── AutoDiscovery.ts               # 🔍 Découverte automatique
+├── interfaces/
+│   └── TransformHandler.ts        # 📝 Interface commune
+└── handlers/                      # 🔧 Handlers spécialisés
+    ├── TextCaseHandler.ts
+    ├── PhoneHandler.ts
+    ├── CountryHandler.ts
+    └── [VotreHandler].ts           # ➕ Nouveau handler
+```
+
+#### Bonnes pratiques
+
+**Conception des handlers** :
+- ✅ **Responsabilité unique** : Un handler = une famille de transformations
+- ✅ **Validation d'entrée** : Vérifiez toujours les données reçues
+- ✅ **Gestion d'erreurs** : Erreurs explicites avec messages utilisateur
+- ✅ **Performance** : Évitez les opérations coûteuses synchrones
+- ✅ **Documentation** : Commentez les algorithmes complexes
+
+**Interface utilisateur** :
+- ✅ **Options claires** : Noms explicites et descriptions détaillées
+- ✅ **Valeurs par défaut** : Configurez des défauts sensés
+- ✅ **Validation UI** : Utilisez les types n8n appropriés
+- ✅ **Groupement logique** : Organisez les options connexes
+
+### Scripts de développement
+
+```bash
+# Développement avec rechargement automatique
+pnpm dev
+
+# Construction pour production  
+pnpm build
+
+# Linting et formatage
+pnpm lint
+pnpm format
+
+# Tests (si configurés)
+pnpm test
+```
+
+### Débogage
+
+#### Logs de développement
+Le node inclut un système de logging détaillé :
+
+```typescript
+console.log(`[FormatTemplate] Processing item ${itemIndex}`);
+console.log(`[YourHandler] Transforming: ${value} with params:`, params);
+```
+
+#### Test en isolation
+Testez vos handlers indépendamment :
+
+```typescript
+const handler = new YourHandler();
+const result = await handler.transform(mockContext, testValue, testParams);
+```
+
+## Contribution
+
+### Workflow de contribution
+
+1. **Fork** du repository
+2. **Créer une branche** : `git checkout -b feature/nouveau-handler`
+3. **Développer** votre handler selon les guidelines
+4. **Tester** thoroughly votre implémentation
+5. **Documenter** dans le README et créer des exemples
+6. **Pull Request** avec description détaillée
+
+### Types de contributions recherchées
+
+**Nouveaux handlers** :
+- 📧 Email (validation, normalisation, extraction domaine)
+- 📅 Date (formats, conversion timezone, calculs)
+- 💰 Currency (conversion, formatage)
+- 🏠 Address (normalisation, géocodage)
+- 🔢 Number (formatage, arrondi, unités)
+
+**Améliorations système** :
+- 🔧 Performance des transformations existantes
+- 🛡️ Validation et gestion d'erreurs améliorées
+- 📊 Métriques et monitoring
+- 🎨 Amélioration de l'interface utilisateur
+
+**Documentation** :
+- 📖 Guides d'utilisation avancés
+- 🎬 Vidéos de démonstration
+- 🌐 Traductions
+- 💡 Exemples de cas d'usage réels
+
+### Guidelines qualité
+
+**Code** :
+- TypeScript strict mode
+- Couverture de tests > 80%
+- Documentation JSDoc
+- Respect des conventions n8n
+
+**Documentation** :
+- README à jour
+- Exemples fonctionnels
+- Cas d'usage détaillés
+- Messages d'erreur explicites
+
+## Support et documentation
+
+### Ressources disponibles
+
+📚 **Documentation** :
+- [Document d'exigences produit (PRD)](./docs/format-template-node-prd.md)
+- [Documentation technique](./docs/FormatTemplate.md)
+- [Guide de contribution](./CONTRIBUTING.md)
+
+🐛 **Support** :
+- [Issues GitHub](https://github.com/your-username/n8n-nodes-format-template/issues)
+- [Discussions communautaires](https://github.com/your-username/n8n-nodes-format-template/discussions)
+- [Documentation n8n officielle](https://docs.n8n.io/)
+
+### Foire aux questions
+
+**Q: Comment ajouter un nouveau type de transformation ?**  
+R: Créez une nouvelle classe dans `handlers/` implémentant `ITransformHandler`. Le système la détectera automatiquement.
+
+**Q: Peut-on transformer plusieurs champs à la fois ?**  
+R: Oui, configurez plusieurs entrées dans "Fields to Format" avec différents chemins et types.
+
+**Q: Comment gérer les erreurs de transformation ?**  
+R: Le node préserve les données originales en cas d'erreur et logue les détails pour le débogage.
+
+**Q: Les transformations sont-elles réversibles ?**  
+R: Non, les transformations modifient définitivement les données. Créez une copie si nécessaire.
+
+### Statistiques du projet
 
 | Métrique | Valeur |
 |----------|--------|
-| Nombre total de fichiers | ~30 fichiers |
-| Lignes de code (TypeScript) | ~5000 lignes |
-| Nombre de classes principales | 15+ |
-| Ressources API implémentées | 15+ (clients, invoices, etc.) |
-| Opérations supportées | create, get, update, list, + opérations spécifiques |
-| Schémas JSON (ressources) | 15+ fichiers définissant la structure des données |
-| Lignes de code Python (outils) | ~300 lignes |
-| Workflows de test | 5+ workflows (clients, articles, factures, etc.) |
+| Nombre total de fichiers | ~15 fichiers |
+| Lignes de code (TypeScript) | ~800 lignes |
+| Handlers disponibles | 3 (TextCase, Phone, Country) |
+| Architecture | Modulaire extensible |
+| Support n8n | Version 1.0.0+ |
+| Découverte automatique | ✅ Activée |
+| Interface dynamique | ✅ Basée sur handlers |
 
-## Exemple d'utilisation : Modification d'une facture brouillon
+### Licence et attribution
 
-### Modifier une facture brouillon (PUT)
+Ce projet est sous licence MIT. Contributions et redistribution encouragées selon les termes de la licence.
 
-Pour modifier une facture en état brouillon, sélectionnez l'opération « update » dans le node EvolizApi, renseignez l'identifiant de la facture et les champs à modifier.
+**Auteur** : Mixtrio (raphael.deret@mixtrio.net)  
+**Repository** : [n8n-nodes-format-template](https://github.com/your-username/n8n-nodes-format-template)  
+**Version** : 0.1.0
 
-**Exemple de payload :**
+---
 
-```json
-{
-  "documentdate": "2025-07-17",
-  "clientid": 12345,
-  "items": [
-    { "designation": "Service modifié", "quantity": 2, "unit_price_vat_exclude": 100 }
-  ],
-  "term": { "paytermid": 3 }
-}
-```
-
-L'opération PUT sur `/invoices/{id}` ne fonctionne que pour les factures en état brouillon. En cas d'erreur (facture non trouvée, état non brouillon, etc.), un message explicite est retourné.
-
-Voir le schéma JSON `invoices.schema.json` pour la liste complète des champs modifiables.
-
-### Structure des fichiers
-
-```
-EvolizApi/
-├── credentials/
-│   └── EvolizApi.credentials.ts    # Définition des credentials (authentification)
-├── nodes/
-│   └── EvolizApi/
-│       ├── EvolizApi.node.ts       # Point d'entrée principal du nœud
-│       ├── EvolizApiService.ts     # Service de communication avec l'API
-│       ├── AbstractResourceHandler.ts # Classe abstraite pour gérer les ressources
-│       ├── CommonProperties.ts     # Propriétés communes à toutes les ressources
-│       ├── GenericFunctions.ts     # Fonctions utilitaires partagées
-│       ├── NodeParameterHelper.ts  # Aide à la manipulation des paramètres
-│       ├── Schemas.ts              # Gestionnaire de schémas JSON
-│       ├── Types.ts                # Définitions des types et interfaces
-│       ├── ressources/             # Implémentations spécifiques des ressources
-│       │   ├── clients.ts          # Gestionnaire pour la ressource "clients"
-│       │   ├── articles.ts         # Gestionnaire pour la ressource "articles"
-│       │   ├── invoices.ts         # Gestionnaire pour la ressource "invoices"
-│       │   ├── sale-orders.ts      # Gestionnaire pour la ressource "sale-orders"
-│       │   ├── settings.ts         # Gestionnaires pour les ressources de configuration
-│       │   ├── ...
-│       │   └── *.schema.json       # Schémas JSON des ressources
-├── tools/
-│   ├── generate_schema.py          # Script Python pour générer les schémas
-│   ├── api-docs.yml                # Documentation OpenAPI source
-│   └── *.schema.json               # Schémas JSON générés depuis l'API
-└── wokflows_tests/
-    ├── EvolizApi_test_client.json  # Workflow de test pour clients
-    ├── EvolizApi_test_article.json # Workflow de test pour articles
-    └── ...
-```
-
-### Flux de données
-
-1. **Entrée** : L'utilisateur configure le nœud via l'interface de n8n
-2. **Exécution** : La méthode `execute()` de `EvolizApi` est appelée
-3. **Authentification** : L'authentification est gérée par `EvolizAuth`
-4. **Routage** : Les requêtes sont acheminées vers le gestionnaire de ressource approprié
-5. **Traitement** : Le gestionnaire prépare les données, reconstruit les objets complexes et valide selon les schémas
-6. **Communication API** : `EvolizApiService` envoie les requêtes à l'API Evoliz
-7. **Réponse** : Les données reçues sont formatées et renvoyées à n8n
-
-![Flux de données](./docs/images/n8n_EvolizApi_node_schem_2.png)
-
-### Hiérarchie des classes
-
-```
-EvolizApi (INodeType)
-├── ResourceHandlers (implémentent ISchemaResourceHandler)
-│   ├── ClientsHandler
-│   ├── InvoicesHandler
-│   ├── ArticleHandler
-│   ├── ...
-│   └── Tous héritent de AbstractResourceHandler
-└── EvolizApiService
-```
-
-## Composants clés
-
-### AbstractResourceHandler
-
-La classe `AbstractResourceHandler` est la pierre angulaire du connecteur. Elle fournit :
-
-1. **Gestion générique des ressources API** : Implémente les opérations de base (create, update, get, list)
-2. **Reconstruction d'objets complexes** : Convertit les données de formulaire en structures JSON appropriées
-3. **Validation des entrées** : Utilise les schémas JSON pour valider les données avant envoi
-4. **Génération d'interfaces** : Méthodes statiques pour générer dynamiquement l'UI basée sur les schémas
-
-```typescript
-export abstract class AbstractResourceHandler implements ISchemaResourceHandler {
-    // Méthode principale appelée par n8n
-    async execute(operation: string, client: EvolizApiService, ...): Promise<any> {
-        // Prépare et valide les données
-        return this.executeOperation(operation, client, ...);
-    }
-    
-    // À implémenter par les sous-classes
-    protected abstract executeOperation(...): Promise<any>;
-    
-    // Reconstruction des objets complexes à partir des paramètres du formulaire
-    protected reconstructComplexObjects(parameters: Record<string, any>): IDataObject {
-        // Logique pour transformer les données de formulaire en structures complexes
-    }
-    
-    // Méthodes de validation via schéma JSON
-    validateInput(operation: string, data: Record<string, any>): { valid: boolean; errors?: string[] } {
-        // Validation avec Ajv (Another JSON Validator)
-    }
-    
-    // Méthodes statiques de génération UI
-    static buildResourceProperties(...): INodeProperties[] { ... }
-    static generateFormProperties(...): INodeProperties[] { ... }
-    static generateNestedFormProperties(...): INodeProperties[] { ... }
-    static generateListProperties(...): INodeProperties[] { ... }
-}
-```
-
-### EvolizApiService
-
-Cette classe encapsule toutes les communications HTTP avec l'API Evoliz :
-
-1. **Gestion des requêtes** : Envoie des requêtes HTTP à l'API
-2. **Pagination automatique** : Gère la récupération de toutes les pages pour les listes
-3. **Rate limiting** : Implémente un délai adaptatif pour respecter les limites de l'API
-4. **Gestion d'erreurs** : Traite et formate les erreurs de manière cohérente
-
-```typescript
-export class EvolizApiService {
-    constructor(private accessToken: string, private companyId: string, ...) { ... }
-    
-    // Méthode publique utilisée par les ResourceHandlers
-    public async generateAndSendRequest(
-        method: 'GET' | 'POST' | 'PATCH' | 'PUT' | 'DELETE',
-        endpoint: string, 
-        params?: Record<string, any>,
-        data?: Record<string, any>
-    ): Promise<any> {
-        // Gestion des requêtes avec pagination intelligente
-    }
-    
-    // Méthode interne pour les requêtes simples
-    private async doSingleRequest(...): Promise<any> {
-        // Gestion du rate limiting, requêtes HTTP et erreurs
-    }
-}
-```
-
-### SchemaHelper
-
-Classe utilitaire pour manipuler les schémas JSON :
-
-1. **Chargement des schémas** : Charge les schémas depuis les fichiers JSON
-2. **Extraction d'exemples** : Fournit des exemples basés sur les schémas
-3. **Création de descriptions** : Génère des descriptions pour les champs
-
-```typescript
-export class SchemaHelper {
-    static getSchema(resource: string, operation: string, part: string = 'input'): any { ... }
-    static getSchemaExample(resource: string, op: string = 'create', schemaPart: string = 'input') { ... }
-    static getFieldDescriptions(resource: string): Record<string, string> { ... }
-    // etc.
-}
-```
-
-### EvolizApi (Nœud principal n8n)
-
-La classe principale qui implémente l'interface `INodeType` de n8n :
-
-1. **Point d'entrée** : Définit les propriétés du nœud et gère l'exécution
-2. **Routage** : Dirige les requêtes vers les gestionnaires appropriés
-3. **Interface utilisateur** : Combine les propriétés de tous les gestionnaires
-4. **Gestion des credentials** : Utilise les credentials pour l'authentification
-5. **Support IA** : Offre un support spécial pour l'agent IA de n8n
-
-## Système de génération d'interface
-
-Le connecteur utilise un système sophistiqué de génération dynamique d'interface utilisateur basé sur les schémas JSON :
-
-### 1. Formulaires simples
-
-La méthode `generateFormProperties` génère des champs basiques pour les opérations CRUD :
-
-```typescript
-static generateFormProperties(resourceName: string, operations: string[] = ['create'], overrides: {...}): INodeProperties[] {
-    // Parcourt les propriétés du schéma et crée des champs de formulaire
-}
-```
-
-### 2. Objets complexes
-
-La méthode `generateNestedFormProperties` gère les structures imbriquées (adresses, conditions de paiement, etc.) :
-
-```typescript
-static generateNestedFormProperties(resourceName: string, operations: string[] = ['create', 'update'], ...): INodeProperties[] {
-    // 1. Crée un sélecteur de mode (JSON ou Form)
-    // 2. Crée un sélecteur de champs optionnels
-    // 3. Crée un champ JSON pour l'édition directe
-    // 4. Crée une collection de formulaire pour le mode formulaire
-}
-```
-
-### 3. Propriétés de liste
-
-La méthode `generateListProperties` crée des champs de filtre pour les opérations de liste :
-
-```typescript
-static generateListProperties(resourceName: string, overrides: {...}): INodeProperties[] {
-    // Génère des filtres basés sur le schéma de liste
-    // Gère les champs optionnels via un sélecteur multiOptions
-}
-```
-
-### 4. Intégration complète
-
-La méthode `buildResourceProperties` combine toutes ces approches :
-
-```typescript
-static buildResourceProperties(resourceName: string, operations: ('create' | 'update' | 'list')[] = [...], ...): INodeProperties[] {
-    // 1. Ajoute les propriétés communes
-    // 2. Ajoute les propriétés de liste si nécessaire
-    // 3. Ajoute les propriétés de formulaire pour chaque opération
-    // 4. Ajoute les propriétés d'objets complexes
-}
-```
-
-## Transformation automatique des structures API
-
-Pour compléter la documentation, voici une section détaillée sur la fonction `flattenApiStructure` qui a été intégrée au connecteur.
-
-### 1. Problématique des structures API
-
-Les API REST comme Evoliz présentent souvent une différence structurelle entre les données renvoyées par GET et celles attendues lors des opérations d'écriture (POST/PUT). Par exemple:
-
-```javascript
-// Structure reçue par GET
-{
-  "client": {
-    "clientid": 12345,
-    "name": "ACME Inc."
-  },
-  "term": {
-    "payterm": {
-      "paytermid": 3,
-      "label": "15 jours"
-    },
-    "paytype": {
-      "paytypeid": 2,
-      "label": "Carte bancaire"
-    }
-  }
-}
-
-// Structure attendue pour POST/PUT
-{
-  "clientid": 12345,
-  "term": {
-    "paytermid": 3,
-    "paytypeid": 2
-  }
-}
-```
-
-### 2. Solution avec `flattenApiStructure`
-
-Le connecteur inclut une fonction générique qui transforme automatiquement les structures imbriquées en structures adaptées aux opérations d'écriture, tout en préservant la hiérarchie appropriée des objets.
-
-```typescript
-protected flattenApiStructure(data: IDataObject, operation: string): IDataObject {
-    // Ignorer pour les opérations de lecture
-    if (operation === 'get' || operation === 'list') {
-        return data;
-    }
-    
-    // Traitement récursif des structures d'objets
-    function processStructure(obj: IDataObject): IDataObject {
-        // Code de détection et transformation dynamique
-        // ...
-    }
-    
-    return processStructure({...data});
-}
-```
-
-#### Fonctionnement technique
-
-Cette fonction opère de façon entièrement générique sans nécessiter de configuration spécifique:
-
-1. **Analyse récursive**: Parcourt tous les niveaux de l'objet JSON
-2. **Détection de motifs**: Identifie automatiquement les patterns comme `object.objectid`
-3. **Transformation intelligente**: Extrait les IDs tout en maintenant la hiérarchie
-4. **Traitement des tableaux**: Applique la transformation à chaque élément des tableaux
-
-#### Exemples de transformations
-
-| Type de structure | Avant transformation | Après transformation |
-|-------------------|-----------------------|----------------------|
-| Auto-référence    | `client.clientid: 123` | `clientid: 123` |
-| Objets imbriqués  | `term.payterm.paytermid: 3` | `term.paytermid: 3` |
-| Objets composites | `obj.subobj.id: 456` | `obj.subid: 456` |
-
-#### Avantages de cette approche
-
-- **Zéro configuration**: Aucune liste prédéfinie de types ou de champs n'est requise
-- **Adaptable**: Fonctionne avec toutes les ressources de l'API sans code spécifique
-- **Transparente**: L'utilisateur n'a pas besoin de connaître les différences de structure
-- **Robuste**: Gère correctement les cas particuliers et structures complexes
-- **Extensible**: S'adaptera automatiquement aux nouvelles ressources API
-
-Cette fonction résout élégamment le problème courant de la différence entre les structures de données d'entrée et de sortie dans les API REST, permettant aux utilisateurs du connecteur d'utiliser directement les données obtenues par GET dans les opérations de création ou mise à jour.
-
-## Validation de schéma et contraintes avancées
-
-Le connecteur Evoliz API utilise une validation rigoureuse des données basée sur les schémas JSON pour garantir l'intégrité des données envoyées à l'API.
-
-### Système de validation
-
-#### Architecture de validation
-
-Le connecteur utilise une architecture de validation en plusieurs couches:
-
-1. **Nettoyage préalable** : Avant validation, les données passent par plusieurs étapes de préparation:
-   - Transformation des structures imbriquées (`flattenApiStructure`)
-   - Suppression des champs hors schéma (`cleanNonSchemaFields`)
-   - Élimination des valeurs nulles (`cleanNullValues`)
-
-2. **Validation par schéma** : Utilisation d'Ajv (Another JSON Validator) pour valider contre le schéma JSON:
-   ```typescript
-   validateInput(operation: string, data: Record<string, any>): { valid: boolean; errors?: string[] } {
-       const ajv = new Ajv({ allErrors: true, strict: false });
-       const schema = this.getInputSchema(operation);
-       const validate = ajv.compile(schema);
-       const valid = validate(data);
-       
-       if (!valid && validate.errors) {
-           const errors = validate.errors.map((err) => {
-               // Formatage intelligible des erreurs
-               return `${err.instancePath} ${err.message}`;
-           });
-           return { valid: false, errors };
-       }
-       return { valid: true };
-   }
-   ```
-
-3. **Messages d'erreur améliorés** : Formatage spécifique selon le type d'erreur:
-   ```typescript
-   if (err.keyword === 'additionalProperties') {
-       return `${path} contient une propriété non autorisée: "${err.params.additionalProperty}"`;
-   }
-   else if (err.keyword === 'type') {
-       return `${path} doit être de type ${err.params.type}`;
-   }
-   ```
-
-### Contraintes d'exclusivité mutuelle avec oneOf
-
-Un cas particulier important est la gestion de champs mutuellement exclusifs. Le connecteur utilise la combinaison de `oneOf` et `not` pour imposer qu'exactement un parmi plusieurs champs soit présent.
-
-#### Exemple: Référence OU ID d'article
-
-Dans les lignes de commande Evoliz, un article peut être identifié soit par son ID, soit par une référence, mais jamais les deux à la fois:
-
-```json
-"oneOf": [
-    {
-        "required": ["articleid"],
-        "not": {
-            "properties": {
-                "reference": { "type": "string" }
-            },
-            "required": ["reference"]
-        }
-    },
-    {
-        "required": ["reference"],
-        "not": {
-            "properties": {
-                "articleid": { "type": "integer" }
-            },
-            "required": ["articleid"]
-        }
-    }
-]
-```
-
-#### Fonctionnement détaillé
-
-Cette structure définit deux cas mutuellement exclusifs:
-
-1. **Cas 1** : `articleid` est requis ET `reference` ne doit pas être présent
-   - `"required": ["articleid"]` - Exige la présence de articleid
-   - `"not": { "required": ["reference"] }` - Interdit la présence de reference
-
-2. **Cas 2** : `reference` est requis ET `articleid` ne doit pas être présent
-   - `"required": ["reference"]` - Exige la présence de reference
-   - `"not": { "required": ["articleid"] }` - Interdit la présence de articleid
-
-La directive `oneOf` assure que exactement un de ces cas doit être vrai.
-
-#### Points importants à considérer
-
-1. **Sensibilité à la casse** - JSON Schema est sensible à la casse. Assurez-vous que les noms de propriétés dans le schéma correspondent exactement à ceux dans les données:
-   ```
-   "articleid" vs "articleId" - Ce sont deux propriétés différentes pour le validateur
-   ```
-
-2. **Positionnement de la contrainte** - La contrainte `oneOf` doit être appliquée au niveau approprié dans la hiérarchie du schéma:
-   ```json
-   "items": {
-     "type": "object",
-     "properties": { ... },
-     "oneOf": [ ... ]  // Appliqué à chaque élément du tableau
-   }
-   ```
-
-3. **Comportement avec valeurs nulles** - Une propriété avec valeur `null` est considérée comme présente. Pour considérer une propriété comme absente, elle doit être complètement omise.
-
-### Implémentation dans les schémas personnalisés
-
-Pour implémenter cette contrainte dans vos propres schémas:
-
-1. Identifiez les propriétés mutuellement exclusives
-2. Ajoutez la structure `oneOf` avec deux ou plusieurs cas alternatifs
-3. Pour chaque cas, définissez la propriété requise et interdisez explicitement les autres
-
-```json
-"oneOf": [
-    {
-        "required": ["proprieteA"],
-        "not": {
-            "required": ["proprieteB", "proprieteC"]
-        }
-    },
-    {
-        "required": ["proprieteB"],
-        "not": {
-            "required": ["proprieteA", "proprieteC"]
-        }
-    }
-]
-```
-
-Cette technique de validation avancée permet d'exprimer des contraintes métier complexes directement dans les schémas JSON, renforçant ainsi l'intégrité des données avant même qu'elles n'atteignent l'API Evoliz.
-
-## Outils et utilitaires
-
-### Générateur de schéma Python (generate_schema.py)
-
-Un script Python qui convertit la documentation OpenAPI d'Evoliz en schémas JSON utilisables par le connecteur :
-
-```python
-# Utilisation
-# python generate_schema.py -i api-docs.yml -e Clients -o clients.schema.json
-```
-
-Caractéristiques :
-- Extraction intelligente des schémas depuis l'API
-- Conversion des types OpenAPI en formats JSON Schema
-- Génération d'exemples de données
-- Support des opérations create, update, list et get
-- Personnalisation via des labels d'énumération
-
-### Workflows de test
-
-Le dossier wokflows_tests contient des workflows n8n prêts à l'emploi pour tester différentes fonctionnalités :
-
-- EvolizApi_test_client.json : Tests CRUD pour les clients
-- EvolizApi_test_article.json : Tests pour les articles
-- EvolizApi_test_invoice.json : Tests pour les factures
-- Etc.
-
-Ces workflows servent à la fois de tests et d'exemples d'utilisation.
-
-## Guide d'extension
-
-### Ajout d'une nouvelle ressource
-
-1. **Créer le schéma** :
-   ```bash
-   python tools/generate_schema.py -i tools/api-docs.yml -e NouvelleRessource -o nodes/EvolizApi/ressources/nouvelle-ressource.schema.json
-   ```
-
-2. **Créer le gestionnaire de ressource** :
-   ```typescript
-   // nodes/EvolizApi/ressources/nouvelle-ressource.ts
-   import { IDataObject } from "n8n-workflow";
-   import { INodeProperties } from "n8n-workflow";
-   import { EvolizApiService } from '../EvolizApiService';
-   import { AbstractResourceHandler } from "../AbstractResourceHandler";
-
-   const END_POINT = 'nouvelle-ressource';
-
-   export class NouvelleRessourceHandler extends AbstractResourceHandler {
-       constructor() {
-           super(END_POINT);
-       }
-
-       static properties: INodeProperties[] = [
-           ...AbstractResourceHandler.buildResourceProperties(END_POINT, ['create','update','list']),
-           // Propriétés spécifiques supplémentaires si nécessaire
-       ];
-
-       protected async executeOperation(
-           operation: string,
-           client: EvolizApiService,
-           accessToken: string | null,
-           id: string,
-           data: IDataObject,
-           allParameters: Record<string, any>,
-           properties: any[]
-       ): Promise<any> {
-           switch (operation) {
-               case 'get':
-                   return { data: await client.generateAndSendRequest('GET', `/${this.resourceName}/${id}`) };
-
-               case 'list':
-                   const queryParams = AbstractResourceHandler.extractListParameters(
-                       allParameters, properties, ['per_page']
-                   );
-                   return await client.generateAndSendRequest('GET', `/${this.resourceName}`, queryParams);
-
-               case 'create':
-                   return await client.generateAndSendRequest('POST', `/${this.resourceName}`, {}, data);
-
-               case 'update':
-                   return await client.generateAndSendRequest('PATCH', `/${this.resourceName}/${id}`, {}, data);
-               
-               // Opérations spécifiques supplémentaires
-               default:
-                   throw new Error(`Operation "${operation}" not implemented for ${this.resourceName}`);
-           }
-       }
-   }
-   ```
-
-3. **Enregistrer dans le nœud principal** :
-   ```typescript
-   // Dans EvolizApi.node.ts
-   
-   // 1. Importer le gestionnaire
-   import { NouvelleRessourceHandler } from './ressources/nouvelle-ressource';
-   
-   // 2. Ajouter à la liste des ressources
-   displayName: 'Resource',
-   name: 'resource',
-   type: 'options',
-   options: [
-       // ...autres ressources
-       { name: 'Nouvelle Ressource', value: 'nouvelle-ressource', description: 'Description de la ressource' },
-   ]
-   
-   // 3. Ajouter le sélecteur d'opération
-   {
-       displayName: 'Operation',
-       name: 'operation',
-       type: 'options',
-       noDataExpression: true,
-       displayOptions: {
-           show: {
-               resource: ['nouvelle-ressource'],
-           },
-       },
-       options: [
-           { name: 'Create', value: 'create', action: 'Create a new resource' },
-           { name: 'Get', value: 'get', action: 'Get a resource by ID' },
-           { name: 'List', value: 'list', action: 'List all resources' },
-           { name: 'Update', value: 'update', action: 'Update a resource' },
-       ],
-       default: 'list',
-       description: 'Opération à effectuer',
-   }
-   
-   // 4. Ajouter les propriétés à la liste principale
-   properties: [
-       // ...autres propriétés
-       ...NouvelleRessourceHandler.properties,
-   ]
-   
-   // 5. Enregistrer dans le routeur
-   // Dans la fonction execute() ou dans EvolizRoutes.ts si vous en avez un
-   ```
-
-### Ajout d'une opération spéciale
-
-Pour ajouter une opération spéciale à une ressource existante :
-
-1. **Mettre à jour le sélecteur d'opération** :
-   ```typescript
-   options: [
-       // Opérations existantes
-       { name: 'Special Operation', value: 'specialOp', action: 'Do something special' },
-   ]
-   ```
-
-2. **Ajouter des propriétés spécifiques** :
-   ```typescript
-   static properties: INodeProperties[] = [
-       // Propriétés existantes
-       
-       // Nouvelles propriétés spécifiques
-       {
-           displayName: 'Special Parameter',
-           name: 'specialParam',
-           type: 'string',
-           default: '',
-           description: 'Parameter for special operation',
-           displayOptions: {
-               show: {
-                   resource: [END_POINT],
-                   operation: ['specialOp'],
-               },
-           },
-       },
-   ];
-   ```
-
-3. **Implémenter dans executeOperation** :
-   ```typescript
-   case 'specialOp':
-       // Extraction des paramètres spécifiques
-       const specialParam = allParameters.specialParam as string;
-       // Appel API
-       return await client.generateAndSendRequest(
-           'POST', 
-           `/${this.resourceName}/${id}/special-action`, 
-           {}, 
-           { specialParam }
-       );
-   ```
-
-## Guide d'installation et déploiement
-
-### Installation locale (développement)
-
-1. **Préparer l'environnement** :
-   ```bash
-   # Installer n8n globalement
-   npm install n8n -g
-   
-   # Créer un répertoire pour les nœuds personnalisés
-   mkdir -p ~/.n8n/custom
-   cd ~/.n8n/custom
-   
-   # Cloner le dépôt
-   git clone https://github.com/votre-utilisateur/n8n_nodes_EvolizApi.git
-   cd n8n_nodes_EvolizApi
-   
-   # Installer les dépendances
-   npm install
-   
-   # Compiler le code
-   npm run build
-   ```
-
-2. **Configurer n8n** :
-   ```bash
-   # Créer un lien symbolique (si nécessaire)
-   cd ~/.n8n/custom
-   ln -s ./n8n_nodes_EvolizApi/dist .
-   
-   # Démarrer n8n avec les nœuds personnalisés
-   n8n start
-   ```
-
-### Installation en production
-
-1. **Sur un serveur n8n existant** :
-   ```bash
-   # Se connecter au serveur
-   ssh user@your-n8n-server
-   
-   # Accéder au répertoire des nœuds personnalisés
-   cd /root/.n8n/custom
-   
-   # Cloner et installer
-   git clone https://github.com/votre-utilisateur/n8n_nodes_EvolizApi.git
-   cd n8n_nodes_EvolizApi
-   npm install
-   npm run build
-   
-   # Redémarrer n8n
-   systemctl restart n8n
-   ```
-
-2. **Dans un conteneur Docker** :
-   
-   Créer un Dockerfile personnalisé :
-   ```dockerfile
-   FROM n8nio/n8n:latest
-   
-   # Installer git et outils de compilation
-   USER root
-   RUN apk add --update git
-   
-   # Cloner et installer le nœud personnalisé
-   RUN mkdir -p /root/.n8n/custom
-   WORKDIR /root/.n8n/custom
-   RUN git clone https://github.com/votre-utilisateur/n8n_nodes_EvolizApi.git
-   WORKDIR /root/.n8n/custom/n8n_nodes_EvolizApi
-   RUN npm install
-   RUN npm run build
-   
-   # Revenir à l'utilisateur node
-   USER node
-   WORKDIR /data
-   ```
-   
-   Construire et exécuter :
-   ```bash
-   docker build -t n8n-with-evoliz .
-   docker run -it --rm -p 5678:5678 n8n-with-evoliz
-   ```
-
-## Guide de débogage
-
-### Configuration du débogage dans VSCode
-
-1. **Créer une configuration de lancement** :
-   
-   File launch.json :
-   ```json
-   {
-       "version": "0.2.0",
-       "configurations": [
-           {
-               "type": "node",
-               "request": "launch",
-               "name": "Debug n8n with Custom Nodes",
-               "program": "${workspaceFolder}/node_modules/n8n/bin/n8n",
-               "args": ["start", "--tunnel"],
-               "env": {
-                   "N8N_CUSTOM_EXTENSIONS": "${workspaceFolder}"
-               },
-               "skipFiles": [
-                   "<node_internals>/**"
-               ],
-               "outFiles": [
-                   "${workspaceFolder}/dist/**/*.js"
-               ],
-               "sourceMaps": true,
-               "resolveSourceMapLocations": [
-                   "${workspaceFolder}/dist/**/*.js",
-                   "!**/node_modules/**"
-               ]
-           }
-       ]
-   }
-   ```
-
-2. **Ajouter des points d'arrêt** :
-   - Dans EvolizApi.node.ts dans la méthode `execute()`
-   - Dans AbstractResourceHandler.ts dans la méthode `reconstructComplexObjects()`
-   - Dans les gestionnaires spécifiques de ressources
-
-### Débogage pas à pas en développement
-
-1. **Journalisation** :
-   
-   Ajouter des logs stratégiques :
-   ```typescript
-   console.log(`[Evoliz Debug] Paramètres pour ${operation}:`, JSON.stringify(parameters, null, 2));
-   ```
-
-2. **Exécution en mode débogage** :
-   ```bash
-   # Démarrer n8n avec débogage
-   n8n start --inspect
-   
-   # Puis connecter Chrome DevTools ou VSCode
-   ```
-
-3. **Surveillance des logs** :
-   ```bash
-   # En local
-   tail -f ~/.n8n/n8n-error.log
-   
-   # En production
-   docker logs -f n8n-container-name
-   ```
-
-4. **Utilisation des workflows de test** :
-   - Importer un workflow depuis wokflows_tests
-   - Mettre à jour les credentials selon votre environnement
-   - Exécuter étape par étape
-
-## Bonnes pratiques
-
-### Maintenance des schémas
-
-1. **Mise à jour des schémas** :
-   ```bash
-   # Télécharger la dernière documentation OpenAPI
-   curl -o tools/api-docs.yml https://www.evoliz.io/api-docs.yml
-   
-   # Régénérer tous les schémas
-   python tools/generate_schema.py -i tools/api-docs.yml -e Clients -o nodes/EvolizApi/ressources/clients.schema.json
-   python tools/generate_schema.py -i tools/api-docs.yml -e Invoices -o nodes/EvolizApi/ressources/invoices.schema.json
-   # etc.
-   ```
-
-### Performance et optimisation
-
-1. **Pagination et mise en cache** :
-   - La classe `EvolizApiService` gère automatiquement la pagination
-   - Les résultats intermédiaires sont mis en cache pour éviter les appels inutiles
-
-2. **Rate limiting adaptatif** :
-   - Le système calcule dynamiquement les délais entre les requêtes
-   - Respecte les limites de l'API tout en maximisant les performances
-
-### Sécurité
-
-1. **Validation des entrées** :
-   - Toutes les entrées sont validées via les schémas JSON avant envoi
-   - Les erreurs de validation sont détectées avant d'atteindre l'API
-
-2. **Gestion des credentials** :
-   - Les tokens d'accès sont stockés de manière sécurisée
-   - La rotation des tokens est gérée automatiquement
-
-### Extensibilité
-
-Le système est conçu pour être facilement étendu :
-- Les ressources sont implémentées de manière indépendante
-- L'ajout de nouvelles opérations ne nécessite que des modifications localisées
-- Les schémas peuvent être mis à jour sans changer le code
+*📝 Documentation mise à jour le 4 septembre 2025 via rétro-ingénierie du code source existant*
