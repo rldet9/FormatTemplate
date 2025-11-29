@@ -36,14 +36,14 @@ Le **node FormatTemplate** est un composant n8n avancé conçu pour transformer 
 
 ### Installation via npm
 ```bash
-npm install n8n-nodes-format-template
+npm install @rderet/n8n-nodes-format-template
 ```
 
 ### Installation en développement
 ```bash
 # Cloner le repository
-git clone https://github.com/your-username/n8n-nodes-format-template.git
-cd n8n-nodes-format-template
+git clone https://github.com/rldet9/FormatTemplate.git
+cd FormatTemplate
 
 # Installer les dépendances
 pnpm install
@@ -430,12 +430,17 @@ const result = await handler.transform(mockContext, testValue, testParams);
 📚 **Documentation** :
 - [Document d'exigences produit (PRD)](./docs/format-template-node-prd.md)
 - [Documentation technique](./docs/FormatTemplate.md)
-- [Guide de contribution](./CONTRIBUTING.md)
+- [Guide d'utilisation](./docs/guide-utilisation.md)
+
+📦 **Publication NPM** :
+- [Procédure de publication complète](./docs/procedure-publication-npm.md)
+- [Checklist rapide de publication](./docs/checklist-publication-npm.md)
 
 🐛 **Support** :
-- [Issues GitHub](https://github.com/your-username/n8n-nodes-format-template/issues)
-- [Discussions communautaires](https://github.com/your-username/n8n-nodes-format-template/discussions)
+- [Issues GitHub](https://github.com/rldet9/FormatTemplate/issues)
+- [Discussions communautaires](https://github.com/rldet9/FormatTemplate/discussions)
 - [Documentation n8n officielle](https://docs.n8n.io/)
+- [Package NPM](https://www.npmjs.com/package/@rderet/n8n-nodes-format-template)
 
 ### Foire aux questions
 
@@ -467,8 +472,9 @@ R: Non, les transformations modifient définitivement les données. Créez une c
 
 Ce projet est sous licence MIT. Contributions et redistribution encouragées selon les termes de la licence.
 
-**Auteur** : Mixtrio (raphael.deret@mixtrio.net)  
-**Repository** : [n8n-nodes-format-template](https://github.com/your-username/n8n-nodes-format-template)  
+**Auteur** : Raphael Deret (raphael.deret@mixtrio.net)  
+**Repository** : [FormatTemplate](https://github.com/rldet9/FormatTemplate)  
+**Package NPM** : [@rderet/n8n-nodes-format-template](https://www.npmjs.com/package/@rderet/n8n-nodes-format-template)  
 **Version** : 0.1.0
 
 ---

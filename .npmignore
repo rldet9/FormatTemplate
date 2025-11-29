@@ -1,2 +1,34 @@
+# OS files
 .DS_Store
+desktop.ini
+
+# Build artifacts
 *.tsbuildinfo
+tsconfig.json
+
+# Development files
+.editorconfig
+.eslintrc.js
+.eslintrc.prepublish.js
+.prettierrc.js
+gulpfile.js
+
+# Source files (only dist/ should be published)
+nodes/
+credentials/
+
+# Git and GitHub
+.git
+.github
+.gitignore
+
+# Development folders
+.vscode/
+
+# Documentation (keep only main README)
+docs/
+
+# Dependencies
+node_modules/
+package-lock.json
+pnpm-lock.yaml
