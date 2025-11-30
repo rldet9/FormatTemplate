@@ -2,46 +2,46 @@ import { ITransformHandler } from '../interfaces/TransformHandler';
 import { INodeProperties, IExecuteFunctions } from 'n8n-workflow';
 
 export class PhoneHandler implements ITransformHandler {
-  type = 'phone';
-  displayName = 'Phone';
-  description = 'Formats phone numbers according to patterns';
+	type = 'phone';
+	displayName = 'Phone';
+	description = 'Formats phone numbers according to patterns';
 
-  properties: INodeProperties[] = [
-    {
-      displayName: 'Pattern',
-      name: 'pattern',
-      type: 'options',
-      default: '{0:+33 (0) # ## ## ## ##}',
-      typeOptions: {
-        allowCustomValues: true,
-      },
-      options: [
-        {
-          name: '+33 (0) # ## ## ## ## (Fr International)',
-          value: '{0:+33 (0) # ## ## ## ##}',
-        },
-        {
-          name: '0# ## ## ## ## (FR National)',
-          value: '{0:0# ## ## ## ##}',
-        },
-        {
-          name: '(###) ###-#### (US)',
-          value: '{0:(###) ###-####}',
-        },
-      ],
-    },
-  ];
+	properties: INodeProperties[] = [
+		{
+			displayName: 'Pattern',
+			name: 'pattern',
+			type: 'options',
+			default: '{0:+33 (0) # ## ## ## ##}',
+			typeOptions: {
+				allowCustomValues: true,
+			},
+			options: [
+				{
+					name: '+33 (0) # ## ## ## ## (Fr International)',
+					value: '{0:+33 (0) # ## ## ## ##}',
+				},
+				{
+					name: '0# ## ## ## ## (FR National)',
+					value: '{0:0# ## ## ## ##}',
+				},
+				{
+					name: '(###) ###-#### (US)',
+					value: '{0:(###) ###-####}',
+				},
+			],
+		},
+	];
 
-  // Corrigé: Séparé les contextes de "this"
-  // Signature correcte qui correspond à l'interface
-  async transform(
-    executionContext: IExecuteFunctions,
-    value: string,
-    params: Record<string, any>
-  ): Promise<string> {
-    const pattern = params.pattern as string;
-    return this.applyPattern(value, pattern);
-  }
+	// Corrigé: Séparé les contextes de "this"
+	// Signature correcte qui correspond à l'interface
+	async transform(
+		executionContext: IExecuteFunctions,
+		value: string,
+		params: Record<string, unknown>,
+	): Promise<string> {
+		const pattern = params.pattern as string;
+		return this.applyPattern(value, pattern);
+	}
 
 	private applyPattern(raw: string, pattern: string): string {
 		// 1. Nettoyage du pattern (retrait des accolades)
