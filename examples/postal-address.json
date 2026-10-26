@@ -1,0 +1,84 @@
+{
+  "name": "Format Template — check one postal address",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "f3cabc3b-1dc1-546f-a8ce-0db7e61a96ec",
+      "name": "When clicking 'Execute workflow'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return [\n  { json: {\"address\": \"Appartement 12\\nBâtiment B\\n10 rue de la Paix\\n75002 Paris\"} },\n];\n"
+      },
+      "id": "35dacdc2-d6bd-5050-ad86-e8a93af41f73",
+      "name": "Sample address",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        220,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "fieldsToFormat": {
+          "field": [
+            {
+              "fieldPath": "address",
+              "type": "postalAddress",
+              "outputFormat": "structured",
+              "outputPath": "checked"
+            },
+            {
+              "fieldPath": "address",
+              "type": "postalAddress"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "1ec2b4ff-5e69-5f87-84b9-0f82a4a3df01",
+      "name": "Format Template",
+      "type": "@rderet/n8n-nodes-format-template.formatTemplate",
+      "typeVersion": 6,
+      "position": [
+        440,
+        0
+      ]
+    }
+  ],
+  "connections": {
+    "When clicking 'Execute workflow'": {
+      "main": [
+        [
+          {
+            "node": "Sample address",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sample address": {
+      "main": [
+        [
+          {
+            "node": "Format Template",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {}
+}

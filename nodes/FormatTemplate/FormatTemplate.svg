@@ -1,18 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="128" height="128" viewBox="0 0 128 128"
-     xmlns="http://www.w3.org/2000/svg" role="img"
-     aria-labelledby="title desc">
-  <title id="title">Logo FormatTemplate n8n</title>
-  <desc id="desc">Carré orange n8n avec texte {#}</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <!--
+    "wand-sparkles" from Lucide (https://lucide.dev), the icon set n8n draws its own
+    icons with (@iconify-json/lucide 1.2.114). Light theme: n8n's gray node-icon color.
 
-  <!-- Bloc principal n8n -->
-  <rect x="0" y="0" width="128" height="128" rx="24" fill="#FF6533"/>
-
-  <!-- Texte {#} centré -->
-  <text x="64" y="64" text-anchor="middle" dominant-baseline="middle"
-        font-family="Courier New, monospace"
-        font-size="64" font-weight="700"
-        fill="#ffffff">
-    <tspan>{#}</tspan>
-  </text>
+    ISC License. Copyright (c) Lucide Contributors.
+    Permission to use, copy, modify, and/or distribute this software for any purpose
+    with or without fee is hereby granted, provided that the above copyright notice
+    and this permission notice appear in all copies.
+  -->
+  <path fill="none" stroke="#7d7d87" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m21.64 3.64l-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72M14 7l3 3M5 6v4m14 4v4M10 2v2M7 8H3m18 8h-4M11 3H9"/>
 </svg>

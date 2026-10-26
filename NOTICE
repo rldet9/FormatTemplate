@@ -1,0 +1,23 @@
+Format Template — n8n community node
+Copyright (c) Mixtrio. Licensed under the MIT License (LICENSE.md).
+
+This product includes data derived from libphonenumber
+(https://github.com/google/libphonenumber):
+
+  Copyright (C) 2009 The Libphonenumber Authors
+
+  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
+  data except in compliance with the License. A copy of the License is in
+  LICENSES/Apache-2.0.txt, and at https://www.apache.org/licenses/LICENSE-2.0.
+
+  The numbering plans of nodes/FormatTemplate/transforms/phone/numberingPlans.ts and the
+  example numbers of nodes/FormatTemplate/__tests__/fixtures/phone/examples.json are
+  generated from resources/PhoneNumberMetadata.xml of libphonenumber, at the version
+  pinned in nodes/FormatTemplate/scripts/gen_phone_plans.js. They are a modified form of
+  that file: comments, examples and per-type patterns are dropped, the national prefix
+  rules are applied to the formats, the non-geographic entities are left out, and the
+  plans of FR, US and CA keep the behaviour of the node's first typeVersion 6 release.
+  This is not an official libphonenumber artifact.
+
+This product includes the icon wand-sparkles from Lucide (https://lucide.dev),
+Copyright (c) Lucide Contributors, licensed under the ISC License.

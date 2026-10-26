@@ -1,0 +1,91 @@
+{
+  "name": "Format Template — normalize a batch of contacts",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "9999dc30-096d-51a5-a043-ac3ca363fc12",
+      "name": "When clicking 'Execute workflow'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return [\n  { json: {\"customer\": {\"name\": \"jean-pierre DUPONT\", \"phone\": \"+33 3 20 00 00 00\", \"country\": \"Royaume-Uni\", \"address\": \"8 bd du port amiens\"}} },\n  { json: {\"customer\": {\"name\": \"claire MARTIN\", \"phone\": \"06 12 34 56 78\", \"country\": \"fr\", \"address\": \"12 rue de la Pais 75002 Paris\"}} },\n  { json: {\"customer\": {\"name\": \"paul durand\", \"phone\": \"0320000000\", \"country\": \"Belgique\", \"address\": \"1 rue de la Gare\"}} },\n  { json: {\"customer\": {\"name\": \"SOPHIE BERNARD\", \"phone\": \"+1 212 555 0100\", \"country\": \"USA\", \"address\": \"BP 18 33506 Libourne Cedex\"}} },\n];\n"
+      },
+      "id": "24cd82c9-eeea-59b4-8b93-2179ecd5d518",
+      "name": "Sample contacts",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        220,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "fieldsToFormat": {
+          "field": [
+            {
+              "fieldPath": "customer.name",
+              "type": "textCase",
+              "textCase": "titleCase"
+            },
+            {
+              "fieldPath": "customer.phone",
+              "type": "phone"
+            },
+            {
+              "fieldPath": "customer.country",
+              "type": "country"
+            },
+            {
+              "fieldPath": "customer.address",
+              "type": "postalAddress"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5ab6b682-c00a-5890-b6c9-f3aab51a91f6",
+      "name": "Format Template",
+      "type": "@rderet/n8n-nodes-format-template.formatTemplate",
+      "typeVersion": 6,
+      "position": [
+        440,
+        0
+      ]
+    }
+  ],
+  "connections": {
+    "When clicking 'Execute workflow'": {
+      "main": [
+        [
+          {
+            "node": "Sample contacts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sample contacts": {
+      "main": [
+        [
+          {
+            "node": "Format Template",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {}
+}

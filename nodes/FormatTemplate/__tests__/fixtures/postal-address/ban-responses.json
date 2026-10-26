@@ -1,0 +1,3526 @@
+{
+	"$source": "Base Adresse Nationale, through the Géoplateforme geocoding service (IGN) — Licence Ouverte / Open Licence 2.0 (Etalab). Raw answers, recorded for offline tests.",
+	"endpoint": "https://data.geopf.fr/geocodage/search",
+	"parameters": {
+		"index": "address",
+		"limit": "5",
+		"autocomplete": "0"
+	},
+	"recordedAt": "2026-10-25",
+	"responses": {
+		"12 rue de la Paix 75002 Paris": {
+			"type": "FeatureCollection",
+			"features": [
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							2.331303,
+							48.869141
+						]
+					},
+					"properties": {
+						"label": "12 Rue de la Paix 75002 Paris",
+						"score": 0.9640599999999998,
+						"housenumber": "12",
+						"id": "75102_6998_00012",
+						"banId": "eb3fbab2-8154-4f2c-af66-ee299e9dfcea",
+						"name": "12 Rue de la Paix",
+						"postcode": "75002",
+						"citycode": "75102",
+						"x": 650947.59,
+						"y": 6863442.5,
+						"city": "Paris",
+						"district": "Paris 2e Arrondissement",
+						"context": "75, Paris, Île-de-France",
+						"type": "housenumber",
+						"importance": 0.60466,
+						"depcode": "75",
+						"street": "Rue de la Paix",
+						"_type": "address"
+					}
+				}
+			]
+		},
+		"8 bd du port amiens": {
+			"type": "FeatureCollection",
+			"features": [
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							2.290084,
+							49.897442
+						]
+					},
+					"properties": {
+						"label": "8 Boulevard du Port 80000 Amiens",
+						"score": 0.6560346853146852,
+						"housenumber": "8",
+						"id": "80021_6590_00008",
+						"banId": "f2633629-5541-4233-aa54-3c2eb58aa8b9",
+						"name": "8 Boulevard du Port",
+						"postcode": "80000",
+						"citycode": "80021",
+						"x": 648952.58,
+						"y": 6977867.14,
+						"city": "Amiens",
+						"context": "80, Somme, Hauts-de-France",
+						"type": "housenumber",
+						"importance": 0.67792,
+						"depcode": "80",
+						"street": "Boulevard du Port",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							2.306578,
+							49.895257
+						]
+					},
+					"properties": {
+						"label": "8 Port d'Amont 80000 Amiens",
+						"score": 0.592670303030303,
+						"housenumber": "8",
+						"id": "80021_0430_00008",
+						"banId": "fc29ff74-bbfa-43c8-b38d-908ed7527c92",
+						"name": "8 Port d'Amont",
+						"postcode": "80000",
+						"citycode": "80021",
+						"x": 650136.43,
+						"y": 6977613.38,
+						"city": "Amiens",
+						"context": "80, Somme, Hauts-de-France",
+						"type": "housenumber",
+						"importance": 0.68604,
+						"depcode": "80",
+						"street": "Port d'Amont",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							2.293064,
+							49.898204
+						]
+					},
+					"properties": {
+						"label": "Port d'Aval 80000 Amiens",
+						"score": 0.5303746640316205,
+						"id": "80021_0550",
+						"banId": "17115ee8-6210-40f4-bede-3addd54998b0",
+						"name": "Port d'Aval",
+						"postcode": "80000",
+						"citycode": "80021",
+						"x": 649167.61,
+						"y": 6977950.04,
+						"city": "Amiens",
+						"context": "80, Somme, Hauts-de-France",
+						"type": "street",
+						"importance": 0.61673,
+						"depcode": "80",
+						"street": "Port d'Aval",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							2.335509,
+							49.878625
+						]
+					},
+					"properties": {
+						"label": "Impasse du Port à Fumier 80090 Amiens",
+						"score": 0.42807609625668447,
+						"id": "80021_6595",
+						"banId": "45650022-fd13-4092-8dcb-5aa212972f8a",
+						"name": "Impasse du Port à Fumier",
+						"postcode": "80090",
+						"citycode": "80021",
+						"x": 652201.21,
+						"y": 6975744.13,
+						"city": "Amiens",
+						"context": "80, Somme, Hauts-de-France",
+						"type": "street",
+						"importance": 0.59119,
+						"depcode": "80",
+						"street": "Impasse du Port à Fumier",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							-0.687034,
+							47.817785
+						]
+					},
+					"properties": {
+						"label": "Rue du Port 53200 Château-Gontier-sur-Mayenne",
+						"score": 0.4022184980237154,
+						"id": "53062_1646",
+						"banId": "70e7376a-99a8-4ed3-8958-d9f75e3c5c65",
+						"name": "Rue du Port",
+						"postcode": "53200",
+						"citycode": "53062",
+						"oldcitycode": "53014",
+						"x": 424177.37,
+						"y": 6752817.43,
+						"city": "Château-Gontier-sur-Mayenne",
+						"oldcity": "Azé",
+						"context": "53, Mayenne, Pays de la Loire",
+						"type": "street",
+						"importance": 0.51136,
+						"depcode": "53",
+						"street": "Rue du Port",
+						"_type": "address"
+					}
+				}
+			]
+		},
+		"20 avenue de Ségur 75007 Paris": {
+			"type": "FeatureCollection",
+			"features": [
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							2.308628,
+							48.850699
+						]
+					},
+					"properties": {
+						"label": "20 Avenue de Ségur 75007 Paris",
+						"score": 0.9716281818181818,
+						"housenumber": "20",
+						"id": "75107_8909_00020",
+						"banId": "c575af14-f697-464c-b70b-914cedb239a4",
+						"name": "20 Avenue de Ségur",
+						"postcode": "75007",
+						"citycode": "75107",
+						"x": 649266.35,
+						"y": 6861406.23,
+						"city": "Paris",
+						"district": "Paris 7e Arrondissement",
+						"context": "75, Paris, Île-de-France",
+						"type": "housenumber",
+						"importance": 0.68791,
+						"depcode": "75",
+						"street": "Avenue de Ségur",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							2.309833,
+							48.850425
+						]
+					},
+					"properties": {
+						"label": "Villa de Ségur 75007 Paris",
+						"score": 0.58922935828877,
+						"id": "75107_8910",
+						"banId": "2965a060-617e-45ab-87e4-6d70cef804f1",
+						"name": "Villa de Ségur",
+						"postcode": "75007",
+						"citycode": "75107",
+						"x": 649354.51,
+						"y": 6861374.99,
+						"city": "Paris",
+						"district": "Paris 7e Arrondissement",
+						"context": "75, Paris, Île-de-France",
+						"type": "street",
+						"importance": 0.59917,
+						"depcode": "75",
+						"street": "Villa de Ségur",
+						"_type": "address"
+					}
+				}
+			]
+		},
+		"55 rue du Faubourg Saint-Honoré 75008 Paris": {
+			"type": "FeatureCollection",
+			"features": [
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							2.316931,
+							48.87063
+						]
+					},
+					"properties": {
+						"label": "55 Rue du Faubourg Saint-Honoré 75008 Paris",
+						"score": 0.9761936363636362,
+						"housenumber": "55",
+						"id": "75108_3518_00055",
+						"banId": "efdbb9f5-2c7f-4302-983c-a472ae15092e",
+						"name": "55 Rue du Faubourg Saint-Honoré",
+						"postcode": "75008",
+						"citycode": "75108",
+						"x": 649894.79,
+						"y": 6863617.08,
+						"city": "Paris",
+						"district": "Paris 8e Arrondissement",
+						"context": "75, Paris, Île-de-France",
+						"type": "housenumber",
+						"importance": 0.73813,
+						"depcode": "75",
+						"street": "Rue du Faubourg Saint-Honoré",
+						"_type": "address"
+					}
+				}
+			]
+		},
+		"126 rue de l'Université 75007 Paris": {
+			"type": "FeatureCollection",
+			"features": [
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							2.318606,
+							48.860825
+						]
+					},
+					"properties": {
+						"label": "126 Rue de l'Université 75007 Paris",
+						"score": 0.9776518181818181,
+						"housenumber": "126",
+						"id": "75107_9527_00126",
+						"banId": "33e85926-3a59-4a56-9064-025210c672cd",
+						"name": "126 Rue de l'Université",
+						"postcode": "75007",
+						"citycode": "75107",
+						"x": 650008.25,
+						"y": 6862525.79,
+						"city": "Paris",
+						"district": "Paris 7e Arrondissement",
+						"context": "75, Paris, Île-de-France",
+						"type": "housenumber",
+						"importance": 0.75417,
+						"depcode": "75",
+						"street": "Rue de l'Université",
+						"_type": "address"
+					}
+				}
+			]
+		},
+		"15 rue de Vaugirard 75006 Paris": {
+			"type": "FeatureCollection",
+			"features": [
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							2.337343,
+							48.849169
+						]
+					},
+					"properties": {
+						"label": "15 Rue de Vaugirard 75006 Paris",
+						"score": 0.9747045454545454,
+						"housenumber": "15",
+						"id": "75106_9624_00015",
+						"banId": "b79e325a-e887-48a2-bc0a-d7a9cedc6d38",
+						"name": "15 Rue de Vaugirard",
+						"postcode": "75006",
+						"citycode": "75106",
+						"x": 651372.01,
+						"y": 6861218.05,
+						"city": "Paris",
+						"district": "Paris 6e Arrondissement",
+						"context": "75, Paris, Île-de-France",
+						"type": "housenumber",
+						"importance": 0.72175,
+						"depcode": "75",
+						"street": "Rue de Vaugirard",
+						"_type": "address"
+					}
+				}
+			]
+		},
+		"5 avenue Anatole France 75007 Paris": {
+			"type": "FeatureCollection",
+			"features": [
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							2.294597,
+							48.858819
+						]
+					},
+					"properties": {
+						"label": "5 Avenue Anatole France 75007 Paris",
+						"score": 0.9612381818181817,
+						"housenumber": "5",
+						"id": "75107_0306_00005",
+						"banId": "f94c0279-27a3-4ddd-b7a6-5ee90745ac4b",
+						"name": "5 Avenue Anatole France",
+						"postcode": "75007",
+						"citycode": "75107",
+						"x": 648244.83,
+						"y": 6862318.21,
+						"city": "Paris",
+						"district": "Paris 7e Arrondissement",
+						"context": "75, Paris, Île-de-France",
+						"type": "housenumber",
+						"importance": 0.57362,
+						"depcode": "75",
+						"street": "Avenue Anatole France",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							2.322413,
+							48.86156
+						]
+					},
+					"properties": {
+						"label": "Quai Anatole France 75007 Paris",
+						"score": 0.6788913875598086,
+						"id": "75107_0307",
+						"banId": "acf4529d-3c0e-4396-bbd1-8e71b7b334b2",
+						"name": "Quai Anatole France",
+						"postcode": "75007",
+						"citycode": "75107",
+						"x": 650288.25,
+						"y": 6862605.11,
+						"city": "Paris",
+						"district": "Paris 7e Arrondissement",
+						"context": "75, Paris, Île-de-France",
+						"type": "street",
+						"importance": 0.6257,
+						"depcode": "75",
+						"street": "Quai Anatole France",
+						"_type": "address"
+					}
+				}
+			]
+		},
+		"1 place de la Comédie 69001 Lyon": {
+			"type": "FeatureCollection",
+			"features": [
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							4.835757,
+							45.767808
+						]
+					},
+					"properties": {
+						"label": "1 Place de la Comédie 69001 Lyon",
+						"score": 0.9539081818181817,
+						"housenumber": "1",
+						"id": "69381_1810_00001",
+						"banId": "926d9157-5f78-4c8a-9496-9e7bacb61d3a",
+						"name": "1 Place de la Comédie",
+						"postcode": "69001",
+						"citycode": "69381",
+						"x": 842661.26,
+						"y": 6520347.24,
+						"city": "Lyon",
+						"district": "Lyon 1er Arrondissement",
+						"context": "69, Rhône, Auvergne-Rhône-Alpes",
+						"type": "housenumber",
+						"importance": 0.49299,
+						"depcode": "69",
+						"street": "Place de la Comédie",
+						"_type": "address"
+					}
+				}
+			]
+		},
+		"1 place du Capitole 31000 Toulouse": {
+			"type": "FeatureCollection",
+			"features": [
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							1.444053,
+							43.603872
+						]
+					},
+					"properties": {
+						"label": "1 Place du Capitole 31000 Toulouse",
+						"score": 0.9764799999999999,
+						"housenumber": "1",
+						"id": "31555_1676_00001",
+						"banId": "264c0325-241b-4c4e-a07f-896b6b2c1b03",
+						"name": "1 Place du Capitole",
+						"postcode": "31000",
+						"citycode": "31555",
+						"x": 574344.14,
+						"y": 6279551.2,
+						"city": "Toulouse",
+						"context": "31, Haute-Garonne, Occitanie",
+						"type": "housenumber",
+						"importance": 0.74128,
+						"depcode": "31",
+						"street": "Place du Capitole",
+						"_type": "address"
+					}
+				}
+			]
+		},
+		"2 rue de l'Hôtel de Ville 44000 Nantes": {
+			"type": "FeatureCollection",
+			"features": [
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							-1.555041,
+							47.217804
+						]
+					},
+					"properties": {
+						"label": "2 Rue de l'Hôtel de Ville 44000 Nantes",
+						"score": 0.9734836363636363,
+						"housenumber": "2",
+						"id": "44109_4237_00002",
+						"banId": "bc3e6f58-9c6a-483c-8971-3d7ccd9f99f7",
+						"name": "2 Rue de l'Hôtel de Ville",
+						"postcode": "44000",
+						"citycode": "44109",
+						"x": 355465.11,
+						"y": 6689663.3,
+						"city": "Nantes",
+						"context": "44, Loire-Atlantique, Pays de la Loire",
+						"type": "housenumber",
+						"importance": 0.70832,
+						"depcode": "44",
+						"street": "Rue de l'Hôtel de Ville",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							-1.550086,
+							47.211819
+						]
+					},
+					"properties": {
+						"label": "2 Avenue de l'Hôtel Dieu 44000 Nantes",
+						"score": 0.5994686561264821,
+						"housenumber": "2",
+						"id": "44109_4240_00002",
+						"banId": "ab4a71a4-b923-45ab-b999-68b99651c837",
+						"name": "2 Avenue de l'Hôtel Dieu",
+						"postcode": "44000",
+						"citycode": "44109",
+						"x": 355801.2,
+						"y": 6688977.99,
+						"city": "Nantes",
+						"context": "44, Loire-Atlantique, Pays de la Loire",
+						"type": "housenumber",
+						"importance": 0.72459,
+						"depcode": "44",
+						"street": "Avenue de l'Hôtel Dieu",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							-1.551204,
+							47.21161
+						]
+					},
+					"properties": {
+						"label": "2 Impasse de l'Avenue de l'Hôtel Dieu 44000 Nantes",
+						"score": 0.5428975324675324,
+						"housenumber": "2",
+						"id": "44109_0490_00002",
+						"banId": "0acc2e56-9ad4-4113-af7a-7e64164539ca",
+						"name": "2 Impasse de l'Avenue de l'Hôtel Dieu",
+						"postcode": "44000",
+						"citycode": "44109",
+						"x": 355715.38,
+						"y": 6688959.69,
+						"city": "Nantes",
+						"context": "44, Loire-Atlantique, Pays de la Loire",
+						"type": "housenumber",
+						"importance": 0.61473,
+						"depcode": "44",
+						"street": "Impasse de l'Avenue de l'Hôtel Dieu",
+						"_type": "address"
+					}
+				}
+			]
+		},
+		"Place Stanislas 54000 Nancy": {
+			"type": "FeatureCollection",
+			"features": [
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							6.183083,
+							48.693742
+						]
+					},
+					"properties": {
+						"label": "Place Stanislas 54000 Nancy",
+						"score": 0.9678881818181818,
+						"id": "54395_4930",
+						"banId": "7b7a6e31-d02d-4333-b953-8c63633fe08e",
+						"name": "Place Stanislas",
+						"postcode": "54000",
+						"citycode": "54395",
+						"x": 934221.21,
+						"y": 6848454.12,
+						"city": "Nancy",
+						"context": "54, Meurthe-et-Moselle, Grand Est",
+						"type": "street",
+						"importance": 0.64677,
+						"depcode": "54",
+						"street": "Place Stanislas",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							6.179304,
+							48.692342
+						]
+					},
+					"properties": {
+						"label": "Rue Stanislas 54000 Nancy",
+						"score": 0.7821393506493506,
+						"id": "54395_4940",
+						"banId": "f834f56d-4dae-4710-b9e6-989185d25307",
+						"name": "Rue Stanislas",
+						"postcode": "54000",
+						"citycode": "54395",
+						"x": 933949.56,
+						"y": 6848287.39,
+						"city": "Nancy",
+						"context": "54, Meurthe-et-Moselle, Grand Est",
+						"type": "street",
+						"importance": 0.74639,
+						"depcode": "54",
+						"street": "Rue Stanislas",
+						"_type": "address"
+					}
+				}
+			]
+		},
+		"Place Bellecour 69002 Lyon": {
+			"type": "FeatureCollection",
+			"features": [
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							4.831662,
+							45.757597
+						]
+					},
+					"properties": {
+						"label": "Place Bellecour 69002 Lyon",
+						"score": 0.9673672727272726,
+						"id": "69382_0805",
+						"banId": "0a51ba1a-42bd-4b8a-9287-c215bedf6574",
+						"name": "Place Bellecour",
+						"postcode": "69002",
+						"citycode": "69382",
+						"x": 842369.38,
+						"y": 6519206.21,
+						"city": "Lyon",
+						"district": "Lyon 2e Arrondissement",
+						"context": "69, Rhône, Auvergne-Rhône-Alpes",
+						"type": "street",
+						"importance": 0.64104,
+						"depcode": "69",
+						"street": "Place Bellecour",
+						"_type": "address"
+					}
+				}
+			]
+		},
+		"Quai du Port 13002 Marseille": {
+			"type": "FeatureCollection",
+			"features": [
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							5.368267,
+							43.295992
+						]
+					},
+					"properties": {
+						"label": "Quai du port 13002 Marseille",
+						"score": 0.9714609090909091,
+						"id": "13202_7462",
+						"banId": "3af97c34-6af3-4a37-8faa-85ae7f5a1356",
+						"name": "Quai du port",
+						"postcode": "13002",
+						"citycode": "13202",
+						"x": 892267.5,
+						"y": 6246975.08,
+						"city": "Marseille",
+						"district": "Marseille 2e Arrondissement",
+						"context": "13, Bouches-du-Rhône, Provence-Alpes-Côte d'Azur",
+						"type": "street",
+						"importance": 0.68607,
+						"depcode": "13",
+						"street": "Quai du port",
+						"_type": "address"
+					}
+				}
+			]
+		},
+		"Place Pey Berland 33000 Bordeaux": {
+			"type": "FeatureCollection",
+			"features": [
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							-0.577233,
+							44.837654
+						]
+					},
+					"properties": {
+						"label": "Place Pey Berland 33000 Bordeaux",
+						"score": 0.9774436363636363,
+						"id": "33063_7215",
+						"banId": "e1165db4-ea18-4f97-9645-8d4a5916d832",
+						"name": "Place Pey Berland",
+						"postcode": "33000",
+						"citycode": "33063",
+						"x": 417396.09,
+						"y": 6421790.1,
+						"city": "Bordeaux",
+						"context": "33, Gironde, Nouvelle-Aquitaine",
+						"type": "street",
+						"importance": 0.75188,
+						"depcode": "33",
+						"street": "Place Pey Berland",
+						"_type": "address"
+					}
+				}
+			]
+		},
+		"Place de la Victoire 97400 Saint-Denis": {
+			"type": "FeatureCollection",
+			"features": [
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							55.447691,
+							-20.876134
+						]
+					},
+					"properties": {
+						"label": "Avenue de la Victoire 97400 Saint-Denis",
+						"score": 0.7799229870129869,
+						"id": "97411_1450",
+						"name": "Avenue de la Victoire",
+						"postcode": "97400",
+						"citycode": "97411",
+						"x": 338522.81,
+						"y": 7690781.23,
+						"city": "Saint-Denis",
+						"context": "974, La Réunion",
+						"type": "street",
+						"importance": 0.72201,
+						"depcode": "97",
+						"street": "Avenue de la Victoire",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							55.453259,
+							-20.877191
+						]
+					},
+					"properties": {
+						"label": "Rue Victor Mac-Auliffe 97400 Saint-Denis",
+						"score": 0.5145455258467023,
+						"id": "97411_1460",
+						"name": "Rue Victor Mac-Auliffe",
+						"postcode": "97400",
+						"citycode": "97411",
+						"x": 339103.24,
+						"y": 7690669.8,
+						"city": "Saint-Denis",
+						"context": "974, La Réunion",
+						"type": "street",
+						"importance": 0.75804,
+						"depcode": "97",
+						"street": "Rue Victor Mac-Auliffe",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							55.465295,
+							-20.893693
+						]
+					},
+					"properties": {
+						"label": "Rue Victor Hugo 97400 Saint-Denis",
+						"score": 0.5101954545454546,
+						"id": "97411_1451",
+						"name": "Rue Victor Hugo",
+						"postcode": "97400",
+						"citycode": "97411",
+						"x": 340372.94,
+						"y": 7688855.01,
+						"city": "Saint-Denis",
+						"context": "974, La Réunion",
+						"type": "street",
+						"importance": 0.61215,
+						"depcode": "97",
+						"street": "Rue Victor Hugo",
+						"_type": "address"
+					}
+				}
+			]
+		},
+		"Cours Napoléon 20000 Ajaccio": {
+			"type": "FeatureCollection",
+			"features": [
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							8.737833,
+							41.924262
+						]
+					},
+					"properties": {
+						"label": "Cours Napoléon 20000 Ajaccio",
+						"score": 0.9767290909090909,
+						"id": "2A004_0970",
+						"banId": "792cb45c-659b-4489-a58b-6fd3de4118f2",
+						"name": "Cours Napoléon",
+						"postcode": "20000",
+						"citycode": "2A004",
+						"x": 1176563.06,
+						"y": 6108830.64,
+						"city": "Ajaccio",
+						"context": "2A, Corse-du-Sud, Corse",
+						"type": "street",
+						"importance": 0.74402,
+						"depcode": "2A",
+						"street": "Cours Napoléon",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							8.73968,
+							41.918265
+						]
+					},
+					"properties": {
+						"label": "Quai Napoleon 20000 Ajaccio",
+						"score": 0.699414926686217,
+						"id": "2A004_0980",
+						"banId": "e6a0dda9-ffde-40bc-8b8f-a793e96e3e03",
+						"name": "Quai Napoleon",
+						"postcode": "20000",
+						"citycode": "2A004",
+						"x": 1176764.67,
+						"y": 6108176,
+						"city": "Ajaccio",
+						"context": "2A, Corse-du-Sud, Corse",
+						"type": "street",
+						"importance": 0.59679,
+						"depcode": "2A",
+						"street": "Quai Napoleon",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							8.735072,
+							41.925009
+						]
+					},
+					"properties": {
+						"label": "Avenue Napoléon 3 20000 Ajaccio",
+						"score": 0.6295340259740259,
+						"id": "2A004_0990",
+						"banId": "bc2b93f1-a597-438d-99d4-e3b209a12395",
+						"name": "Avenue Napoléon 3",
+						"postcode": "20000",
+						"citycode": "2A004",
+						"x": 1176328.11,
+						"y": 6108896.91,
+						"city": "Ajaccio",
+						"context": "2A, Corse-du-Sud, Corse",
+						"type": "street",
+						"importance": 0.63916,
+						"depcode": "2A",
+						"street": "Avenue Napoléon 3",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							8.73483,
+							41.925129
+						]
+					},
+					"properties": {
+						"label": "Avenue Napoleon III 20000 Ajaccio",
+						"score": 0.5995287223587223,
+						"id": "2a004_g1g6j3",
+						"banId": "ffca75eb-b9da-41be-a657-e9220be9b002",
+						"name": "Avenue Napoleon III",
+						"postcode": "20000",
+						"citycode": "2A004",
+						"x": 1176307.07,
+						"y": 6108908.77,
+						"city": "Ajaccio",
+						"context": "2A, Corse-du-Sud, Corse",
+						"type": "street",
+						"importance": 0.64887,
+						"depcode": "2A",
+						"street": "Avenue Napoleon III",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							8.737324,
+							41.925874
+						]
+					},
+					"properties": {
+						"label": "Avenue Napoléon 3 P S Lazaro 20000 Ajaccio",
+						"score": 0.5139064646464645,
+						"id": "2A004_0993",
+						"banId": "f0d8d31e-3469-427d-898e-e9886c17a4f0",
+						"name": "Avenue Napoléon 3 P S Lazaro",
+						"postcode": "20000",
+						"citycode": "2A004",
+						"x": 1176507.83,
+						"y": 6109006.53,
+						"city": "Ajaccio",
+						"context": "2A, Corse-du-Sud, Corse",
+						"type": "street",
+						"importance": 0.54186,
+						"depcode": "2A",
+						"street": "Avenue Napoléon 3 P S Lazaro",
+						"_type": "address"
+					}
+				}
+			]
+		},
+		"Place Augustin Laurent 59000 Lille": {
+			"type": "FeatureCollection",
+			"features": [
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							3.070892,
+							50.630925
+						]
+					},
+					"properties": {
+						"label": "Place Augustin Laurent 59800 Lille",
+						"score": 0.8627802597402596,
+						"id": "59350_0459",
+						"banId": "ac0910f3-3adb-44af-8e0b-14b14890e85c",
+						"name": "Place Augustin Laurent",
+						"postcode": "59800",
+						"citycode": "59350",
+						"oldcitycode": "59350",
+						"x": 705024.31,
+						"y": 7059329.59,
+						"city": "Lille",
+						"oldcity": "Lille",
+						"context": "59, Nord, Hauts-de-France",
+						"type": "street",
+						"importance": 0.63344,
+						"depcode": "59",
+						"street": "Place Augustin Laurent",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							3.052352,
+							50.614163
+						]
+					},
+					"properties": {
+						"label": "Rue Augustin Drapiez 59000 Lille",
+						"score": 0.5104046300211416,
+						"id": "59350_0458",
+						"banId": "89062c0b-9ce7-4125-8fbb-8151b1c233c8",
+						"name": "Rue Augustin Drapiez",
+						"postcode": "59000",
+						"citycode": "59350",
+						"oldcitycode": "59350",
+						"x": 703711.57,
+						"y": 7057460.81,
+						"city": "Lille",
+						"oldcity": "Lille",
+						"context": "59, Nord, Hauts-de-France",
+						"type": "street",
+						"importance": 0.73073,
+						"depcode": "59",
+						"street": "Rue Augustin Drapiez",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							3.04559,
+							50.62493
+						]
+					},
+					"properties": {
+						"label": "Cour Saint Laurent 59000 Lille",
+						"score": 0.4936367965367965,
+						"id": "59350_225jgh",
+						"banId": "490f5ad6-9119-4df7-ab7c-d68e11f5a32f",
+						"name": "Cour Saint Laurent",
+						"postcode": "59000",
+						"citycode": "59350",
+						"oldcitycode": "59350",
+						"x": 703231.47,
+						"y": 7058660.25,
+						"city": "Lille",
+						"oldcity": "Lille",
+						"context": "59, Nord, Hauts-de-France",
+						"type": "street",
+						"importance": 0.6681,
+						"depcode": "59",
+						"street": "Cour Saint Laurent",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							3.040245,
+							50.631216
+						]
+					},
+					"properties": {
+						"label": "Rue Philippe-Laurent Roland 59000 Lille",
+						"score": 0.4537045454545454,
+						"id": "59350_6808",
+						"banId": "4c9c53b4-ed4a-4436-8613-cee9bed5460e",
+						"name": "Rue Philippe-Laurent Roland",
+						"postcode": "59000",
+						"citycode": "59350",
+						"oldcitycode": "59350",
+						"x": 702852.26,
+						"y": 7059360.48,
+						"city": "Lille",
+						"oldcity": "Lille",
+						"context": "59, Nord, Hauts-de-France",
+						"type": "street",
+						"importance": 0.79075,
+						"depcode": "59",
+						"street": "Rue Philippe-Laurent Roland",
+						"_type": "address"
+					}
+				}
+			]
+		},
+		"10 rue de la Paix 75002 Paris": {
+			"type": "FeatureCollection",
+			"features": [
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							2.33115,
+							48.868989
+						]
+					},
+					"properties": {
+						"label": "10 Rue de la Paix 75002 Paris",
+						"score": 0.9640599999999998,
+						"housenumber": "10",
+						"id": "75102_6998_00010",
+						"banId": "2070ec2e-ff36-4097-bcbd-c126f7a2fa2f",
+						"name": "10 Rue de la Paix",
+						"postcode": "75002",
+						"citycode": "75102",
+						"x": 650936.23,
+						"y": 6863425.69,
+						"city": "Paris",
+						"district": "Paris 2e Arrondissement",
+						"context": "75, Paris, Île-de-France",
+						"type": "housenumber",
+						"importance": 0.60466,
+						"depcode": "75",
+						"street": "Rue de la Paix",
+						"_type": "address"
+					}
+				}
+			]
+		},
+		"55 r du fbg st honoré 75008 paris": {
+			"type": "FeatureCollection",
+			"features": [
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							2.316931,
+							48.87063
+						]
+					},
+					"properties": {
+						"label": "55 Rue du Faubourg Saint-Honoré 75008 Paris",
+						"score": 0.6204624110671937,
+						"housenumber": "55",
+						"id": "75108_3518_00055",
+						"banId": "efdbb9f5-2c7f-4302-983c-a472ae15092e",
+						"name": "55 Rue du Faubourg Saint-Honoré",
+						"postcode": "75008",
+						"citycode": "75108",
+						"x": 649894.79,
+						"y": 6863617.08,
+						"city": "Paris",
+						"district": "Paris 8e Arrondissement",
+						"context": "75, Paris, Île-de-France",
+						"type": "housenumber",
+						"importance": 0.73813,
+						"depcode": "75",
+						"street": "Rue du Faubourg Saint-Honoré",
+						"_type": "address"
+					}
+				}
+			]
+		},
+		"1 place du Maréchal de Lattre de Tassigny 75016 Paris": {
+			"type": "FeatureCollection",
+			"features": [
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							2.274733,
+							48.871747
+						]
+					},
+					"properties": {
+						"label": "Place du Maréchal de Lattre de Tassigny 75116 Paris",
+						"score": 0.8648535353535353,
+						"id": "75116_6040",
+						"banId": "838354b7-7aae-48a9-9737-c4c04fd4afe1",
+						"name": "Place du Maréchal de Lattre de Tassigny",
+						"postcode": "75116",
+						"citycode": "75116",
+						"x": 646800.66,
+						"y": 6863768.89,
+						"city": "Paris",
+						"district": "Paris 16e Arrondissement",
+						"context": "75, Paris, Île-de-France",
+						"type": "street",
+						"importance": 0.6245,
+						"depcode": "75",
+						"street": "Place du Maréchal de Lattre de Tassigny",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							1.607831,
+							50.510281
+						]
+					},
+					"properties": {
+						"label": "Av Mal de Lattre de Tassigny 62520 Le Touquet-Paris-Plage",
+						"score": 0.5187555088195386,
+						"id": "62826_0744",
+						"banId": "82588fb7-ea05-4c46-b93c-9cf22ff6766c",
+						"name": "Av Mal de Lattre de Tassigny",
+						"postcode": "62520",
+						"citycode": "62826",
+						"x": 601101.33,
+						"y": 7046757.1,
+						"city": "Le Touquet-Paris-Plage",
+						"context": "62, Pas-de-Calais, Hauts-de-France",
+						"type": "street",
+						"importance": 0.48243,
+						"depcode": "62",
+						"street": "Av Mal de Lattre de Tassigny",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							2.260569,
+							48.852692
+						]
+					},
+					"properties": {
+						"label": "1 Avenue du Maréchal Lyautey 75016 Paris",
+						"score": 0.44344545454545453,
+						"housenumber": "1",
+						"id": "75116_6049_00001",
+						"banId": "db899820-0031-43a8-8293-5f9f37c19b4f",
+						"name": "1 Avenue du Maréchal Lyautey",
+						"postcode": "75016",
+						"citycode": "75116",
+						"x": 645741.9,
+						"y": 6861659.79,
+						"city": "Paris",
+						"district": "Paris 16e Arrondissement",
+						"context": "75, Paris, Île-de-France",
+						"type": "housenumber",
+						"importance": 0.65915,
+						"depcode": "75",
+						"street": "Avenue du Maréchal Lyautey",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							2.266393,
+							48.862362
+						]
+					},
+					"properties": {
+						"label": "1 Avenue du Maréchal Maunoury 75016 Paris",
+						"score": 0.4218358126721763,
+						"housenumber": "1",
+						"id": "75116_6051_00001",
+						"banId": "a715269f-6f28-4803-86de-81b62b92b65b",
+						"name": "1 Avenue du Maréchal Maunoury",
+						"postcode": "75016",
+						"citycode": "75116",
+						"x": 646179.24,
+						"y": 6862731.01,
+						"city": "Paris",
+						"district": "Paris 16e Arrondissement",
+						"context": "75, Paris, Île-de-France",
+						"type": "housenumber",
+						"importance": 0.7008,
+						"depcode": "75",
+						"street": "Avenue du Maréchal Maunoury",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							2.263453,
+							48.857361
+						]
+					},
+					"properties": {
+						"label": "1 Avenue du Maréchal Franchet d'Espérey 75016 Paris",
+						"score": 0.4076894348894349,
+						"housenumber": "1",
+						"id": "75116_6043_00001",
+						"banId": "82be3fd7-59b8-46be-88cd-d0be5177485c",
+						"name": "1 Avenue du Maréchal Franchet d'Espérey",
+						"postcode": "75016",
+						"citycode": "75116",
+						"x": 645958.36,
+						"y": 6862176.96,
+						"city": "Paris",
+						"district": "Paris 16e Arrondissement",
+						"context": "75, Paris, Île-de-France",
+						"type": "housenumber",
+						"importance": 0.7008,
+						"depcode": "75",
+						"street": "Avenue du Maréchal Franchet d'Espérey",
+						"_type": "address"
+					}
+				}
+			]
+		},
+		"12 rue de la Paix 75002 Paris 2e": {
+			"type": "FeatureCollection",
+			"features": [
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							2.331303,
+							48.869141
+						]
+					},
+					"properties": {
+						"label": "12 Rue de la Paix 75002 Paris",
+						"score": 0.8760834604105571,
+						"housenumber": "12",
+						"id": "75102_6998_00012",
+						"banId": "eb3fbab2-8154-4f2c-af66-ee299e9dfcea",
+						"name": "12 Rue de la Paix",
+						"postcode": "75002",
+						"citycode": "75102",
+						"x": 650947.59,
+						"y": 6863442.5,
+						"city": "Paris",
+						"district": "Paris 2e Arrondissement",
+						"context": "75, Paris, Île-de-France",
+						"type": "housenumber",
+						"importance": 0.60466,
+						"depcode": "75",
+						"street": "Rue de la Paix",
+						"_type": "address"
+					}
+				}
+			]
+		},
+		"1 place du capitole toulouse": {
+			"type": "FeatureCollection",
+			"features": [
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							1.444053,
+							43.603872
+						]
+					},
+					"properties": {
+						"label": "1 Place du Capitole 31000 Toulouse",
+						"score": 0.9764799999999999,
+						"housenumber": "1",
+						"id": "31555_1676_00001",
+						"banId": "264c0325-241b-4c4e-a07f-896b6b2c1b03",
+						"name": "1 Place du Capitole",
+						"postcode": "31000",
+						"citycode": "31555",
+						"x": 574344.14,
+						"y": 6279551.2,
+						"city": "Toulouse",
+						"context": "31, Haute-Garonne, Occitanie",
+						"type": "housenumber",
+						"importance": 0.74128,
+						"depcode": "31",
+						"street": "Place du Capitole",
+						"_type": "address"
+					}
+				}
+			]
+		},
+		"10 appt 3 rue de la Paix 75002 Paris": {
+			"type": "FeatureCollection",
+			"features": [
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							2.330452,
+							48.868689
+						]
+					},
+					"properties": {
+						"label": "3 Rue de la Paix 75002 Paris",
+						"score": 0.7562677922077922,
+						"housenumber": "3",
+						"id": "75102_6998_00003",
+						"banId": "d84c2dc6-0c29-43ad-bb22-49b4b1b36957",
+						"name": "3 Rue de la Paix",
+						"postcode": "75002",
+						"citycode": "75102",
+						"x": 650884.74,
+						"y": 6863392.77,
+						"city": "Paris",
+						"district": "Paris 2e Arrondissement",
+						"context": "75, Paris, Île-de-France",
+						"type": "housenumber",
+						"importance": 0.60466,
+						"depcode": "75",
+						"street": "Rue de la Paix",
+						"_type": "address"
+					}
+				}
+			]
+		},
+		"Place de la Mairie 42230 Saint-Étienne": {
+			"type": "FeatureCollection",
+			"features": [
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							4.26039,
+							45.445719
+						]
+					},
+					"properties": {
+						"label": "Place de la Mairie 42230 Saint-Étienne",
+						"score": 0.9639172727272726,
+						"id": "42218_5607",
+						"name": "Place de la Mairie",
+						"postcode": "42230",
+						"citycode": "42218",
+						"oldcitycode": "42292",
+						"x": 798523.63,
+						"y": 6483706.45,
+						"city": "Saint-Étienne",
+						"oldcity": "Saint-Victor-sur-Loire",
+						"context": "42, Loire, Auvergne-Rhône-Alpes",
+						"type": "street",
+						"importance": 0.60309,
+						"depcode": "42",
+						"street": "Place de la Mairie",
+						"_type": "address"
+					}
+				}
+			]
+		},
+		"Place Napoléon 50100 Cherbourg-en-Cotentin": {
+			"type": "FeatureCollection",
+			"features": [
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							-1.625713,
+							49.643478
+						]
+					},
+					"properties": {
+						"label": "Place Napoleon 50100 Cherbourg-en-Cotentin",
+						"score": 0.9695663636363636,
+						"id": "50129_1560",
+						"banId": "d49b585f-6b21-4f8c-b0ea-39b559d37cd5",
+						"name": "Place Napoleon",
+						"postcode": "50100",
+						"citycode": "50129",
+						"oldcitycode": "50129",
+						"x": 365912.94,
+						"y": 6959159.49,
+						"city": "Cherbourg-en-Cotentin",
+						"oldcity": "Cherbourg-Octeville",
+						"context": "50, Manche, Normandie",
+						"type": "street",
+						"importance": 0.66523,
+						"depcode": "50",
+						"street": "Place Napoleon",
+						"_type": "address"
+					}
+				}
+			]
+		},
+		"12 rue de la Pais 75002 Paris": {
+			"type": "FeatureCollection",
+			"features": [
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							2.331303,
+							48.869141
+						]
+					},
+					"properties": {
+						"label": "12 Rue de la Paix 75002 Paris",
+						"score": 0.8428478787878788,
+						"housenumber": "12",
+						"id": "75102_6998_00012",
+						"banId": "eb3fbab2-8154-4f2c-af66-ee299e9dfcea",
+						"name": "12 Rue de la Paix",
+						"postcode": "75002",
+						"citycode": "75102",
+						"x": 650947.59,
+						"y": 6863442.5,
+						"city": "Paris",
+						"district": "Paris 2e Arrondissement",
+						"context": "75, Paris, Île-de-France",
+						"type": "housenumber",
+						"importance": 0.60466,
+						"depcode": "75",
+						"street": "Rue de la Paix",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							2.350438,
+							48.869774
+						]
+					},
+					"properties": {
+						"label": "12 Rue de la Lune 75002 Paris",
+						"score": 0.69058608815427,
+						"housenumber": "12",
+						"id": "75102_5850_00012",
+						"banId": "4e478a81-a292-42e7-8d5f-eaf8029e4c72",
+						"name": "12 Rue de la Lune",
+						"postcode": "75002",
+						"citycode": "75102",
+						"x": 652351.79,
+						"y": 6863501.16,
+						"city": "Paris",
+						"district": "Paris 2e Arrondissement",
+						"context": "75, Paris, Île-de-France",
+						"type": "housenumber",
+						"importance": 0.62675,
+						"depcode": "75",
+						"street": "Rue de la Lune",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							2.340747,
+							48.867324
+						]
+					},
+					"properties": {
+						"label": "12 Rue de la Banque 75002 Paris",
+						"score": 0.6520216883116882,
+						"housenumber": "12",
+						"id": "75102_0654_00012",
+						"banId": "72d3b5d0-204e-4d33-a2bd-6dc3d66462b2",
+						"name": "12 Rue de la Banque",
+						"postcode": "75002",
+						"citycode": "75102",
+						"x": 651638.66,
+						"y": 6863234.63,
+						"city": "Paris",
+						"district": "Paris 2e Arrondissement",
+						"context": "75, Paris, Île-de-France",
+						"type": "housenumber",
+						"importance": 0.60081,
+						"depcode": "75",
+						"street": "Rue de la Banque",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							2.339155,
+							48.869679
+						]
+					},
+					"properties": {
+						"label": "12 Rue de la Bourse 75002 Paris",
+						"score": 0.649048961038961,
+						"housenumber": "12",
+						"id": "75102_1217_00012",
+						"banId": "4f440bab-46f4-4848-b1ae-afe16f7b4ff8",
+						"name": "12 Rue de la Bourse",
+						"postcode": "75002",
+						"citycode": "75102",
+						"x": 651524.07,
+						"y": 6863497.47,
+						"city": "Paris",
+						"district": "Paris 2e Arrondissement",
+						"context": "75, Paris, Île-de-France",
+						"type": "housenumber",
+						"importance": 0.56811,
+						"depcode": "75",
+						"street": "Rue de la Bourse",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							2.35161,
+							48.865376
+						]
+					},
+					"properties": {
+						"label": "12 Rue de Palestro 75002 Paris",
+						"score": 0.6278294805194805,
+						"housenumber": "12",
+						"id": "75102_7018_00012",
+						"banId": "49aa2e18-dff2-425e-bbc9-62f798790b6c",
+						"name": "12 Rue de Palestro",
+						"postcode": "75002",
+						"citycode": "75102",
+						"x": 652433.75,
+						"y": 6863011.43,
+						"city": "Paris",
+						"district": "Paris 2e Arrondissement",
+						"context": "75, Paris, Île-de-France",
+						"type": "housenumber",
+						"importance": 0.62041,
+						"depcode": "75",
+						"street": "Rue de Palestro",
+						"_type": "address"
+					}
+				}
+			]
+		},
+		"126 rue de l'Université 75008 Paris": {
+			"type": "FeatureCollection",
+			"features": [
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							2.318606,
+							48.860825
+						]
+					},
+					"properties": {
+						"label": "126 Rue de l'Université 75007 Paris",
+						"score": 0.8766417171717171,
+						"housenumber": "126",
+						"id": "75107_9527_00126",
+						"banId": "33e85926-3a59-4a56-9064-025210c672cd",
+						"name": "126 Rue de l'Université",
+						"postcode": "75007",
+						"citycode": "75107",
+						"x": 650008.25,
+						"y": 6862525.79,
+						"city": "Paris",
+						"district": "Paris 7e Arrondissement",
+						"context": "75, Paris, Île-de-France",
+						"type": "housenumber",
+						"importance": 0.75417,
+						"depcode": "75",
+						"street": "Rue de l'Université",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							2.322908,
+							48.877923
+						]
+					},
+					"properties": {
+						"label": "Rue de Rome 75008 Paris",
+						"score": 0.5292986486486485,
+						"id": "75108_8339",
+						"banId": "d51ba660-7687-4e05-bcdd-450f1e965288",
+						"name": "Rue de Rome",
+						"postcode": "75008",
+						"citycode": "75108",
+						"x": 650340.17,
+						"y": 6864424.24,
+						"city": "Paris",
+						"district": "Paris 8e Arrondissement",
+						"context": "75, Paris, Île-de-France",
+						"type": "street",
+						"importance": 0.68715,
+						"depcode": "75",
+						"street": "Rue de Rome",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							2.324006,
+							48.872703
+						]
+					},
+					"properties": {
+						"label": "Rue de l'Arcade 75008 Paris",
+						"score": 0.5149345454545454,
+						"id": "75108_0411",
+						"banId": "0557cf7d-1c4e-46dc-8b64-ef99d818ec9d",
+						"name": "Rue de l'Arcade",
+						"postcode": "75008",
+						"citycode": "75108",
+						"x": 650415.73,
+						"y": 6863843.12,
+						"city": "Paris",
+						"district": "Paris 8e Arrondissement",
+						"context": "75, Paris, Île-de-France",
+						"type": "street",
+						"importance": 0.66428,
+						"depcode": "75",
+						"street": "Rue de l'Arcade",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							2.323187,
+							48.880907
+						]
+					},
+					"properties": {
+						"label": "Rue de Berne 75008 Paris",
+						"score": 0.5130454545454545,
+						"id": "75108_0900",
+						"banId": "4d939a54-62b3-4df8-a149-8e7fd368682d",
+						"name": "Rue de Berne",
+						"postcode": "75008",
+						"citycode": "75108",
+						"x": 650363.47,
+						"y": 6864755.86,
+						"city": "Paris",
+						"district": "Paris 8e Arrondissement",
+						"context": "75, Paris, Île-de-France",
+						"type": "street",
+						"importance": 0.6435,
+						"depcode": "75",
+						"street": "Rue de Berne",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							2.325549,
+							48.879388
+						]
+					},
+					"properties": {
+						"label": "Rue de Liège 75008 Paris",
+						"score": 0.5124581818181818,
+						"id": "75108_5665",
+						"banId": "fdda1d34-8404-4cfb-98d5-c8d6505d6511",
+						"name": "Rue de Liège",
+						"postcode": "75008",
+						"citycode": "75108",
+						"x": 650535.25,
+						"y": 6864585.48,
+						"city": "Paris",
+						"district": "Paris 8e Arrondissement",
+						"context": "75, Paris, Île-de-France",
+						"type": "street",
+						"importance": 0.63704,
+						"depcode": "75",
+						"street": "Rue de Liège",
+						"_type": "address"
+					}
+				}
+			]
+		},
+		"15 rue de Vaugirard 75006 Pari": {
+			"type": "FeatureCollection",
+			"features": [
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							2.337343,
+							48.849169
+						]
+					},
+					"properties": {
+						"label": "15 Rue de Vaugirard 75006 Paris",
+						"score": 0.944401515151515,
+						"housenumber": "15",
+						"id": "75106_9624_00015",
+						"banId": "b79e325a-e887-48a2-bc0a-d7a9cedc6d38",
+						"name": "15 Rue de Vaugirard",
+						"postcode": "75006",
+						"citycode": "75106",
+						"x": 651372.01,
+						"y": 6861218.05,
+						"city": "Paris",
+						"district": "Paris 6e Arrondissement",
+						"context": "75, Paris, Île-de-France",
+						"type": "housenumber",
+						"importance": 0.72175,
+						"depcode": "75",
+						"street": "Rue de Vaugirard",
+						"_type": "address"
+					}
+				}
+			]
+		},
+		"20 avenue de Ségur 75015 Paris": {
+			"type": "FeatureCollection",
+			"features": [
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							2.305635,
+							48.847421
+						]
+					},
+					"properties": {
+						"label": "Avenue de Ségur 75015 Paris",
+						"score": 0.8774597492163009,
+						"id": "75115_8909",
+						"banId": "14d1d92a-ba51-493b-b181-e60c63cdfa97",
+						"name": "Avenue de Ségur",
+						"postcode": "75015",
+						"citycode": "75115",
+						"x": 649043.52,
+						"y": 6861043.68,
+						"city": "Paris",
+						"district": "Paris 15e Arrondissement",
+						"context": "75, Paris, Île-de-France",
+						"type": "street",
+						"importance": 0.68654,
+						"depcode": "75",
+						"street": "Avenue de Ségur",
+						"_type": "address"
+					}
+				}
+			]
+		},
+		"place de Gaulle 59800 Lille": {
+			"type": "FeatureCollection",
+			"features": [
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							3.0636,
+							50.636895
+						]
+					},
+					"properties": {
+						"label": "Place du Général de Gaulle 59800 Lille",
+						"score": 0.7067570024570023,
+						"id": "59350_3839",
+						"banId": "81fb97fa-0145-488f-8795-c50d63d15fce",
+						"name": "Place du Général de Gaulle",
+						"postcode": "59800",
+						"citycode": "59350",
+						"oldcitycode": "59350",
+						"x": 704506.97,
+						"y": 7059994.38,
+						"city": "Lille",
+						"oldcity": "Lille",
+						"context": "59, Nord, Hauts-de-France",
+						"type": "street",
+						"importance": 0.7473,
+						"depcode": "59",
+						"street": "Place du Général de Gaulle",
+						"_type": "address"
+					}
+				}
+			]
+		},
+		"1 bis rue des Écoles 75005 Paris": {
+			"type": "FeatureCollection",
+			"features": [
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							2.348101,
+							48.848743
+						]
+					},
+					"properties": {
+						"label": "Rue des Écoles 75005 Paris",
+						"score": 0.7970905571847506,
+						"id": "75105_3098",
+						"banId": "c6f46480-0ca7-4e09-af46-8b4bee6e3dcd",
+						"name": "Rue des Écoles",
+						"postcode": "75005",
+						"citycode": "75105",
+						"x": 652161.06,
+						"y": 6861164.11,
+						"city": "Paris",
+						"district": "Paris 5e Arrondissement",
+						"context": "75, Paris, Île-de-France",
+						"type": "street",
+						"importance": 0.70348,
+						"depcode": "75",
+						"street": "Rue des Écoles",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							2.348032,
+							48.849467
+						]
+					},
+					"properties": {
+						"label": "1B Rue des Carmes 75005 Paris",
+						"score": 0.5649977777777777,
+						"housenumber": "1B",
+						"id": "75105_1554_00001_b",
+						"banId": "57be086d-964b-4487-bf37-0972e8559364",
+						"name": "1B Rue des Carmes",
+						"postcode": "75005",
+						"citycode": "75105",
+						"x": 652156.66,
+						"y": 6861244.65,
+						"city": "Paris",
+						"district": "Paris 5e Arrondissement",
+						"context": "75, Paris, Île-de-France",
+						"type": "housenumber",
+						"importance": 0.65942,
+						"depcode": "75",
+						"street": "Rue des Carmes",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							2.348975,
+							48.846251
+						]
+					},
+					"properties": {
+						"label": "Rue Descartes 75005 Paris",
+						"score": 0.542311616161616,
+						"id": "75105_2724",
+						"banId": "f574be80-f480-4009-86ca-3d713c58e545",
+						"name": "Rue Descartes",
+						"postcode": "75005",
+						"citycode": "75105",
+						"x": 652222.91,
+						"y": 6860886.49,
+						"city": "Paris",
+						"district": "Paris 5e Arrondissement",
+						"context": "75, Paris, Île-de-France",
+						"type": "street",
+						"importance": 0.68765,
+						"depcode": "75",
+						"street": "Rue Descartes",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							2.34668,
+							48.838361
+						]
+					},
+					"properties": {
+						"label": "Rue des Lyonnais 75005 Paris",
+						"score": 0.5390034449760764,
+						"id": "75105_5868",
+						"banId": "231b4fc9-66bb-405a-8132-fd8434e9867f",
+						"name": "Rue des Lyonnais",
+						"postcode": "75005",
+						"citycode": "75105",
+						"x": 652047.23,
+						"y": 6860010.6,
+						"city": "Paris",
+						"district": "Paris 5e Arrondissement",
+						"context": "75, Paris, Île-de-France",
+						"type": "street",
+						"importance": 0.66588,
+						"depcode": "75",
+						"street": "Rue des Lyonnais",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							2.342184,
+							48.842648
+						]
+					},
+					"properties": {
+						"label": "Rue des Ursulines 75005 Paris",
+						"score": 0.5237204662004661,
+						"id": "75105_9533",
+						"banId": "6a219b47-847a-4ec1-ad58-20c963f250c4",
+						"name": "Rue des Ursulines",
+						"postcode": "75005",
+						"citycode": "75105",
+						"x": 651721.21,
+						"y": 6860490.01,
+						"city": "Paris",
+						"district": "Paris 5e Arrondissement",
+						"context": "75, Paris, Île-de-France",
+						"type": "street",
+						"importance": 0.63272,
+						"depcode": "75",
+						"street": "Rue des Ursulines",
+						"_type": "address"
+					}
+				}
+			]
+		},
+		"999 rue de Rivoli 75001 Paris": {
+			"type": "FeatureCollection",
+			"features": [
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							2.3362,
+							48.862442
+						]
+					},
+					"properties": {
+						"label": "Rue de Rivoli 75001 Paris",
+						"score": 0.8405607792207791,
+						"id": "75101_8249",
+						"banId": "7941e7a8-f63c-4619-a6df-d407225effcb",
+						"name": "Rue de Rivoli",
+						"postcode": "75001",
+						"citycode": "75101",
+						"x": 651300.54,
+						"y": 6862694.59,
+						"city": "Paris",
+						"district": "Paris 1er Arrondissement",
+						"context": "75, Paris, Île-de-France",
+						"type": "street",
+						"importance": 0.67474,
+						"depcode": "75",
+						"street": "Rue de Rivoli",
+						"_type": "address"
+					}
+				}
+			]
+		},
+		"250 rue de la Paix 75002 Paris": {
+			"type": "FeatureCollection",
+			"features": [
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							2.331264,
+							48.869271
+						]
+					},
+					"properties": {
+						"label": "Rue de la Paix 75002 Paris",
+						"score": 0.8386681504702194,
+						"id": "75102_6998",
+						"banId": "1fc65ecf-4343-4437-b8c1-58c0540e3a89",
+						"name": "Rue de la Paix",
+						"postcode": "75002",
+						"citycode": "75102",
+						"x": 650944.86,
+						"y": 6863456.97,
+						"city": "Paris",
+						"district": "Paris 2e Arrondissement",
+						"context": "75, Paris, Île-de-France",
+						"type": "street",
+						"importance": 0.60466,
+						"depcode": "75",
+						"street": "Rue de la Paix",
+						"_type": "address"
+					}
+				}
+			]
+		},
+		"3 bis avenue du Général de Gaulle 59000 Lille": {
+			"type": "FeatureCollection",
+			"features": [
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							3.0636,
+							50.636895
+						]
+					},
+					"properties": {
+						"label": "Place du Général de Gaulle 59800 Lille",
+						"score": 0.6315727272727272,
+						"id": "59350_3839",
+						"banId": "81fb97fa-0145-488f-8795-c50d63d15fce",
+						"name": "Place du Général de Gaulle",
+						"postcode": "59800",
+						"citycode": "59350",
+						"oldcitycode": "59350",
+						"x": 704506.97,
+						"y": 7059994.38,
+						"city": "Lille",
+						"oldcity": "Lille",
+						"context": "59, Nord, Hauts-de-France",
+						"type": "street",
+						"importance": 0.7473,
+						"depcode": "59",
+						"street": "Place du Général de Gaulle",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							3.044827,
+							50.611795
+						]
+					},
+					"properties": {
+						"label": "Rue du Général de Wett 59000 Lille",
+						"score": 0.5578018181818182,
+						"id": "59350_3848",
+						"banId": "f5135e51-e9cb-4a54-a104-0e74a6bfecd8",
+						"name": "Rue du Général de Wett",
+						"postcode": "59000",
+						"citycode": "59350",
+						"oldcitycode": "59350",
+						"x": 703178.22,
+						"y": 7057196.62,
+						"city": "Lille",
+						"oldcity": "Lille",
+						"context": "59, Nord, Hauts-de-France",
+						"type": "street",
+						"importance": 0.73582,
+						"depcode": "59",
+						"street": "Rue du Général de Wett",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							3.026595,
+							50.630303
+						]
+					},
+					"properties": {
+						"label": "Rue du Général Anne de la Bourdonnaye 59000 Lille",
+						"score": 0.511141788856305,
+						"id": "59350_3833",
+						"banId": "2337620c-86fa-4540-9d17-38f32ec948e5",
+						"name": "Rue du Général Anne de la Bourdonnaye",
+						"postcode": "59000",
+						"citycode": "59350",
+						"oldcitycode": "59350",
+						"x": 701884.88,
+						"y": 7059258.34,
+						"city": "Lille",
+						"oldcity": "Lille",
+						"context": "59, Nord, Hauts-de-France",
+						"type": "street",
+						"importance": 0.78385,
+						"depcode": "59",
+						"street": "Rue du Général Anne de la Bourdonnaye",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							3.044942,
+							50.615487
+						]
+					},
+					"properties": {
+						"label": "Rue Geneviève Anthonioz-De Gaulle 59000 Lille",
+						"score": 0.5054403852080124,
+						"id": "59350_cp2luu",
+						"banId": "f3d5b92a-99d2-423d-ac53-2ea13fceac4c",
+						"name": "Rue Geneviève Anthonioz-De Gaulle",
+						"postcode": "59000",
+						"citycode": "59350",
+						"oldcitycode": "59350",
+						"x": 703186.14,
+						"y": 7057608.01,
+						"city": "Lille",
+						"oldcity": "Lille",
+						"context": "59, Nord, Hauts-de-France",
+						"type": "street",
+						"importance": 0.64459,
+						"depcode": "59",
+						"street": "Rue Geneviève Anthonioz-De Gaulle",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							3.06459,
+							50.676173
+						]
+					},
+					"properties": {
+						"label": "Place du Général De Gaulle 59520 Marquette-lez-Lille",
+						"score": 0.490580909090909,
+						"id": "59386_0250",
+						"banId": "72f09639-c415-439f-a463-a35a824d5d57",
+						"name": "Place du Général De Gaulle",
+						"postcode": "59520",
+						"citycode": "59386",
+						"x": 704573.54,
+						"y": 7064371.32,
+						"city": "Marquette-lez-Lille",
+						"context": "59, Nord, Hauts-de-France",
+						"type": "street",
+						"importance": 0.55264,
+						"depcode": "59",
+						"street": "Place du Général De Gaulle",
+						"_type": "address"
+					}
+				}
+			]
+		},
+		"5 rue Anatole France 75007 Paris": {
+			"type": "FeatureCollection",
+			"features": [
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							2.294597,
+							48.858819
+						]
+					},
+					"properties": {
+						"label": "5 Avenue Anatole France 75007 Paris",
+						"score": 0.7844705050505051,
+						"housenumber": "5",
+						"id": "75107_0306_00005",
+						"banId": "f94c0279-27a3-4ddd-b7a6-5ee90745ac4b",
+						"name": "5 Avenue Anatole France",
+						"postcode": "75007",
+						"citycode": "75107",
+						"x": 648244.83,
+						"y": 6862318.21,
+						"city": "Paris",
+						"district": "Paris 7e Arrondissement",
+						"context": "75, Paris, Île-de-France",
+						"type": "housenumber",
+						"importance": 0.57362,
+						"depcode": "75",
+						"street": "Avenue Anatole France",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							2.322413,
+							48.86156
+						]
+					},
+					"properties": {
+						"label": "Quai Anatole France 75007 Paris",
+						"score": 0.7322064935064935,
+						"id": "75107_0307",
+						"banId": "acf4529d-3c0e-4396-bbd1-8e71b7b334b2",
+						"name": "Quai Anatole France",
+						"postcode": "75007",
+						"citycode": "75107",
+						"x": 650288.25,
+						"y": 6862605.11,
+						"city": "Paris",
+						"district": "Paris 7e Arrondissement",
+						"context": "75, Paris, Île-de-France",
+						"type": "street",
+						"importance": 0.6257,
+						"depcode": "75",
+						"street": "Quai Anatole France",
+						"_type": "address"
+					}
+				}
+			]
+		},
+		"55 rue du Faubourg Saint-Honoré 13001 Marseille": {
+			"type": "FeatureCollection",
+			"features": [
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							2.316931,
+							48.87063
+						]
+					},
+					"properties": {
+						"label": "55 Rue du Faubourg Saint-Honoré 75008 Paris",
+						"score": 0.6599881027667984,
+						"housenumber": "55",
+						"id": "75108_3518_00055",
+						"banId": "efdbb9f5-2c7f-4302-983c-a472ae15092e",
+						"name": "55 Rue du Faubourg Saint-Honoré",
+						"postcode": "75008",
+						"citycode": "75108",
+						"x": 649894.79,
+						"y": 6863617.08,
+						"city": "Paris",
+						"district": "Paris 8e Arrondissement",
+						"context": "75, Paris, Île-de-France",
+						"type": "housenumber",
+						"importance": 0.73813,
+						"depcode": "75",
+						"street": "Rue du Faubourg Saint-Honoré",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							5.373691,
+							43.292725
+						]
+					},
+					"properties": {
+						"label": "Cours honore d'estienne d'orves 13001 Marseille",
+						"score": 0.41440217630853987,
+						"id": "13201_4489",
+						"banId": "45f1170e-0a82-4a8f-8416-3a28259eb994",
+						"name": "Cours honore d'estienne d'orves",
+						"postcode": "13001",
+						"citycode": "13201",
+						"x": 892718.63,
+						"y": 6246625.29,
+						"city": "Marseille",
+						"district": "Marseille 1er Arrondissement",
+						"context": "13, Bouches-du-Rhône, Provence-Alpes-Côte d'Azur",
+						"type": "street",
+						"importance": 0.61903,
+						"depcode": "13",
+						"street": "Cours honore d'estienne d'orves",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							5.449389,
+							43.527981
+						]
+					},
+					"properties": {
+						"label": "Place  Saint-Honoré 13100 Aix-en-Provence",
+						"score": 0.35267552447552447,
+						"id": "13001_2745",
+						"banId": "1cf7625f-14e4-4fe3-baa0-e6208fdfd2b0",
+						"name": "Place  Saint-Honoré",
+						"postcode": "13100",
+						"citycode": "13001",
+						"x": 898051.53,
+						"y": 6272950.39,
+						"city": "Aix-en-Provence",
+						"context": "13, Bouches-du-Rhône, Provence-Alpes-Côte d'Azur",
+						"type": "street",
+						"importance": 0.6102,
+						"depcode": "13",
+						"street": "Place  Saint-Honoré",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							5.450171,
+							43.53232
+						]
+					},
+					"properties": {
+						"label": "Passage du Faubourg Naurabet 13100 Aix-en-Provence",
+						"score": 0.3205790611028316,
+						"type": "locality",
+						"importance": 0.57555,
+						"id": "13001_0997",
+						"banId": "b39fd6cc-bea6-4a5a-8e04-b91fb6176040",
+						"name": "Passage du Faubourg Naurabet",
+						"postcode": "13100",
+						"citycode": "13001",
+						"x": 898099.78,
+						"y": 6273434.38,
+						"city": "Aix-en-Provence",
+						"context": "13, Bouches-du-Rhône, Provence-Alpes-Côte d'Azur",
+						"depcode": "13",
+						"locality": "Passage du Faubourg Naurabet",
+						"_type": "address"
+					}
+				}
+			]
+		},
+		"15 rue de Vaugirard 69002 Lyon": {
+			"type": "FeatureCollection",
+			"features": [
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							4.833298,
+							45.763649
+						]
+					},
+					"properties": {
+						"label": "15 Rue de Brest 69002 Lyon",
+						"score": 0.5531510389610389,
+						"housenumber": "15",
+						"id": "69382_1120_00015",
+						"banId": "e9a41dc8-655c-4d3a-b0c9-4fa8260d954d",
+						"name": "15 Rue de Brest",
+						"postcode": "69002",
+						"citycode": "69382",
+						"x": 842480.92,
+						"y": 6519881.06,
+						"city": "Lyon",
+						"district": "Lyon 2e Arrondissement",
+						"context": "69, Rhône, Auvergne-Rhône-Alpes",
+						"type": "housenumber",
+						"importance": 0.65609,
+						"depcode": "69",
+						"street": "Rue de Brest",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							4.827029,
+							45.752043
+						]
+					},
+					"properties": {
+						"label": "15 Rue de Condé 69002 Lyon",
+						"score": 0.5516583116883116,
+						"housenumber": "15",
+						"id": "69382_1880_00015",
+						"banId": "b16fcaa7-b1fe-4fff-8fcc-4a9672469931",
+						"name": "15 Rue de Condé",
+						"postcode": "69002",
+						"citycode": "69382",
+						"x": 842023.61,
+						"y": 6518581.26,
+						"city": "Lyon",
+						"district": "Lyon 2e Arrondissement",
+						"context": "69, Rhône, Auvergne-Rhône-Alpes",
+						"type": "housenumber",
+						"importance": 0.63967,
+						"depcode": "69",
+						"street": "Rue de Condé",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							4.8362,
+							45.75748
+						]
+					},
+					"properties": {
+						"label": "15 Rue de la Barre 69002 Lyon",
+						"score": 0.5466468550368551,
+						"housenumber": "15",
+						"id": "69382_0660_00015",
+						"banId": "65b1db6e-c6ce-4a2d-9c33-5e1a1b078245",
+						"name": "15 Rue de la Barre",
+						"postcode": "69002",
+						"citycode": "69382",
+						"x": 842722.35,
+						"y": 6519201.41,
+						"city": "Lyon",
+						"district": "Lyon 2e Arrondissement",
+						"context": "69, Rhône, Auvergne-Rhône-Alpes",
+						"type": "housenumber",
+						"importance": 0.60771,
+						"depcode": "69",
+						"street": "Rue de la Barre",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							4.827193,
+							45.746574
+						]
+					},
+					"properties": {
+						"label": "15 Rue Delandine 69002 Lyon",
+						"score": 0.5401170707070707,
+						"housenumber": "15",
+						"id": "69382_xswk3g_00015",
+						"banId": "b953681a-e430-42bc-8fad-135710538842",
+						"name": "15 Rue Delandine",
+						"postcode": "69002",
+						"citycode": "69382",
+						"x": 842050.41,
+						"y": 6517974.38,
+						"city": "Lyon",
+						"district": "Lyon 2e Arrondissement",
+						"context": "69, Rhône, Auvergne-Rhône-Alpes",
+						"type": "housenumber",
+						"importance": 0.66351,
+						"depcode": "69",
+						"street": "Rue Delandine",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							4.821212,
+							45.746431
+						]
+					},
+					"properties": {
+						"label": "15 Rue Denuzière 69002 Lyon",
+						"score": 0.5395325252525253,
+						"housenumber": "15",
+						"id": "69382_2140_00015",
+						"banId": "4d700a39-cbf4-4719-af95-96beb988fa3a",
+						"name": "15 Rue Denuzière",
+						"postcode": "69002",
+						"citycode": "69382",
+						"x": 841585.88,
+						"y": 6517947.76,
+						"city": "Lyon",
+						"district": "Lyon 2e Arrondissement",
+						"context": "69, Rhône, Auvergne-Rhône-Alpes",
+						"type": "housenumber",
+						"importance": 0.65708,
+						"depcode": "69",
+						"street": "Rue Denuzière",
+						"_type": "address"
+					}
+				}
+			]
+		},
+		"8 bd du port lille": {
+			"type": "FeatureCollection",
+			"features": [
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							3.043004,
+							50.634115
+						]
+					},
+					"properties": {
+						"label": "8 Rue du Port 59800 Lille",
+						"score": 0.6765242424242424,
+						"housenumber": "8",
+						"id": "59350_7069_00008",
+						"banId": "98483afe-bc82-49fd-be2d-98e24ad4ccf3",
+						"name": "8 Rue du Port",
+						"postcode": "59800",
+						"citycode": "59350",
+						"oldcitycode": "59350",
+						"x": 703047.62,
+						"y": 7059683.62,
+						"city": "Lille",
+						"oldcity": "Lille",
+						"context": "59, Nord, Hauts-de-France",
+						"type": "housenumber",
+						"importance": 0.7751,
+						"depcode": "59",
+						"street": "Rue du Port",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							-0.969174,
+							48.111779
+						]
+					},
+					"properties": {
+						"label": "8 Rue des Lilas 53410 Port-Brillet",
+						"score": 0.42204258064516126,
+						"housenumber": "8",
+						"id": "53182_0380_00008",
+						"banId": "179cae5e-8b79-4e95-a478-4d295c2106bb",
+						"name": "8 Rue des Lilas",
+						"postcode": "53410",
+						"citycode": "53182",
+						"x": 404729.41,
+						"y": 6786467.94,
+						"city": "Port-Brillet",
+						"context": "53, Mayenne, Pays de la Loire",
+						"type": "housenumber",
+						"importance": 0.44892,
+						"depcode": "53",
+						"street": "Rue des Lilas",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							55.294331,
+							-20.937407
+						]
+					},
+					"properties": {
+						"label": "Rue de Lille 97420 Le Port",
+						"score": 0.4029803496503497,
+						"id": "97407_0305",
+						"banId": "907718d3-e43f-46bf-86d4-788848fed17f",
+						"name": "Rue de Lille",
+						"postcode": "97420",
+						"citycode": "97407",
+						"x": 322638.41,
+						"y": 7683836.09,
+						"city": "Le Port",
+						"context": "974, La Réunion",
+						"type": "street",
+						"importance": 0.58663,
+						"depcode": "97",
+						"street": "Rue de Lille",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							-2.578266,
+							47.530235
+						]
+					},
+					"properties": {
+						"label": "Chemin du Port de Lic 56750 Damgan",
+						"score": 0.37742670033670034,
+						"id": "56052_0217",
+						"banId": "b655c19a-df0f-4a65-a571-95e290ab2b93",
+						"name": "Chemin du Port de Lic",
+						"postcode": "56750",
+						"citycode": "56052",
+						"x": 280637,
+						"y": 6729248.55,
+						"city": "Damgan",
+						"context": "56, Morbihan, Bretagne",
+						"type": "street",
+						"importance": 0.44799,
+						"depcode": "56",
+						"street": "Chemin du Port de Lic",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							6.052606,
+							47.688867
+						]
+					},
+					"properties": {
+						"label": "Allée des Lilas 70170 Port-sur-Saône",
+						"score": 0.3283351948051948,
+						"id": "70421_0100",
+						"banId": "15d74baf-2ea5-416e-82ab-0b7c795c9b81",
+						"name": "Allée des Lilas",
+						"postcode": "70170",
+						"citycode": "70421",
+						"x": 928941.53,
+						"y": 6736479.02,
+						"city": "Port-sur-Saône",
+						"context": "70, Haute-Saône, Bourgogne-Franche-Comté",
+						"type": "street",
+						"importance": 0.46883,
+						"depcode": "70",
+						"street": "Allée des Lilas",
+						"_type": "address"
+					}
+				}
+			]
+		},
+		"12 rue de la Paix Royale 75002 Paris": {
+			"type": "FeatureCollection",
+			"features": [
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							2.331303,
+							48.869141
+						]
+					},
+					"properties": {
+						"label": "12 Rue de la Paix 75002 Paris",
+						"score": 0.7822418181818181,
+						"housenumber": "12",
+						"id": "75102_6998_00012",
+						"banId": "eb3fbab2-8154-4f2c-af66-ee299e9dfcea",
+						"name": "12 Rue de la Paix",
+						"postcode": "75002",
+						"citycode": "75102",
+						"x": 650947.59,
+						"y": 6863442.5,
+						"city": "Paris",
+						"district": "Paris 2e Arrondissement",
+						"context": "75, Paris, Île-de-France",
+						"type": "housenumber",
+						"importance": 0.60466,
+						"depcode": "75",
+						"street": "Rue de la Paix",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							2.380438,
+							48.851227
+						]
+					},
+					"properties": {
+						"label": "12 Rue de la Forge Royale 75011 Paris",
+						"score": 0.622687603305785,
+						"housenumber": "12",
+						"id": "75111_3737_00012",
+						"banId": "1c153bb8-b699-4f5b-92df-9de1f45e267e",
+						"name": "12 Rue de la Forge Royale",
+						"postcode": "75011",
+						"citycode": "75111",
+						"x": 654536.2,
+						"y": 6861421.2,
+						"city": "Paris",
+						"district": "Paris 11e Arrondissement",
+						"context": "75, Paris, Île-de-France",
+						"type": "housenumber",
+						"importance": 0.7132,
+						"depcode": "75",
+						"street": "Rue de la Forge Royale",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							2.32321,
+							48.867999
+						]
+					},
+					"properties": {
+						"label": "12 Rue Royale 75008 Paris",
+						"score": 0.5981287223587224,
+						"housenumber": "12",
+						"id": "75108_8418_00012",
+						"banId": "9f18f711-a7a4-4c34-a7be-d4a0482c3aa1",
+						"name": "12 Rue Royale",
+						"postcode": "75008",
+						"citycode": "75108",
+						"x": 650352.86,
+						"y": 6863320.57,
+						"city": "Paris",
+						"district": "Paris 8e Arrondissement",
+						"context": "75, Paris, Île-de-France",
+						"type": "housenumber",
+						"importance": 0.63347,
+						"depcode": "75",
+						"street": "Rue Royale",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							2.362817,
+							48.858751
+						]
+					},
+					"properties": {
+						"label": "12 Rue du Parc Royal 75003 Paris",
+						"score": 0.5413206553911204,
+						"housenumber": "12",
+						"id": "75103_7061_00012",
+						"banId": "1b4813c9-17ff-44c5-a661-dcc3ef8810e9",
+						"name": "12 Rue du Parc Royal",
+						"postcode": "75003",
+						"citycode": "75103",
+						"x": 653249.94,
+						"y": 6862268.09,
+						"city": "Paris",
+						"district": "Paris 3e Arrondissement",
+						"context": "75, Paris, Île-de-France",
+						"type": "housenumber",
+						"importance": 0.60569,
+						"depcode": "75",
+						"street": "Rue du Parc Royal",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							2.437111,
+							48.834678
+						]
+					},
+					"properties": {
+						"label": "Route Royale de Beauté 75012 Paris",
+						"score": 0.45814319148936167,
+						"id": "75112_8419",
+						"banId": "c08c3b17-e943-481e-ada4-efa5fd0d2c90",
+						"name": "Route Royale de Beauté",
+						"postcode": "75012",
+						"citycode": "75112",
+						"x": 658681.7,
+						"y": 6859549.97,
+						"city": "Paris",
+						"district": "Paris 12e Arrondissement",
+						"context": "75, Paris, Île-de-France",
+						"type": "street",
+						"importance": 0.57149,
+						"depcode": "75",
+						"street": "Route Royale de Beauté",
+						"_type": "address"
+					}
+				}
+			]
+		},
+		"1 rue de la Gare": {
+			"type": "FeatureCollection",
+			"features": [
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							55.489439,
+							-20.8937
+						]
+					},
+					"properties": {
+						"label": "1 Rue de la Gare 97490 Saint-Denis",
+						"score": 0.9772718181818182,
+						"housenumber": "1",
+						"id": "97411_0563_00001",
+						"name": "1 Rue de la Gare",
+						"postcode": "97490",
+						"citycode": "97411",
+						"x": 342884.64,
+						"y": 7688878.05,
+						"city": "Saint-Denis",
+						"context": "974, La Réunion",
+						"type": "housenumber",
+						"importance": 0.74999,
+						"depcode": "97",
+						"street": "Rue de la Gare",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							-0.460866,
+							46.321156
+						]
+					},
+					"properties": {
+						"label": "1 Rue de la Gare 79000 Niort",
+						"score": 0.9759690909090909,
+						"housenumber": "1",
+						"id": "79191_2225_00001",
+						"banId": "a2f3e940-c9dc-4f1d-b6f7-98e01790021e",
+						"name": "1 Rue de la Gare",
+						"postcode": "79000",
+						"citycode": "79191",
+						"x": 433801.78,
+						"y": 6585973.21,
+						"city": "Niort",
+						"context": "79, Deux-Sèvres, Nouvelle-Aquitaine",
+						"type": "housenumber",
+						"importance": 0.73566,
+						"depcode": "79",
+						"street": "Rue de la Gare",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							2.412482,
+							47.124086
+						]
+					},
+					"properties": {
+						"label": "1 Rue de la Gare 18000 Bourges",
+						"score": 0.9721954545454544,
+						"housenumber": "1",
+						"id": "18033_2365_00001",
+						"banId": "dcefe4a2-8dc3-4799-b015-ff46a65f8b66",
+						"name": "1 Rue de la Gare",
+						"postcode": "18000",
+						"citycode": "18033",
+						"x": 655459.52,
+						"y": 6669478.99,
+						"city": "Bourges",
+						"context": "18, Cher, Centre-Val de Loire",
+						"type": "housenumber",
+						"importance": 0.69415,
+						"depcode": "18",
+						"street": "Rue de la Gare",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							-0.352327,
+							49.17772
+						]
+					},
+					"properties": {
+						"label": "1 Rue de la Gare 14000 Caen",
+						"score": 0.9716463636363635,
+						"housenumber": "1",
+						"id": "14118_3320_00001",
+						"banId": "42d5ce95-349a-44f5-8ffd-fe1f0f10cf72",
+						"name": "1 Rue de la Gare",
+						"postcode": "14000",
+						"citycode": "14118",
+						"x": 455616.8,
+						"y": 6902740.98,
+						"city": "Caen",
+						"context": "14, Calvados, Normandie",
+						"type": "housenumber",
+						"importance": 0.68811,
+						"depcode": "14",
+						"street": "Rue de la Gare",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							1.694955,
+							46.811721
+						]
+					},
+					"properties": {
+						"label": "1 Rue de la Gare 36000 Châteauroux",
+						"score": 0.971420909090909,
+						"housenumber": "1",
+						"id": "36044_1240_00001",
+						"banId": "44983e0f-b4f4-47ec-bbda-fa74801be193",
+						"name": "1 Rue de la Gare",
+						"postcode": "36000",
+						"citycode": "36044",
+						"x": 600493.12,
+						"y": 6635441.76,
+						"city": "Châteauroux",
+						"context": "36, Indre, Centre-Val de Loire",
+						"type": "housenumber",
+						"importance": 0.68563,
+						"depcode": "36",
+						"street": "Rue de la Gare",
+						"_type": "address"
+					}
+				}
+			]
+		},
+		"Place de la Mairie": {
+			"type": "FeatureCollection",
+			"features": [
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							7.35767,
+							48.079629
+						]
+					},
+					"properties": {
+						"label": "Place de la Mairie 68000 Colmar",
+						"score": 0.9655063636363636,
+						"id": "68066_2544",
+						"banId": "11e8bc15-724e-405c-99fc-3bbb03ed97f9",
+						"name": "Place de la Mairie",
+						"postcode": "68000",
+						"citycode": "68066",
+						"x": 1024340.21,
+						"y": 6784424.35,
+						"city": "Colmar",
+						"context": "68, Haut-Rhin, Grand Est",
+						"type": "street",
+						"importance": 0.62057,
+						"depcode": "68",
+						"street": "Place de la Mairie",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							4.26039,
+							45.445719
+						]
+					},
+					"properties": {
+						"label": "Place de la Mairie 42230 Saint-Étienne",
+						"score": 0.9639172727272726,
+						"id": "42218_5607",
+						"name": "Place de la Mairie",
+						"postcode": "42230",
+						"citycode": "42218",
+						"oldcitycode": "42292",
+						"x": 798523.63,
+						"y": 6483706.45,
+						"city": "Saint-Étienne",
+						"oldcity": "Saint-Victor-sur-Loire",
+						"context": "42, Loire, Auvergne-Rhône-Alpes",
+						"type": "street",
+						"importance": 0.60309,
+						"depcode": "42",
+						"street": "Place de la Mairie",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							2.698154,
+							48.843554
+						]
+					},
+					"properties": {
+						"label": "Place de la Mairie 77600 Bussy-Saint-Georges",
+						"score": 0.9634390909090907,
+						"id": "77058_0220",
+						"banId": "e953de4e-22ce-4ce7-b0a6-67f2c04b2a4d",
+						"name": "Place de la Mairie",
+						"postcode": "77600",
+						"citycode": "77058",
+						"x": 677846.94,
+						"y": 6860431.99,
+						"city": "Bussy-Saint-Georges",
+						"context": "77, Seine-et-Marne, Île-de-France",
+						"type": "street",
+						"importance": 0.59783,
+						"depcode": "77",
+						"street": "Place de la Mairie",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							-1.679255,
+							48.110964
+						]
+					},
+					"properties": {
+						"label": "Place de la Mairie 35000 Rennes",
+						"score": 0.9633827272727271,
+						"type": "locality",
+						"importance": 0.59721,
+						"id": "35238_6100",
+						"banId": "44341e36-ba66-455f-9a85-5a37c3ec3e39",
+						"name": "Place de la Mairie",
+						"postcode": "35000",
+						"citycode": "35238",
+						"x": 351957.6,
+						"y": 6789270.07,
+						"city": "Rennes",
+						"context": "35, Ille-et-Vilaine, Bretagne",
+						"depcode": "35",
+						"locality": "Place de la Mairie",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							4.005461,
+							49.288984
+						]
+					},
+					"properties": {
+						"label": "Place de la Mairie 51100 Reims",
+						"score": 0.9621918181818181,
+						"type": "locality",
+						"importance": 0.58411,
+						"id": "51454_hwk1is",
+						"banId": "a45f79f1-7a0c-4223-9bfa-336ddc2c6029",
+						"name": "Place de la Mairie",
+						"postcode": "51100",
+						"citycode": "51454",
+						"x": 773160.13,
+						"y": 6910394.87,
+						"city": "Reims",
+						"context": "51, Marne, Grand Est",
+						"depcode": "51",
+						"locality": "Place de la Mairie",
+						"_type": "address"
+					}
+				}
+			]
+		},
+		"12 grande rue": {
+			"type": "FeatureCollection",
+			"features": [
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							6.021671,
+							47.239122
+						]
+					},
+					"properties": {
+						"label": "12 Grande-Rue 25000 Besançon",
+						"score": 0.9799145454545454,
+						"housenumber": "12",
+						"id": "25056_2440_00012",
+						"banId": "df5d4d1e-692c-421b-ad83-7c28f8565225",
+						"name": "12 Grande-Rue",
+						"postcode": "25000",
+						"citycode": "25056",
+						"x": 928534.02,
+						"y": 6686464.27,
+						"city": "Besançon",
+						"context": "25, Doubs, Bourgogne-Franche-Comté",
+						"type": "housenumber",
+						"importance": 0.77906,
+						"depcode": "25",
+						"street": "Grande-Rue",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							6.181647,
+							48.694645
+						]
+					},
+					"properties": {
+						"label": "12 Grande rue 54000 Nancy",
+						"score": 0.9779172727272727,
+						"housenumber": "12",
+						"id": "54395_2420_00012",
+						"banId": "c4c88235-dff3-47c7-be9e-6490e6cf58ec",
+						"name": "12 Grande rue",
+						"postcode": "54000",
+						"citycode": "54395",
+						"x": 934111.56,
+						"y": 6848550.17,
+						"city": "Nancy",
+						"context": "54, Meurthe-et-Moselle, Grand Est",
+						"type": "housenumber",
+						"importance": 0.75709,
+						"depcode": "54",
+						"street": "Grande rue",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							1.078879,
+							49.927313
+						]
+					},
+					"properties": {
+						"label": "12 Grande Rue 76200 Dieppe",
+						"score": 0.9737054545454544,
+						"housenumber": "12",
+						"id": "76217_1320_00012",
+						"banId": "cc3251b3-d917-4e39-a882-63f9ed719bf9",
+						"name": "12 Grande Rue",
+						"postcode": "76200",
+						"citycode": "76217",
+						"x": 561951.98,
+						"y": 6982642.33,
+						"city": "Dieppe",
+						"context": "76, Seine-Maritime, Normandie",
+						"type": "housenumber",
+						"importance": 0.71076,
+						"depcode": "76",
+						"street": "Grande Rue",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							4.85736,
+							46.781889
+						]
+					},
+					"properties": {
+						"label": "12 Grande Rue 71100 Chalon-sur-Saône",
+						"score": 0.9736963636363636,
+						"housenumber": "12",
+						"id": "71076_3440_00012",
+						"banId": "71f0a636-82db-4121-b85c-8ed2c5d6f478",
+						"name": "12 Grande Rue",
+						"postcode": "71100",
+						"citycode": "71076",
+						"x": 841691.02,
+						"y": 6632972.74,
+						"city": "Chalon-sur-Saône",
+						"context": "71, Saône-et-Loire, Bourgogne-Franche-Comté",
+						"type": "housenumber",
+						"importance": 0.71066,
+						"depcode": "71",
+						"street": "Grande Rue",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							1.606059,
+							50.723016
+						]
+					},
+					"properties": {
+						"label": "12 Grande Rue 62200 Boulogne-sur-Mer",
+						"score": 0.9736072727272725,
+						"housenumber": "12",
+						"id": "62160_1710_00012",
+						"banId": "a6a45e73-888d-4941-a224-1549dd5f7a77",
+						"name": "12 Grande Rue",
+						"postcode": "62200",
+						"citycode": "62160",
+						"x": 601393.9,
+						"y": 7070460.04,
+						"city": "Boulogne-sur-Mer",
+						"context": "62, Pas-de-Calais, Hauts-de-France",
+						"type": "housenumber",
+						"importance": 0.70968,
+						"depcode": "62",
+						"street": "Grande Rue",
+						"_type": "address"
+					}
+				}
+			]
+		},
+		"azertyuiop qsdfghjklm": {
+			"type": "FeatureCollection",
+			"features": []
+		},
+		"999 rue imaginaire du docteur personne 75001 Paris": {
+			"type": "FeatureCollection",
+			"features": [
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							2.33545,
+							48.866106
+						]
+					},
+					"properties": {
+						"label": "Rue Sainte-Anne 75001 Paris",
+						"score": 0.4078944444444444,
+						"id": "75101_8534",
+						"banId": "7478aed4-bcd3-45b4-b0b9-af0652d31334",
+						"name": "Rue Sainte-Anne",
+						"postcode": "75001",
+						"citycode": "75101",
+						"x": 651248.95,
+						"y": 6863102.46,
+						"city": "Paris",
+						"district": "Paris 1er Arrondissement",
+						"context": "75, Paris, Île-de-France",
+						"type": "street",
+						"importance": 0.59795,
+						"depcode": "75",
+						"street": "Rue Sainte-Anne",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							2.331359,
+							48.86635
+						]
+					},
+					"properties": {
+						"label": "Rue du Marché Saint-Honoré 75001 Paris",
+						"score": 0.403794340175953,
+						"id": "75101_6034",
+						"banId": "64d7f176-5ac3-46cc-b564-3b5a474852d2",
+						"name": "Rue du Marché Saint-Honoré",
+						"postcode": "75001",
+						"citycode": "75101",
+						"x": 650949.07,
+						"y": 6863132.12,
+						"city": "Paris",
+						"district": "Paris 1er Arrondissement",
+						"context": "75, Paris, Île-de-France",
+						"type": "street",
+						"importance": 0.57077,
+						"depcode": "75",
+						"street": "Rue du Marché Saint-Honoré",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							2.344031,
+							48.860048
+						]
+					},
+					"properties": {
+						"label": "Rue du Pont Neuf 75001 Paris",
+						"score": 0.4018865289256198,
+						"id": "75101_7619",
+						"banId": "ece52a99-2edc-45aa-af95-5474a0fd5904",
+						"name": "Rue du Pont Neuf",
+						"postcode": "75001",
+						"citycode": "75101",
+						"x": 651872.84,
+						"y": 6862423.6,
+						"city": "Paris",
+						"district": "Paris 1er Arrondissement",
+						"context": "75, Paris, Île-de-France",
+						"type": "street",
+						"importance": 0.60257,
+						"depcode": "75",
+						"street": "Rue du Pont Neuf",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							2.342958,
+							48.859376
+						]
+					},
+					"properties": {
+						"label": "Rue de la Monnaie 75001 Paris",
+						"score": 0.3937090909090909,
+						"id": "75101_6438",
+						"banId": "fab450cf-161d-465c-a1b9-864436bbea5b",
+						"name": "Rue de la Monnaie",
+						"postcode": "75001",
+						"citycode": "75101",
+						"x": 651793.49,
+						"y": 6862349.53,
+						"city": "Paris",
+						"district": "Paris 1er Arrondissement",
+						"context": "75, Paris, Île-de-France",
+						"type": "street",
+						"importance": 0.5808,
+						"depcode": "75",
+						"street": "Rue de la Monnaie",
+						"_type": "address"
+					}
+				},
+				{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							2.348687,
+							48.861467
+						]
+					},
+					"properties": {
+						"label": "Rue de la Cossonnerie 75001 Paris",
+						"score": 0.3903357781201849,
+						"id": "75101_2357",
+						"banId": "42eda103-ceec-43e4-a676-ff3224e76e72",
+						"name": "Rue de la Cossonnerie",
+						"postcode": "75001",
+						"citycode": "75101",
+						"x": 652215.73,
+						"y": 6862578.55,
+						"city": "Paris",
+						"district": "Paris 1er Arrondissement",
+						"context": "75, Paris, Île-de-France",
+						"type": "street",
+						"importance": 0.56488,
+						"depcode": "75",
+						"street": "Rue de la Cossonnerie",
+						"_type": "address"
+					}
+				}
+			]
+		}
+	}
+}

@@ -1,837 +1,145 @@
-# Documentation complète du nœud n8n FormatTemplate
+# Format Template — n8n community node
 
-## Table des matières
+[![npm](https://img.shields.io/npm/v/@rderet/n8n-nodes-format-template)](https://www.npmjs.com/package/@rderet/n8n-nodes-format-template)
+[![CI](https://github.com/rldet9/FormatTemplate/actions/workflows/ci.yml/badge.svg)](https://github.com/rldet9/FormatTemplate/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.md)
 
-1. Introduction et vue d'ensemble
-2. Statistiques du code
-3. Architecture générale
-4. Composants clés
-5. Système de transformation modulaire
-6. Types de formatage intégrés
-7. Guide d'extension
-8. Guide d'installation et déploiement
-9. Guide de débogage
-10. Bonnes pratiques
+Normalize fields of n8n items in place — phone numbers, text case, ISO country codes, and
+**French postal addresses checked against the national address base** and written to the
+postal standard.
 
-## Introduction et vue d'ensemble
+> Version française : [README.fr.md](README.fr.md).
 
-Le nœud FormatTemplate est un composant d'extension pour n8n qui permet de formater et transformer des données selon des modèles prédéfinis ou personnalisés. Il a été conçu avec une architecture modulaire et extensible pour faciliter l'ajout de nouveaux types de formatage.
+| Transformation | From | To |
+|---|---|---|
+| **Phone** | `+33 3 20 00 00 00`, `+44 20 7946 0958` | `03 20 00 00 00`, `020 7946 0958` (national), `+44 20 7946 0958` (international), `+442079460958` (E.164), or your own mask — every country |
+| **Text case** | `jean-pierre DUPONT` | `Jean-Pierre Dupont` (title case, upper, lower, capitalize) |
+| **Country** | `Royaume-Uni`, `UK`, `fr` | `GB`, `GB`, `FR` (ISO 3166-1 alpha-2, offline) |
+| **Postal address (France)** | `8 bd du port amiens` | `["8 BOULEVARD DU PORT", "80000 AMIENS"]` (NF Z10-011) |
 
-Ce nœud résout un problème courant dans les workflows d'automatisation : la nécessité de standardiser les formats de données (numéros de téléphone, codes pays, casse de texte, etc.) sans avoir à utiliser de multiples nœuds de fonction ou de code JavaScript complexe.
+## Why this node
 
-### Architecture du nœud FormatTemplate
+- **One decision per item.** A value that cannot be transformed is never approximated: it
+  stays as it was, and the item is tagged — or sent to the error output, or the node fails,
+  as you choose.
+- **Every item says what was done.** A `_format` trace lists each field with its status and
+  a stable diagnostic code (`FT_*`) — never the data itself.
+- **Addresses are verified, not guessed.** The geocoding service ranks candidates; the node
+  then confronts the best one with the input — street type and name, house number, postcode,
+  municipality — and writes the address back only when the national base confirms it.
+- **Every country's phone numbers.** The numbering plans of 245 territories are embedded,
+  generated from Google's libphonenumber metadata: lengths, national prefixes and each
+  country's own grouping.
+- **No runtime dependency.** Phone, text and country work fully offline. Only the postal
+  address calls a service: the free geocoding service of the French State.
 
-```mermaid
-graph TB
-    subgraph "Interface utilisateur n8n"
-        UI[Interface Utilisateur<br/>Dynamique]
-    end
+## Installation
 
-    subgraph "Nœud FormatTemplate"
-        Node[FormatTemplate.node.ts<br/>INodeType]
-        Registry[TransformHandlerRegistry<br/>Registre Central]
-        AutoDisc[AutoDiscovery<br/>Découverte Automatique]
-    end
+In n8n: **Settings → Community Nodes → Install**, then enter
+`@rderet/n8n-nodes-format-template`. See n8n's guide to
+[installing community nodes](https://docs.n8n.io/integrations/community-nodes/installation/).
 
-    subgraph "Handlers de Transformation"
-        IHandler[ITransformHandler<br/>Interface]
-        Phone[PhoneHandler<br/>Numéros de téléphone]
-        Text[TextCaseHandler<br/>Casse de texte]
-        Country[CountryHandler<br/>Codes pays]
-        Custom[CustomHandler<br/>Extension future...]
-    end
+Developed and tested against n8n 2.x.
 
-    subgraph "Système de Fichiers"
-        HandlerDir[handlers/<br/>Répertoire des handlers]
-    end
+## Quick start
 
-    subgraph "Flux de Données"
-        Input[Données d'entrée<br/>Items]
-        Output[Données de sortie<br/>Items formatés]
-    end
+Add **Format Template** after the node that produces your data, then add one row per field
+under **Fields to Format**: the **Field Path** (`customer.phone` — the *name* of the
+property, never its value) and the **Type**.
 
-    subgraph "APIs Externes"
-        RestAPI[REST Countries API<br/>Codes pays]
-    end
+With four rows — `customer.name` as title case, `customer.phone` as phone,
+`customer.country` as country, `customer.address` as postal address:
 
-    %% Relations de découverte et enregistrement
-    HandlerDir -->|Scan| AutoDisc
-    AutoDisc -->|Charge| Phone
-    AutoDisc -->|Charge| Text
-    AutoDisc -->|Charge| Country
-    AutoDisc -->|Charge| Custom
-    
-    %% Implémentation de l'interface
-    IHandler -.->|implémente| Phone
-    IHandler -.->|implémente| Text
-    IHandler -.->|implémente| Country
-    IHandler -.->|implémente| Custom
-    
-    %% Enregistrement dans le registre
-    Phone -->|register| Registry
-    Text -->|register| Registry
-    Country -->|register| Registry
-    Custom -->|register| Registry
-    
-    %% Génération de l'UI
-    Registry -->|génère options| UI
-    Phone -->|fournit propriétés| UI
-    Text -->|fournit propriétés| UI
-    Country -->|fournit propriétés| UI
-    
-    %% Coordination par le nœud
-    Node -->|utilise| Registry
-    Node -->|orchestre| AutoDisc
-    
-    %% Flux de transformation
-    Input -->|reçoit| Node
-    Node -->|sélectionne handler| Registry
-    Registry -->|retourne| Phone
-    Registry -->|retourne| Text
-    Registry -->|retourne| Country
-    Phone -->|transform| Output
-    Text -->|transform| Output
-    Country -->|transform| Output
-    
-    %% Appels API externes
-    Country -->|requête| RestAPI
-    RestAPI -->|code ISO2| Country
+```json
+// input
+{ "customer": { "name": "jean-pierre DUPONT", "phone": "+33 3 20 00 00 00",
+                "country": "Royaume-Uni", "address": "8 bd du port amiens" } }
 
-    %% Styles
-    classDef nodeClass fill:#e1f5ff,stroke:#01579b,stroke-width:2px
-    classDef handlerClass fill:#fff3e0,stroke:#e65100,stroke-width:2px
-    classDef interfaceClass fill:#f3e5f5,stroke:#4a148c,stroke-width:2px,stroke-dasharray: 5 5
-    classDef dataClass fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px
-    classDef systemClass fill:#fce4ec,stroke:#880e4f,stroke-width:2px
-    classDef apiClass fill:#fff9c4,stroke:#f57f17,stroke-width:2px
-    
-    class Node,Registry,AutoDisc nodeClass
-    class Phone,Text,Country,Custom handlerClass
-    class IHandler interfaceClass
-    class Input,Output dataClass
-    class UI,HandlerDir systemClass
-    class RestAPI apiClass
+// output
+{ "customer": { "name": "Jean-Pierre Dupont", "phone": "03 20 00 00 00",
+                "country": "GB", "address": ["8 BOULEVARD DU PORT", "80000 AMIENS"] },
+  "_format": { "status": "ok", "fields": [
+    { "path": "customer.name", "type": "textCase", "status": "ok" },
+    { "path": "customer.phone", "type": "phone", "status": "ok" },
+    { "path": "customer.country", "type": "country", "status": "ok" },
+    { "path": "customer.address", "type": "postalAddress", "status": "ok" } ] } }
 ```
 
-**Légende :**
-- 🔵 **Bleu** : Composants principaux du nœud
-- 🟠 **Orange** : Handlers de transformation
-- 🟣 **Violet** : Interface et contrats
-- 🟢 **Vert** : Flux de données
-- 🔴 **Rose** : Système et UI
-- 🟡 **Jaune** : APIs externes
+An address the base cannot confirm is left untouched and named in the trace:
 
-Le nœud utilise un système de handlers spécialisés qui peuvent être facilement étendus pour prendre en charge de nouveaux types de transformation, tout en maintenant une interface utilisateur cohérente et intuitive.
-
-## Statistiques du code
-
-| Métrique                      | Valeur                                    |
-| ----------------------------- | ----------------------------------------- |
-| Nombre total de fichiers      | 7 fichiers                                |
-| Lignes de code (TypeScript)   | ~500 lignes                               |
-| Nombre de classes principales | 5                                         |
-| Types de formatage intégrés   | 3 (téléphone, casse de texte, code pays)  |
-| Architecture                  | Modulaire avec handlers extensibles       |
-| Interface utilisateur         | Dynamiquement générée depuis les handlers |
-| Support multilingue           | Oui (fr-FR)                               |
-
-## Architecture générale
-
-### Structure des fichiers
-
-```
-FormatTemplate/
-├── FormatTemplate.node.ts       # Point d'entrée principal du nœud
-├── FormatTemplate.svg           # Icône du nœud
-├── TransformHandlerRegistry.ts  # Registre des handlers de transformation
-├── AutoDiscovery.ts             # Découverte automatique des handlers
-├── interfaces/
-│   └── TransformHandler.ts      # Interface pour les handlers de transformation
-├── handlers/
-│   ├── PhoneHandler.ts          # Handler pour les numéros de téléphone
-│   ├── TextCaseHandler.ts       # Handler pour la casse de texte
-│   └── CountryHandler.ts        # Handler pour les codes pays
-└── README.md                    # Documentation du nœud
+```json
+{ "customer": { "address": "1 rue de la Gare" },
+  "_format": { "status": "partial", "fields": [
+    { "path": "customer.address", "type": "postalAddress", "status": "failed",
+      "code": "FT_ADDRESS_AMBIGUOUS",
+      "message": "Several different addresses match the input within 0.05 of each other: add the postcode, the municipality or the house number." } ] } }
 ```
 
-### Flux de données
-
-1. **Entrée** : Le nœud reçoit des données à transformer (items)
-2. **Configuration** : L'utilisateur spécifie les champs à formater et le type de formatage
-3. **Traitement** : Pour chaque champ, le nœud:
-   - Récupère la valeur actuelle du champ
-   - Identifie le handler approprié pour le type de formatage
-   - Applique la transformation via le handler
-   - Met à jour la valeur dans l'objet de sortie
-4. **Sortie** : Le nœud renvoie les données avec les valeurs formatées
-
-### Hiérarchie des classes
-
-```
-FormatTemplate (INodeType)
-├── TransformHandlerRegistry
-│   └── Registre centralisé des handlers
-├── Handlers (implémentent ITransformHandler)
-│   ├── PhoneHandler
-│   ├── TextCaseHandler
-│   └── CountryHandler
-└── AutoDiscovery
-    └── Découverte dynamique des handlers
-```
-
-## Composants clés
-
-### FormatTemplate (Nœud principal)
-
-La classe principale qui implémente l'interface `INodeType` de n8n :
-
-- Définit l'interface utilisateur du nœud
-- Génère dynamiquement les propriétés d'UI en fonction des handlers disponibles
-- Gère le cycle de vie de l'exécution
-- Coordonne la validation et la transformation des données
-
-```typescript
-export class FormatTemplate implements INodeType {
-	// Définition de l'interface utilisateur
-	description: INodeTypeDescription = {
-		// Propriétés du nœud
-		// ...
-		properties: [
-			// Collection de champs à formater
-			// ...
-			// Propriétés dynamiques générées depuis les handlers
-			...this.generateDynamicProperties(),
-		],
-	};
-
-	// Exécution du nœud
-	async execute(this: IExecuteFunctions): Promise<INodeExecutionData[][]> {
-		// Pour chaque élément d'entrée
-		// Traiter chaque champ à formater
-		// Appliquer les transformations via les handlers appropriés
-		// Retourner les données transformées
-	}
-}
-```
-
-### TransformHandlerRegistry
-
-Registre central qui gère l'ensemble des handlers de transformation disponibles :
-
-- Maintient une collection de handlers indexés par type
-- Fournit des méthodes pour enregistrer et récupérer les handlers
-- Génère les options UI pour le sélecteur de type
-- Initialise les handlers au démarrage
-
-```typescript
-export class TransformHandlerRegistry {
-	private static handlers: Map<string, ITransformHandler> = new Map();
-
-	// Enregistrer un nouveau handler
-	static register(handler: ITransformHandler): void {
-		this.handlers.set(handler.type, handler);
-	}
-
-	// Récupérer un handler par type
-	static getHandler(type: string): ITransformHandler | undefined {
-		return this.handlers.get(type);
-	}
-
-	// Récupérer tous les handlers
-	static getAllHandlers(): ITransformHandler[] {
-		return Array.from(this.handlers.values());
-	}
-
-	// Générer les options pour l'UI
-	static getTypeOptions(): INodePropertyOptions[] {
-		return Array.from(this.handlers.values()).map((handler) => ({
-			name: handler.displayName,
-			value: handler.type,
-			description: handler.description,
-		}));
-	}
-}
-```
-
-### Interface ITransformHandler
-
-Interface commune implémentée par tous les handlers de transformation :
-
-- Définit la structure et le comportement des handlers
-- Garantit la cohérence entre les différents types de transformation
-- Facilite l'extension avec de nouveaux handlers
-
-```typescript
-export interface ITransformHandler {
-	// Identifiant unique du handler
-	type: string;
-
-	// Nom d'affichage dans l'UI
-	displayName: string;
-
-	// Description de la fonctionnalité
-	description: string;
-
-	// Propriétés spécifiques pour la configuration
-	properties: INodeProperties[];
-
-	// Méthode de transformation
-	transform(
-		executionContext: IExecuteFunctions,
-		value: string,
-		params: Record<string, any>,
-	): Promise<string>;
-}
-```
-
-### AutoDiscovery
-
-Composant pour la découverte automatique et le chargement des handlers :
-
-- Scanne le répertoire des handlers
-- Instancie et enregistre les handlers compatibles
-- Facilite l'extension sans modifier le code principal
-
-```typescript
-export class AutoDiscovery {
-	static loadHandlersFromDirectory(dirPath: string): void {
-		// Lire les fichiers du répertoire
-		// Charger les modules potentiels
-		// Vérifier si ce sont des handlers valides
-		// Enregistrer les handlers trouvés
-	}
-}
-```
-
-## Système de transformation modulaire
-
-Le nœud FormatTemplate utilise une architecture de plugins (handlers) pour la transformation des données. Chaque handler:
-
-1. **Spécialisation** : Se concentre sur un type spécifique de transformation
-2. **Auto-description** : Fournit ses métadonnées (nom, description, propriétés)
-3. **Auto-enregistrement** : Est automatiquement découvert et ajouté au registre
-4. **Isolation** : Contient sa propre logique sans affecter les autres handlers
-
-### Cycle de vie d'une transformation
-
-1. **Découverte** : Au démarrage, les handlers sont découverts et enregistrés
-2. **Configuration** : L'UI est générée dynamiquement en fonction des handlers disponibles
-3. **Exécution** : À l'exécution, le handler approprié est sélectionné selon le type
-4. **Transformation** : La méthode `transform()` du handler est appelée avec la valeur
-5. **Application** : Le résultat est inséré dans les données de sortie
-
-### Mécanisme d'extension UI dynamique
-
-Le nœud utilise un mécanisme intelligent pour montrer uniquement les propriétés pertinentes en fonction du type sélectionné :
-
-```typescript
-private generateDynamicProperties() {
-  const dynamicProperties: INodeProperties[] = [];
-
-  // Pour chaque handler enregistré
-  for (const handler of TransformHandlerRegistry.getAllHandlers()) {
-    // Pour chaque propriété du handler
-    for (const prop of handler.properties) {
-      // Copier la propriété et ajouter la condition d'affichage
-      const dynamicProp = { ...prop };
-
-      // Afficher seulement quand le type correspond
-      dynamicProp.displayOptions = {
-        show: {
-          type: [handler.type],
-        },
-      };
-
-      dynamicProperties.push(dynamicProp);
-    }
-  }
-
-  return dynamicProperties;
-}
-```
-
-## Types de formatage intégrés
-
-### PhoneHandler
-
-Formatage des numéros de téléphone selon différents modèles :
-
-- **Fonctionnalités** :
-  - Formats prédéfinis (international, national, US)
-  - Support des formats personnalisés
-  - Conversion automatique international → national
-  - Détection intelligente des préfixes (0033, 33)
-
-- **Exemple** :
-  - Entrée : `0033252200210`
-  - Format : `0# ## ## ## ##` (FR National)
-  - Sortie : `02 52 20 02 10`
-
-```typescript
-private applyPattern(raw: string, pattern: string): string {
-  // Nettoyage du modèle
-  const cleanPattern = pattern.replace(/^\{0:/, '').replace(/\}$/, '');
-  // Extraction des chiffres
-  let digits = raw.replace(/\D/g, '');
-  // Conversion international → national
-  if ((digits.startsWith('0033') || digits.startsWith('33'))) {
-    digits = digits.startsWith('0033') ? digits.substring(4) : digits.substring(2);
-  }
-  // Application du format
-  // ...
-}
-```
-
-### TextCaseHandler
-
-Transformation de la casse des textes :
-
-- **Fonctionnalités** :
-  - MAJUSCULES
-  - minuscules
-  - Première Lettre En Majuscule
-  - Support multilingue (accents français)
-
-- **Exemple** :
-  - Entrée : `deret`
-  - Format : `capitalize`
-  - Sortie : `Deret`
-
-```typescript
-switch (caseType.toLowerCase()) {
-	case 'uppercase':
-		return value.toLocaleUpperCase('fr-FR');
-	case 'lowercase':
-		return value.toLocaleLowerCase('fr-FR');
-	case 'capitalize':
-		return value.charAt(0).toLocaleUpperCase('fr-FR') + value.slice(1).toLocaleLowerCase('fr-FR');
-}
-```
-
-### CountryHandler
-
-Conversion et normalisation des codes pays :
-
-- **Fonctionnalités** :
-  - Validation des codes ISO2 existants
-  - Conversion des noms de pays en codes ISO2
-  - Recherche via l'API REST Countries
-  - Gestion des erreurs avec messages explicites
-
-- **Exemple** :
-  - Entrée : `france`
-  - Sortie : `FR`
-
-```typescript
-// Vérifier si c'est déjà un code ISO2 valide
-if (/^[A-Z]{2}$/i.test(value)) {
-	return value.toUpperCase();
-}
-
-// Sinon, appeler l'API REST Countries
-const response = await executionContext.helpers.request({
-	method: 'GET',
-	url: `https://restcountries.com/v3.1/name/${encodeURIComponent(value)}`,
-	qs: { fields: 'cca2' },
-	json: true,
-});
-
-// Récupérer et retourner le code pays
-if (Array.isArray(response) && response.length > 0 && response[0].cca2) {
-	return response[0].cca2;
-}
-```
-
-## Guide d'extension
-
-### Ajout d'un nouveau handler de transformation
-
-1. **Créer un nouveau fichier handler** dans le répertoire `handlers/` :
-
-```typescript
-// handlers/MonNouveauHandler.ts
-import { ITransformHandler } from '../interfaces/TransformHandler';
-import { INodeProperties, IExecuteFunctions } from 'n8n-workflow';
-
-export class MonNouveauHandler implements ITransformHandler {
-	type = 'monType'; // Identifiant unique
-	displayName = 'Mon Type'; // Nom affiché dans l'UI
-	description = 'Description de mon handler'; // Description
-
-	// Propriétés spécifiques à ce handler
-	properties: INodeProperties[] = [
-		{
-			displayName: 'Ma Propriété',
-			name: 'maPropriete',
-			type: 'string', // ou un autre type (number, boolean, options...)
-			default: '',
-			// ...autres options
-		},
-		// Autres propriétés si nécessaire
-	];
-
-	// Méthode de transformation
-	async transform(
-		executionContext: IExecuteFunctions,
-		value: string,
-		params: Record<string, any>,
-	): Promise<string> {
-		// Récupérer les paramètres
-		const monParam = params.maPropriete;
-
-		// Logique de transformation
-		// ...
-
-		// Retourner la valeur transformée
-		return valeurTransformee;
-	}
-}
-```
-
-2. **Le handler sera automatiquement découvert** et ajouté aux options du nœud sans autre modification requise.
-
-### Personnalisation avancée de l'UI
-
-Pour des propriétés plus complexes ou des comportements spécifiques :
-
-```typescript
-properties: INodeProperties[] = [
-  {
-    displayName: 'Mode',
-    name: 'mode',
-    type: 'options',
-    options: [
-      { name: 'Simple', value: 'simple' },
-      { name: 'Avancé', value: 'advanced' },
-    ],
-    default: 'simple',
-  },
-  {
-    displayName: 'Options avancées',
-    name: 'advancedOptions',
-    type: 'fixedCollection',
-    displayOptions: {
-      show: {
-        mode: ['advanced'],
-      },
-    },
-    default: {},
-    options: [
-      {
-        name: 'options',
-        displayName: 'Options',
-        values: [
-          // Propriétés imbriquées
-        ],
-      },
-    ],
-  },
-];
-```
-
-## Guide d'installation et déploiement
-
-### Installation locale (développement)
-
-1. **Préparer l'environnement** :
-
-   ```bash
-   # Créer un répertoire pour les nœuds personnalisés
-   mkdir -p ~/.n8n/custom
-   cd ~/.n8n/custom
-
-   # Cloner le dépôt
-   git clone https://github.com/votre-utilisateur/n8n_nodes_FormatTemplate.git
-   cd n8n_nodes_FormatTemplate
-
-   # Installer les dépendances
-   npm install
-
-   # Compiler le code
-   npm run build
-   ```
-
-2. **Démarrer n8n avec les nœuds personnalisés** :
-   ```bash
-   n8n start
-   ```
-
-### Installation en production
-
-1. **Sur un serveur n8n existant** :
-
-   ```bash
-   # Accéder au répertoire des nœuds personnalisés
-   cd /root/.n8n/custom
-
-   # Cloner et installer
-   git clone https://github.com/votre-utilisateur/n8n_nodes_FormatTemplate.git
-   cd n8n_nodes_FormatTemplate
-   npm install
-   npm run build
-
-   # Redémarrer n8n
-   systemctl restart n8n
-   ```
-
-2. **Dans un conteneur Docker** :
-
-   Créer un Dockerfile personnalisé :
-
-   ```dockerfile
-   FROM n8nio/n8n:latest
-
-   # Installer git et outils de compilation
-   USER root
-   RUN apk add --update git
-
-   # Cloner et installer le nœud personnalisé
-   RUN mkdir -p /root/.n8n/custom
-   WORKDIR /root/.n8n/custom
-   RUN git clone https://github.com/votre-utilisateur/n8n_nodes_FormatTemplate.git
-   WORKDIR /root/.n8n/custom/n8n_nodes_FormatTemplate
-   RUN npm install
-   RUN npm run build
-
-   # Revenir à l'utilisateur node
-   USER node
-   WORKDIR /data
-   ```
-
-## Guide de débogage
-
-### Comprendre les logs
-
-Le nœud FormatTemplate inclut un système de logging détaillé :
-
-```
-[FormatTemplate] Processing item 0, fields to format: 1
-[FormatTemplate] Current value for phone: 0033252200210
-[PhoneHandler] Digits: 252200210, Pattern: 0# ## ## ## ##, Format length: 10
-[PhoneHandler] Formatted result: 0033252200210 -> 02 52 20 02 10
-[FormatTemplate] Setting phone to: 02 52 20 02 10
-[FormatTemplate] Value after update: 02 52 20 02 10
-```
-
-Pour activer le débogage avancé, vous pouvez:
-
-1. **Ajouter des logs supplémentaires** :
-
-   ```typescript
-   console.log(`[CustomDebug] Valeur: ${maValeur}, Paramètres:`, JSON.stringify(mesParams));
-   ```
-
-2. **Utiliser les outils de débogage de n8n** :
-   ```bash
-   # Démarrer n8n avec débogage
-   n8n start --inspect
-   ```
-
-### Erreurs courantes et solutions
-
-| Erreur                                | Cause                                            | Solution                                                       |
-| ------------------------------------- | ------------------------------------------------ | -------------------------------------------------------------- |
-| `Format de chemin invalide`           | Le chemin du champ ne suit pas le format attendu | Utiliser des chemins de propriété valides (ex: `client.phone`) |
-| `Cannot read properties of undefined` | Propriété manquante dans la configuration        | Vérifier les noms de paramètres dans les handlers              |
-| `Handler non trouvé pour le type`     | Type de handler inexistant                       | Vérifier l'orthographe du type ou créer le handler manquant    |
-| `Impossible de trouver le code pays`  | Le pays ne peut pas être résolu via l'API        | Vérifier le nom du pays ou utiliser directement le code ISO2   |
-
-## Bonnes pratiques
-
-### Conception des handlers
-
-1. **Spécialisation** : Un handler doit avoir une responsabilité unique et clairement définie
-2. **Robustesse** : Gérer les cas d'erreur et les valeurs nulles ou invalides
-3. **Journalisation** : Fournir des logs utiles pour le débogage
-4. **Paramétrage** : Offrir des options de configuration pertinentes et utiles
-5. **Internationalisation** : Utiliser les méthodes localisées pour le formatage de texte
-
-### Performance
-
-1. **Traitement léger** : Éviter les opérations lourdes pendant la transformation
-2. **Mise en cache** : Pour les handlers utilisant des API externes, considérer la mise en cache des résultats
-3. **Validation précoce** : Valider les entrées au plus tôt pour éviter les traitements inutiles
-
-### Extensibilité
-
-Le nœud est conçu pour être facilement étendu :
-
-- L'auto-découverte permet d'ajouter de nouveaux handlers sans modifier le code principal
-- L'interface `ITransformHandler` assure la compatibilité des nouveaux handlers
-- Le registre centralise la gestion des handlers et leur utilisation
-
-### Suggestions de nouveaux handlers
-
-- **DateFormatHandler** : Formatage de dates selon différents standards
-- **NumberFormatHandler** : Formatage de nombres (arrondi, séparateurs, devises)
-- **AddressFormatHandler** : Normalisation des adresses postales
-- **EmailFormatHandler** : Normalisation et validation des adresses email
-- **ColorFormatHandler** : Conversion entre formats de couleur (HEX, RGB, HSL)
-
-## Conclusion
-
-Le nœud FormatTemplate offre une solution modulaire et extensible pour le formatage et la transformation des données dans n8n. Sa conception orientée plugin permet une grande flexibilité tout en maintenant une interface utilisateur cohérente et intuitive.
-
-Que vous souhaitiez standardiser des numéros de téléphone, normaliser la casse de texte ou convertir des noms de pays en codes ISO, FormatTemplate simplifie ces tâches sans nécessiter de code JavaScript complexe.
-
-Sa capacité d'extension en fait un outil évolutif qui peut s'adapter à vos besoins spécifiques en matière de transformation de données.
-
-## Scripts de compilation et déploiement
-
-Le nœud FormatTemplate dispose de scripts npm pour faciliter le développement et le déploiement :
-
-### Commandes disponibles
+Ready-to-import workflows are in [examples/](examples/).
+
+## What happens on failure
+
+| Policy | Applies to | Choices |
+|---|---|---|
+| **On Field Error** | a value the transformation refuses | tag the item (default), fail the item, keep silently |
+| **On Missing Field** | a path absent from the item | tag (default), skip, fail the item |
+| **On Service Error** | the address service did not answer, after its retries | fail the item (default — the node stops, or the item goes to the error output when n8n is set to continue), tag the item |
+
+A configuration mistake — an invalid path, a broken mask — fails the node, before the first
+item when the setting is written literally. With n8n's *Continue On Fail* / error output, a failed item goes out as
+`{ error, details: { code, _format } }` — an address the service could not check never leaves
+on the success output. Every code is listed in the
+[diagnostics catalogue](nodes/FormatTemplate/docs/DIAGNOSTICS.md).
+
+## Postal addresses: what leaves your instance
+
+Only the geographical part of the address — number, street, postcode, municipality — is
+sent to the geocoding service of the Géoplateforme (IGN, `data.geopf.fr`), which answers
+from the *Base Adresse Nationale* (Licence Ouverte 2.0). The recipient, the complements and
+the other fields of the item are never sent. The node keeps nothing between executions.
+An address tied to a person is personal data: the call belongs in your record of processing
+activities. Details: [postal-address guide](nodes/FormatTemplate/docs/transforms/postal-address.md)
+([en français](nodes/FormatTemplate/docs/fr/postal-address.md)).
+
+## Documentation
+
+| Document | What it holds |
+|---|---|
+| [Phone](nodes/FormatTemplate/docs/transforms/phone.md) · [Text case](nodes/FormatTemplate/docs/transforms/text-case.md) · [Country](nodes/FormatTemplate/docs/transforms/country.md) · [Postal address](nodes/FormatTemplate/docs/transforms/postal-address.md) | one guide per transformation |
+| [Parameters](nodes/FormatTemplate/docs/PARAMETERS.md) | every parameter, its default, and the test that proves its effect |
+| [Diagnostics](nodes/FormatTemplate/docs/DIAGNOSTICS.md) | every `FT_*` code: class, severity, meaning, what to do |
+| [Migrating from typeVersion 5](nodes/FormatTemplate/docs/MIGRATION-V5-V6.md) | what changes for existing workflows |
+| [Architecture](nodes/FormatTemplate/docs/ARCHITECTURE.md) · [Decision records](nodes/FormatTemplate/docs/adr/README.md) | how the node is built, and why |
+
+## Upgrading from 0.1.x
+
+Saved workflows keep **typeVersion 5** and its historical behaviour, frozen by
+characterization tests: n8n never migrates a node on load. One change reaches them: country names resolve again. Version 0.1.x looked them up on an
+external API that stopped answering for full names; 1.0.0 uses an embedded ISO 3166-1
+table, offline. New nodes use **typeVersion 6** — per-item decisions, the `_format` trace,
+the postal address. See the [migration guide](nodes/FormatTemplate/docs/MIGRATION-V5-V6.md).
+
+## Development
 
 ```bash
-# Compiler le TypeScript en JavaScript
+npm ci
+npm test        # unit, engine, architecture and documentation tests
+npm run lint    # n8n-node lint, strict mode
 npm run build
-
-# Créer un bundle webpack autonome
-npm run bundle:formattemplate
-
-# Build + Bundle + Déploiement vers ~/.n8n/custom/
-npm run deploy:formattemplate
 ```
 
-### Architecture de déploiement
+Contributions are welcome — see [CONTRIBUTING.md](CONTRIBUTING.md). The architecture,
+and how to add a transformation, are described in
+[ARCHITECTURE.md](nodes/FormatTemplate/docs/ARCHITECTURE.md).
 
-Le script de déploiement effectue les opérations suivantes :
+## License and credits
 
-1. **Build** : Compilation TypeScript → JavaScript (dossier `dist/`)
-2. **Bundle** : Création d'un bundle webpack avec tous les handlers intégrés
-3. **Déploiement** : Copie vers `C:\Users\[USER]\.n8n\custom\FormatTemplate\`
+[MIT](LICENSE.md) © Mixtrio. Maintained by Raphael Deret.
 
-**Fichiers déployés :**
-
-- `FormatTemplate.node.js` - Bundle webpack complet (~20 KB)
-- `FormatTemplate.node.json` - Configuration du nœud
-- `FormatTemplate.node.d.ts` - Déclarations TypeScript
-- `FormatTemplate.node.js.map` - Source map pour débogage
-- `FormatTemplate.svg` - Icône du nœud
-
-### Particularités du bundle
-
-Le bundle webpack inclut automatiquement tous les handlers :
-
-- `PhoneHandler` : Formatage de numéros de téléphone
-- `TextCaseHandler` : Conversion de casse
-- `CountryHandler` : Conversion de codes pays
-
-Les handlers sont chargés via deux mécanismes :
-
-1. **Découverte automatique** : Charge depuis le système de fichiers (mode développement)
-2. **Import explicite** : Fallback intégré dans le bundle (mode production)
-
-### Développement et test
-
-Après modification du code :
-
-```bash
-# Redéployer rapidement
-npm run deploy:formattemplate
-
-# Redémarrer n8n pour voir les changements
-```
-
-**Note :** n8n doit être redémarré complètement (pas seulement reload) pour charger les modifications.
-
-### Ajouter un nouveau handler
-
-1. Créer le fichier dans `handlers/` (ex: `MyHandler.ts`)
-2. Implémenter l'interface `ITransformHandler`
-3. Ajouter l'import dans `TransformHandlerRegistry.ts` :
-   ```typescript
-   import { MyHandler } from './handlers/MyHandler';
-   // ...
-   this.register(new MyHandler());
-   ```
-4. Redéployer avec `npm run deploy:formattemplate`
-
-Pour plus de détails, consultez [README-DEPLOYMENT.md](../../README-DEPLOYMENT.md) à la racine du projet.
----
-
-## À propos
-
-### Développé par Pure Mans Web
-
-Ce nœud n8n **FormatTemplate** a été développé par **Pure Mans Web**, filiale développement web et applications métiers du Groupe Mixtrio.
-
-**Pure Mans Web** est spécialisée dans :
-- La conception et réalisation de solutions digitales sur-mesure
-- Le développement d'applications métiers connectées pour l'automatisation des processus
-- La Tierce Maintenance Applicative (TMA) pour la pérennité des solutions
-- L'intégration d'écosystèmes technologiques complets
-
-### Groupe Mixtrio
-
-**Mixtrio** est un groupe français spécialisé dans les solutions IT et services numériques, structuré autour de filiales complémentaires :
-
-- **XITHI** : Infrastructure, cloud, infogérance et services managés
-- **Pure Mans Web** : Développement web, applications métiers, TMA et e-commerce
-- **Senetel** : Téléphonie IP, connectivité et solutions de communication
-
-Le groupe incarne des valeurs fortes :
-- **Proximité & Conseil** : Accompagnement personnalisé et sur-mesure
-- **Fiabilité des Services** : Infrastructure robuste et support réactif
-- **Innovation & Évolutivité** : Solutions scalables et technologies de pointe
-- **Maîtrise des Coûts** : Tarification transparente et prévisible
-
-### Contact & Support
-
-Pour toute question, suggestion d'amélioration ou demande de support concernant ce nœud :
-
-**Pure Mans Web**  
-Filiale du Groupe Mixtrio  
-Web : [www.puremans-web.fr](https://www.puremans-web.fr)  
-Email : contact@mixtrio.net
-
----
-
-## Licence & Copyright
-
-### Licence MIT
-
-Copyright (c) 2025 Pure Mans Web - Groupe Mixtrio
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-### Contribution
-
-Les contributions à ce projet sont les bienvenues ! Si vous souhaitez proposer des améliorations, de nouveaux handlers ou corriger des bugs :
-
-1. Fork le projet
-2. Créez une branche pour votre fonctionnalité (`git checkout -b feature/AmazingFeature`)
-3. Committez vos changements (`git commit -m 'Add some AmazingFeature'`)
-4. Poussez vers la branche (`git push origin feature/AmazingFeature`)
-5. Ouvrez une Pull Request
-
----
-
-## Remerciements
-
-Ce projet a été rendu possible grâce à :
-- L'équipe de développement **Pure Mans Web**
-- La communauté **n8n** pour leur plateforme d'automatisation exceptionnelle
-- Tous les contributeurs et utilisateurs qui participent à l'amélioration continue de ce nœud
-
----
-
-**Version de la documentation :** 1.0.0  
-**Dernière mise à jour :** Novembre 2025  
-**Développé avec ❤️ par Pure Mans Web - Groupe Mixtrio**
+- Node icon: `wand-sparkles` from [Lucide](https://lucide.dev) (ISC License).
+- Phone numbering plans: derived from the metadata of
+  [libphonenumber](https://github.com/google/libphonenumber), Copyright (C) 2009 The
+  Libphonenumber Authors, [Apache License 2.0](LICENSES/Apache-2.0.txt) — see [NOTICE](NOTICE).
+- Address data: *Base Adresse Nationale*, through the Géoplateforme geocoding service
+  (Licence Ouverte 2.0).
+- Postal standard: NF Z10-011, as published by La Poste.

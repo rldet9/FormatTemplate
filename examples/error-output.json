@@ -1,0 +1,120 @@
+{
+  "name": "Format Template — route refused addresses to the error output",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "e662b6e7-dfe5-5efd-b9b2-fb20fbeea78a",
+      "name": "When clicking 'Execute workflow'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return [\n  { json: {\"address\": \"8 bd du port amiens\"} },\n  { json: {\"address\": \"1 rue de la Gare\"} },\n];\n"
+      },
+      "id": "c43f226f-cab9-5c3d-b0b1-1f4fffcfb791",
+      "name": "Sample addresses",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        220,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "fieldsToFormat": {
+          "field": [
+            {
+              "fieldPath": "address",
+              "type": "postalAddress"
+            }
+          ]
+        },
+        "options": {},
+        "onFieldError": "throw"
+      },
+      "id": "db9e9c76-4d14-50c9-bbac-55cf647751cd",
+      "name": "Format Template",
+      "type": "@rderet/n8n-nodes-format-template.formatTemplate",
+      "typeVersion": 6,
+      "position": [
+        440,
+        0
+      ],
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {},
+      "id": "d19218e3-ed07-5f3a-bf93-4d82bd2b43d4",
+      "name": "Checked addresses",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        680,
+        -100
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "13e72220-96b0-5f58-ac24-4f72bf809f08",
+      "name": "Refused addresses",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        680,
+        100
+      ]
+    }
+  ],
+  "connections": {
+    "When clicking 'Execute workflow'": {
+      "main": [
+        [
+          {
+            "node": "Sample addresses",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sample addresses": {
+      "main": [
+        [
+          {
+            "node": "Format Template",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Template": {
+      "main": [
+        [
+          {
+            "node": "Checked addresses",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Refused addresses",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {}
+}

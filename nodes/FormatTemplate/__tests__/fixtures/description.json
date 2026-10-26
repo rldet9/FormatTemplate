@@ -1,0 +1,1642 @@
+{
+	"displayName": "Format Template",
+	"name": "formatTemplate",
+	"icon": {
+		"light": "file:FormatTemplate.svg",
+		"dark": "file:FormatTemplate.dark.svg"
+	},
+	"group": [
+		"transform"
+	],
+	"version": [
+		5,
+		6
+	],
+	"defaultVersion": 6,
+	"description": "Overwrite properties with formatted values",
+	"usableAsTool": true,
+	"defaults": {
+		"name": "Format Template"
+	},
+	"inputs": [
+		"main"
+	],
+	"outputs": [
+		"main"
+	],
+	"properties": [
+		{
+			"displayName": "Fields to Format",
+			"name": "fieldsToFormat",
+			"placeholder": "Add Field",
+			"type": "fixedCollection",
+			"typeOptions": {
+				"multipleValues": true
+			},
+			"default": {},
+			"options": [
+				{
+					"name": "field",
+					"displayName": "Field",
+					"values": [
+						{
+							"displayName": "Field Path",
+							"name": "fieldPath",
+							"type": "string",
+							"default": "",
+							"description": "Name of the property to format, in dot notation (e.g. \"phone\", \"client.phone\") — never its value",
+							"placeholder": "e.g. phone",
+							"requiresDataPath": "single",
+							"typeOptions": {
+								"expressionResultMemoize": true,
+								"listPropertyValues": "keys",
+								"multipleValues": false
+							}
+						},
+						{
+							"displayName": "Type",
+							"name": "type",
+							"type": "options",
+							"default": "",
+							"options": [
+								{
+									"name": "Phone",
+									"value": "phone",
+									"description": "Normalize phone numbers: national, international, E.164 or custom mask"
+								},
+								{
+									"name": "Text Case",
+									"value": "textCase",
+									"description": "Change the case of a text: uppercase, lowercase, first letter or title case"
+								},
+								{
+									"name": "Country Code",
+									"value": "country",
+									"description": "Convert country names to ISO 3166-1 alpha-2 codes (offline table)"
+								},
+								{
+									"name": "Postal Address (France)",
+									"value": "postalAddress",
+									"description": "Verify a French address against the national address base and write it to the postal standard (NF Z10-011)"
+								}
+							]
+						},
+						{
+							"displayName": "Pattern",
+							"name": "pattern",
+							"type": "options",
+							"default": "{0:+33 (0) # ## ## ## ##}",
+							"displayOptions": {
+								"show": {
+									"type": [
+										"phone"
+									],
+									"@version": [
+										5
+									]
+								}
+							},
+							"description": "Mask of typeVersion 5. Caution: in this version \"0\" consumes a digit, and the number of digits is not checked — see the node documentation.",
+							"typeOptions": {
+								"allowCustomValues": true
+							},
+							"options": [
+								{
+									"name": "+33 (0) # ## ## ## ## (FR International, National Input Only)",
+									"value": "{0:+33 (0) # ## ## ## ##}"
+								},
+								{
+									"name": "0# ## ## ## ## (FR National)",
+									"value": "{0:0# ## ## ## ##}"
+								},
+								{
+									"name": "(###) ###-#### (US)",
+									"value": "{0:(###) ###-####}"
+								}
+							]
+						},
+						{
+							"displayName": "Output Format",
+							"name": "phoneOutput",
+							"type": "options",
+							"default": "national",
+							"displayOptions": {
+								"show": {
+									"type": [
+										"phone"
+									],
+									"@version": [
+										6
+									]
+								}
+							},
+							"description": "Shape of the written value. Reading the input does not depend on it: \"+33 3 20 00 00 00\", \"0320000000\" and \"0033 3 20 00 00 00\" give the same result.",
+							"options": [
+								{
+									"name": "National (03 20 00 00 00)",
+									"value": "national"
+								},
+								{
+									"name": "International (+33 3 20 00 00 00)",
+									"value": "international"
+								},
+								{
+									"name": "E.164 (+33320000000)",
+									"value": "e164"
+								},
+								{
+									"name": "Custom Mask",
+									"value": "mask"
+								}
+							]
+						},
+						{
+							"displayName": "Default Country",
+							"name": "defaultCountry",
+							"type": "options",
+							"default": "FR",
+							"displayOptions": {
+								"show": {
+									"type": [
+										"phone"
+									],
+									"@version": [
+										6
+									]
+								}
+							},
+							"description": "Country used to read a number written in national format. An input starting with \"+\" or \"00\" is read as international and ignores this setting. Every country of the embedded numbering plans is listed (generated from the libphonenumber metadata, no runtime dependency); a number of a non-geographic service such as +800 is left untouched, with code FT_PHONE_PLAN_UNSUPPORTED.",
+							"options": [
+								{
+									"name": "Afghanistan (+93)",
+									"value": "AF"
+								},
+								{
+									"name": "Åland Islands (+358)",
+									"value": "AX"
+								},
+								{
+									"name": "Albania (+355)",
+									"value": "AL"
+								},
+								{
+									"name": "Algeria (+213)",
+									"value": "DZ"
+								},
+								{
+									"name": "American Samoa (+1)",
+									"value": "AS"
+								},
+								{
+									"name": "Andorra (+376)",
+									"value": "AD"
+								},
+								{
+									"name": "Angola (+244)",
+									"value": "AO"
+								},
+								{
+									"name": "Anguilla (+1)",
+									"value": "AI"
+								},
+								{
+									"name": "Antigua & Barbuda (+1)",
+									"value": "AG"
+								},
+								{
+									"name": "Argentina (+54)",
+									"value": "AR"
+								},
+								{
+									"name": "Armenia (+374)",
+									"value": "AM"
+								},
+								{
+									"name": "Aruba (+297)",
+									"value": "AW"
+								},
+								{
+									"name": "Ascension Island (+247)",
+									"value": "AC"
+								},
+								{
+									"name": "Australia (+61)",
+									"value": "AU"
+								},
+								{
+									"name": "Austria (+43)",
+									"value": "AT"
+								},
+								{
+									"name": "Azerbaijan (+994)",
+									"value": "AZ"
+								},
+								{
+									"name": "Bahamas (+1)",
+									"value": "BS"
+								},
+								{
+									"name": "Bahrain (+973)",
+									"value": "BH"
+								},
+								{
+									"name": "Bangladesh (+880)",
+									"value": "BD"
+								},
+								{
+									"name": "Barbados (+1)",
+									"value": "BB"
+								},
+								{
+									"name": "Belarus (+375)",
+									"value": "BY"
+								},
+								{
+									"name": "Belgium (+32)",
+									"value": "BE"
+								},
+								{
+									"name": "Belize (+501)",
+									"value": "BZ"
+								},
+								{
+									"name": "Benin (+229)",
+									"value": "BJ"
+								},
+								{
+									"name": "Bermuda (+1)",
+									"value": "BM"
+								},
+								{
+									"name": "Bhutan (+975)",
+									"value": "BT"
+								},
+								{
+									"name": "Bolivia (+591)",
+									"value": "BO"
+								},
+								{
+									"name": "Bosnia & Herzegovina (+387)",
+									"value": "BA"
+								},
+								{
+									"name": "Botswana (+267)",
+									"value": "BW"
+								},
+								{
+									"name": "Brazil (+55)",
+									"value": "BR"
+								},
+								{
+									"name": "British Indian Ocean Territory (+246)",
+									"value": "IO"
+								},
+								{
+									"name": "British Virgin Islands (+1)",
+									"value": "VG"
+								},
+								{
+									"name": "Brunei (+673)",
+									"value": "BN"
+								},
+								{
+									"name": "Bulgaria (+359)",
+									"value": "BG"
+								},
+								{
+									"name": "Burkina Faso (+226)",
+									"value": "BF"
+								},
+								{
+									"name": "Burundi (+257)",
+									"value": "BI"
+								},
+								{
+									"name": "Cambodia (+855)",
+									"value": "KH"
+								},
+								{
+									"name": "Cameroon (+237)",
+									"value": "CM"
+								},
+								{
+									"name": "Canada (+1)",
+									"value": "CA"
+								},
+								{
+									"name": "Cape Verde (+238)",
+									"value": "CV"
+								},
+								{
+									"name": "Caribbean Netherlands (+599)",
+									"value": "BQ"
+								},
+								{
+									"name": "Cayman Islands (+1)",
+									"value": "KY"
+								},
+								{
+									"name": "Central African Republic (+236)",
+									"value": "CF"
+								},
+								{
+									"name": "Chad (+235)",
+									"value": "TD"
+								},
+								{
+									"name": "Chile (+56)",
+									"value": "CL"
+								},
+								{
+									"name": "China (+86)",
+									"value": "CN"
+								},
+								{
+									"name": "Christmas Island (+61)",
+									"value": "CX"
+								},
+								{
+									"name": "Cocos (Keeling) Islands (+61)",
+									"value": "CC"
+								},
+								{
+									"name": "Colombia (+57)",
+									"value": "CO"
+								},
+								{
+									"name": "Comoros (+269)",
+									"value": "KM"
+								},
+								{
+									"name": "Congo - Brazzaville (+242)",
+									"value": "CG"
+								},
+								{
+									"name": "Congo - Kinshasa (+243)",
+									"value": "CD"
+								},
+								{
+									"name": "Cook Islands (+682)",
+									"value": "CK"
+								},
+								{
+									"name": "Costa Rica (+506)",
+									"value": "CR"
+								},
+								{
+									"name": "Côte d’Ivoire (+225)",
+									"value": "CI"
+								},
+								{
+									"name": "Croatia (+385)",
+									"value": "HR"
+								},
+								{
+									"name": "Cuba (+53)",
+									"value": "CU"
+								},
+								{
+									"name": "Curaçao (+599)",
+									"value": "CW"
+								},
+								{
+									"name": "Cyprus (+357)",
+									"value": "CY"
+								},
+								{
+									"name": "Czechia (+420)",
+									"value": "CZ"
+								},
+								{
+									"name": "Denmark (+45)",
+									"value": "DK"
+								},
+								{
+									"name": "Djibouti (+253)",
+									"value": "DJ"
+								},
+								{
+									"name": "Dominica (+1)",
+									"value": "DM"
+								},
+								{
+									"name": "Dominican Republic (+1)",
+									"value": "DO"
+								},
+								{
+									"name": "Ecuador (+593)",
+									"value": "EC"
+								},
+								{
+									"name": "Egypt (+20)",
+									"value": "EG"
+								},
+								{
+									"name": "El Salvador (+503)",
+									"value": "SV"
+								},
+								{
+									"name": "Equatorial Guinea (+240)",
+									"value": "GQ"
+								},
+								{
+									"name": "Eritrea (+291)",
+									"value": "ER"
+								},
+								{
+									"name": "Estonia (+372)",
+									"value": "EE"
+								},
+								{
+									"name": "Eswatini (+268)",
+									"value": "SZ"
+								},
+								{
+									"name": "Ethiopia (+251)",
+									"value": "ET"
+								},
+								{
+									"name": "Falkland Islands (+500)",
+									"value": "FK"
+								},
+								{
+									"name": "Faroe Islands (+298)",
+									"value": "FO"
+								},
+								{
+									"name": "Fiji (+679)",
+									"value": "FJ"
+								},
+								{
+									"name": "Finland (+358)",
+									"value": "FI"
+								},
+								{
+									"name": "France (+33)",
+									"value": "FR"
+								},
+								{
+									"name": "French Guiana (+594)",
+									"value": "GF"
+								},
+								{
+									"name": "French Polynesia (+689)",
+									"value": "PF"
+								},
+								{
+									"name": "Gabon (+241)",
+									"value": "GA"
+								},
+								{
+									"name": "Gambia (+220)",
+									"value": "GM"
+								},
+								{
+									"name": "Georgia (+995)",
+									"value": "GE"
+								},
+								{
+									"name": "Germany (+49)",
+									"value": "DE"
+								},
+								{
+									"name": "Ghana (+233)",
+									"value": "GH"
+								},
+								{
+									"name": "Gibraltar (+350)",
+									"value": "GI"
+								},
+								{
+									"name": "Greece (+30)",
+									"value": "GR"
+								},
+								{
+									"name": "Greenland (+299)",
+									"value": "GL"
+								},
+								{
+									"name": "Grenada (+1)",
+									"value": "GD"
+								},
+								{
+									"name": "Guadeloupe (+590)",
+									"value": "GP"
+								},
+								{
+									"name": "Guam (+1)",
+									"value": "GU"
+								},
+								{
+									"name": "Guatemala (+502)",
+									"value": "GT"
+								},
+								{
+									"name": "Guernsey (+44)",
+									"value": "GG"
+								},
+								{
+									"name": "Guinea (+224)",
+									"value": "GN"
+								},
+								{
+									"name": "Guinea-Bissau (+245)",
+									"value": "GW"
+								},
+								{
+									"name": "Guyana (+592)",
+									"value": "GY"
+								},
+								{
+									"name": "Haiti (+509)",
+									"value": "HT"
+								},
+								{
+									"name": "Honduras (+504)",
+									"value": "HN"
+								},
+								{
+									"name": "Hong Kong SAR China (+852)",
+									"value": "HK"
+								},
+								{
+									"name": "Hungary (+36)",
+									"value": "HU"
+								},
+								{
+									"name": "Iceland (+354)",
+									"value": "IS"
+								},
+								{
+									"name": "India (+91)",
+									"value": "IN"
+								},
+								{
+									"name": "Indonesia (+62)",
+									"value": "ID"
+								},
+								{
+									"name": "Iran (+98)",
+									"value": "IR"
+								},
+								{
+									"name": "Iraq (+964)",
+									"value": "IQ"
+								},
+								{
+									"name": "Ireland (+353)",
+									"value": "IE"
+								},
+								{
+									"name": "Isle of Man (+44)",
+									"value": "IM"
+								},
+								{
+									"name": "Israel (+972)",
+									"value": "IL"
+								},
+								{
+									"name": "Italy (+39)",
+									"value": "IT"
+								},
+								{
+									"name": "Jamaica (+1)",
+									"value": "JM"
+								},
+								{
+									"name": "Japan (+81)",
+									"value": "JP"
+								},
+								{
+									"name": "Jersey (+44)",
+									"value": "JE"
+								},
+								{
+									"name": "Jordan (+962)",
+									"value": "JO"
+								},
+								{
+									"name": "Kazakhstan (+7)",
+									"value": "KZ"
+								},
+								{
+									"name": "Kenya (+254)",
+									"value": "KE"
+								},
+								{
+									"name": "Kiribati (+686)",
+									"value": "KI"
+								},
+								{
+									"name": "Kosovo (+383)",
+									"value": "XK"
+								},
+								{
+									"name": "Kuwait (+965)",
+									"value": "KW"
+								},
+								{
+									"name": "Kyrgyzstan (+996)",
+									"value": "KG"
+								},
+								{
+									"name": "Laos (+856)",
+									"value": "LA"
+								},
+								{
+									"name": "Latvia (+371)",
+									"value": "LV"
+								},
+								{
+									"name": "Lebanon (+961)",
+									"value": "LB"
+								},
+								{
+									"name": "Lesotho (+266)",
+									"value": "LS"
+								},
+								{
+									"name": "Liberia (+231)",
+									"value": "LR"
+								},
+								{
+									"name": "Libya (+218)",
+									"value": "LY"
+								},
+								{
+									"name": "Liechtenstein (+423)",
+									"value": "LI"
+								},
+								{
+									"name": "Lithuania (+370)",
+									"value": "LT"
+								},
+								{
+									"name": "Luxembourg (+352)",
+									"value": "LU"
+								},
+								{
+									"name": "Macao SAR China (+853)",
+									"value": "MO"
+								},
+								{
+									"name": "Madagascar (+261)",
+									"value": "MG"
+								},
+								{
+									"name": "Malawi (+265)",
+									"value": "MW"
+								},
+								{
+									"name": "Malaysia (+60)",
+									"value": "MY"
+								},
+								{
+									"name": "Maldives (+960)",
+									"value": "MV"
+								},
+								{
+									"name": "Mali (+223)",
+									"value": "ML"
+								},
+								{
+									"name": "Malta (+356)",
+									"value": "MT"
+								},
+								{
+									"name": "Marshall Islands (+692)",
+									"value": "MH"
+								},
+								{
+									"name": "Martinique (+596)",
+									"value": "MQ"
+								},
+								{
+									"name": "Mauritania (+222)",
+									"value": "MR"
+								},
+								{
+									"name": "Mauritius (+230)",
+									"value": "MU"
+								},
+								{
+									"name": "Mayotte (+262)",
+									"value": "YT"
+								},
+								{
+									"name": "Mexico (+52)",
+									"value": "MX"
+								},
+								{
+									"name": "Micronesia (+691)",
+									"value": "FM"
+								},
+								{
+									"name": "Moldova (+373)",
+									"value": "MD"
+								},
+								{
+									"name": "Monaco (+377)",
+									"value": "MC"
+								},
+								{
+									"name": "Mongolia (+976)",
+									"value": "MN"
+								},
+								{
+									"name": "Montenegro (+382)",
+									"value": "ME"
+								},
+								{
+									"name": "Montserrat (+1)",
+									"value": "MS"
+								},
+								{
+									"name": "Morocco (+212)",
+									"value": "MA"
+								},
+								{
+									"name": "Mozambique (+258)",
+									"value": "MZ"
+								},
+								{
+									"name": "Myanmar (Burma) (+95)",
+									"value": "MM"
+								},
+								{
+									"name": "Namibia (+264)",
+									"value": "NA"
+								},
+								{
+									"name": "Nauru (+674)",
+									"value": "NR"
+								},
+								{
+									"name": "Nepal (+977)",
+									"value": "NP"
+								},
+								{
+									"name": "Netherlands (+31)",
+									"value": "NL"
+								},
+								{
+									"name": "New Caledonia (+687)",
+									"value": "NC"
+								},
+								{
+									"name": "New Zealand (+64)",
+									"value": "NZ"
+								},
+								{
+									"name": "Nicaragua (+505)",
+									"value": "NI"
+								},
+								{
+									"name": "Niger (+227)",
+									"value": "NE"
+								},
+								{
+									"name": "Nigeria (+234)",
+									"value": "NG"
+								},
+								{
+									"name": "Niue (+683)",
+									"value": "NU"
+								},
+								{
+									"name": "Norfolk Island (+672)",
+									"value": "NF"
+								},
+								{
+									"name": "North Korea (+850)",
+									"value": "KP"
+								},
+								{
+									"name": "North Macedonia (+389)",
+									"value": "MK"
+								},
+								{
+									"name": "Northern Mariana Islands (+1)",
+									"value": "MP"
+								},
+								{
+									"name": "Norway (+47)",
+									"value": "NO"
+								},
+								{
+									"name": "Oman (+968)",
+									"value": "OM"
+								},
+								{
+									"name": "Pakistan (+92)",
+									"value": "PK"
+								},
+								{
+									"name": "Palau (+680)",
+									"value": "PW"
+								},
+								{
+									"name": "Palestinian Territories (+970)",
+									"value": "PS"
+								},
+								{
+									"name": "Panama (+507)",
+									"value": "PA"
+								},
+								{
+									"name": "Papua New Guinea (+675)",
+									"value": "PG"
+								},
+								{
+									"name": "Paraguay (+595)",
+									"value": "PY"
+								},
+								{
+									"name": "Peru (+51)",
+									"value": "PE"
+								},
+								{
+									"name": "Philippines (+63)",
+									"value": "PH"
+								},
+								{
+									"name": "Poland (+48)",
+									"value": "PL"
+								},
+								{
+									"name": "Portugal (+351)",
+									"value": "PT"
+								},
+								{
+									"name": "Puerto Rico (+1)",
+									"value": "PR"
+								},
+								{
+									"name": "Qatar (+974)",
+									"value": "QA"
+								},
+								{
+									"name": "Réunion (+262)",
+									"value": "RE"
+								},
+								{
+									"name": "Romania (+40)",
+									"value": "RO"
+								},
+								{
+									"name": "Russia (+7)",
+									"value": "RU"
+								},
+								{
+									"name": "Rwanda (+250)",
+									"value": "RW"
+								},
+								{
+									"name": "Samoa (+685)",
+									"value": "WS"
+								},
+								{
+									"name": "San Marino (+378)",
+									"value": "SM"
+								},
+								{
+									"name": "São Tomé & Príncipe (+239)",
+									"value": "ST"
+								},
+								{
+									"name": "Saudi Arabia (+966)",
+									"value": "SA"
+								},
+								{
+									"name": "Senegal (+221)",
+									"value": "SN"
+								},
+								{
+									"name": "Serbia (+381)",
+									"value": "RS"
+								},
+								{
+									"name": "Seychelles (+248)",
+									"value": "SC"
+								},
+								{
+									"name": "Sierra Leone (+232)",
+									"value": "SL"
+								},
+								{
+									"name": "Singapore (+65)",
+									"value": "SG"
+								},
+								{
+									"name": "Sint Maarten (+1)",
+									"value": "SX"
+								},
+								{
+									"name": "Slovakia (+421)",
+									"value": "SK"
+								},
+								{
+									"name": "Slovenia (+386)",
+									"value": "SI"
+								},
+								{
+									"name": "Solomon Islands (+677)",
+									"value": "SB"
+								},
+								{
+									"name": "Somalia (+252)",
+									"value": "SO"
+								},
+								{
+									"name": "South Africa (+27)",
+									"value": "ZA"
+								},
+								{
+									"name": "South Korea (+82)",
+									"value": "KR"
+								},
+								{
+									"name": "South Sudan (+211)",
+									"value": "SS"
+								},
+								{
+									"name": "Spain (+34)",
+									"value": "ES"
+								},
+								{
+									"name": "Sri Lanka (+94)",
+									"value": "LK"
+								},
+								{
+									"name": "St. Barthélemy (+590)",
+									"value": "BL"
+								},
+								{
+									"name": "St. Helena (+290)",
+									"value": "SH"
+								},
+								{
+									"name": "St. Kitts & Nevis (+1)",
+									"value": "KN"
+								},
+								{
+									"name": "St. Lucia (+1)",
+									"value": "LC"
+								},
+								{
+									"name": "St. Martin (+590)",
+									"value": "MF"
+								},
+								{
+									"name": "St. Pierre & Miquelon (+508)",
+									"value": "PM"
+								},
+								{
+									"name": "St. Vincent & Grenadines (+1)",
+									"value": "VC"
+								},
+								{
+									"name": "Sudan (+249)",
+									"value": "SD"
+								},
+								{
+									"name": "Suriname (+597)",
+									"value": "SR"
+								},
+								{
+									"name": "Svalbard & Jan Mayen (+47)",
+									"value": "SJ"
+								},
+								{
+									"name": "Sweden (+46)",
+									"value": "SE"
+								},
+								{
+									"name": "Switzerland (+41)",
+									"value": "CH"
+								},
+								{
+									"name": "Syria (+963)",
+									"value": "SY"
+								},
+								{
+									"name": "Taiwan (+886)",
+									"value": "TW"
+								},
+								{
+									"name": "Tajikistan (+992)",
+									"value": "TJ"
+								},
+								{
+									"name": "Tanzania (+255)",
+									"value": "TZ"
+								},
+								{
+									"name": "Thailand (+66)",
+									"value": "TH"
+								},
+								{
+									"name": "Timor-Leste (+670)",
+									"value": "TL"
+								},
+								{
+									"name": "Togo (+228)",
+									"value": "TG"
+								},
+								{
+									"name": "Tokelau (+690)",
+									"value": "TK"
+								},
+								{
+									"name": "Tonga (+676)",
+									"value": "TO"
+								},
+								{
+									"name": "Trinidad & Tobago (+1)",
+									"value": "TT"
+								},
+								{
+									"name": "Tristan da Cunha (+290)",
+									"value": "TA"
+								},
+								{
+									"name": "Tunisia (+216)",
+									"value": "TN"
+								},
+								{
+									"name": "Türkiye (+90)",
+									"value": "TR"
+								},
+								{
+									"name": "Turkmenistan (+993)",
+									"value": "TM"
+								},
+								{
+									"name": "Turks & Caicos Islands (+1)",
+									"value": "TC"
+								},
+								{
+									"name": "Tuvalu (+688)",
+									"value": "TV"
+								},
+								{
+									"name": "U.S. Virgin Islands (+1)",
+									"value": "VI"
+								},
+								{
+									"name": "Uganda (+256)",
+									"value": "UG"
+								},
+								{
+									"name": "Ukraine (+380)",
+									"value": "UA"
+								},
+								{
+									"name": "United Arab Emirates (+971)",
+									"value": "AE"
+								},
+								{
+									"name": "United Kingdom (+44)",
+									"value": "GB"
+								},
+								{
+									"name": "United States (+1)",
+									"value": "US"
+								},
+								{
+									"name": "Uruguay (+598)",
+									"value": "UY"
+								},
+								{
+									"name": "Uzbekistan (+998)",
+									"value": "UZ"
+								},
+								{
+									"name": "Vanuatu (+678)",
+									"value": "VU"
+								},
+								{
+									"name": "Vatican City (+39)",
+									"value": "VA"
+								},
+								{
+									"name": "Venezuela (+58)",
+									"value": "VE"
+								},
+								{
+									"name": "Vietnam (+84)",
+									"value": "VN"
+								},
+								{
+									"name": "Wallis & Futuna (+681)",
+									"value": "WF"
+								},
+								{
+									"name": "Western Sahara (+212)",
+									"value": "EH"
+								},
+								{
+									"name": "Yemen (+967)",
+									"value": "YE"
+								},
+								{
+									"name": "Zambia (+260)",
+									"value": "ZM"
+								},
+								{
+									"name": "Zimbabwe (+263)",
+									"value": "ZW"
+								}
+							]
+						},
+						{
+							"displayName": "Mask",
+							"name": "phoneMask",
+							"type": "options",
+							"default": "0# ## ## ## ##",
+							"displayOptions": {
+								"show": {
+									"type": [
+										"phone"
+									],
+									"phoneOutput": [
+										"mask"
+									],
+									"@version": [
+										6
+									]
+								}
+							},
+							"description": "Grammar of typeVersion 6: only \"#\" is a digit slot, a \"#\" preceded by a backslash is a literal, everything else is copied as is. The mask consumes the national significant number — nine digits in France — so it fits the numbers of one length only. A mask without any slot, or a typeVersion 5 mask left in its curly-brace form, fails the node at configuration time.",
+							"typeOptions": {
+								"allowCustomValues": true
+							},
+							"options": [
+								{
+									"name": "0# ## ## ## ## (FR National)",
+									"value": "0# ## ## ## ##"
+								},
+								{
+									"name": "+33 # ## ## ## ## (FR International)",
+									"value": "+33 # ## ## ## ##"
+								},
+								{
+									"name": "+33 (0) # ## ## ## ## (FR, Literal Calling Code and 0)",
+									"value": "+33 (0) # ## ## ## ##"
+								},
+								{
+									"name": "(###) ###-#### (US)",
+									"value": "(###) ###-####"
+								}
+							]
+						},
+						{
+							"displayName": "Case",
+							"name": "textCase",
+							"type": "options",
+							"default": "uppercase",
+							"options": [
+								{
+									"name": "UPPERCASE",
+									"value": "uppercase"
+								},
+								{
+									"name": "Lowercase",
+									"value": "lowercase"
+								},
+								{
+									"name": "First Letter of the String (Rest in Lowercase)",
+									"value": "capitalize",
+									"description": "Uppercases the first character of the string and lowercases everything else: \"SARL DUPONT\" becomes \"Sarl dupont\""
+								},
+								{
+									"name": "Title Case (typeVersion 6 Only)",
+									"value": "titleCase",
+									"description": "Uppercase after the start of the string, a space, a hyphen, an apostrophe, a period, a slash or an opening parenthesis: \"SARL DUPONT ET FILS\" becomes \"Sarl Dupont Et Fils\". No particle rules. A node in typeVersion 5 rejects this mode."
+								}
+							],
+							"displayOptions": {
+								"show": {
+									"type": [
+										"textCase"
+									]
+								}
+							}
+						},
+						{
+							"displayName": "Locale",
+							"name": "locale",
+							"type": "string",
+							"default": "fr-FR",
+							"displayOptions": {
+								"show": {
+									"type": [
+										"textCase"
+									],
+									"@version": [
+										6
+									]
+								}
+							},
+							"description": "Locale used for case changes. typeVersion 5 always uses \"fr-FR\".",
+							"placeholder": "fr-FR"
+						},
+						{
+							"displayName": "On Unknown Country",
+							"name": "onUnknown",
+							"type": "options",
+							"default": "error",
+							"displayOptions": {
+								"show": {
+									"type": [
+										"country"
+									],
+									"@version": [
+										6
+									]
+								}
+							},
+							"description": "What to do with a value the embedded ISO 3166-1 table cannot resolve. In typeVersion 5 the whole node failed.",
+							"options": [
+								{
+									"name": "Fail the Item",
+									"value": "error"
+								},
+								{
+									"name": "Keep the Value",
+									"value": "keep"
+								},
+								{
+									"name": "Empty the Field",
+									"value": "empty"
+								}
+							]
+						},
+						{
+							"displayName": "Accept Unknown Two-Letter Codes",
+							"name": "acceptUnknownAlpha2",
+							"type": "boolean",
+							"default": false,
+							"displayOptions": {
+								"show": {
+									"type": [
+										"country"
+									],
+									"@version": [
+										6
+									]
+								}
+							},
+							"description": "Whether to let a two-letter code absent from ISO 3166-1 through, in uppercase. This was the silent behavior of typeVersion 5, made explicit: it is what let a \"ZZ\" travel down the chain."
+						},
+						{
+							"displayName": "Output Format",
+							"name": "outputFormat",
+							"type": "options",
+							"default": "postalLines",
+							"displayOptions": {
+								"show": {
+									"type": [
+										"postalAddress"
+									],
+									"@version": [
+										6
+									]
+								}
+							},
+							"description": "Shape of the value written back. The address is written only when the national address base confirms it (verified, or corrected if accepted); otherwise the original value stays, with a diagnostic.",
+							"options": [
+								{
+									"name": "Postal Lines (NF Z10-011)",
+									"value": "postalLines",
+									"description": "Array of lines to the French standard: 38 characters at most, uppercase without punctuation from line 4"
+								},
+								{
+									"name": "Label",
+									"value": "label",
+									"description": "One line, as written by the national address base: \"8 Boulevard du Port 80000 Amiens\""
+								},
+								{
+									"name": "Structured Object",
+									"value": "structured",
+									"description": "Verdict, corrections, precision, score, postal lines, street, postcode, municipality, INSEE code, national identifier and coordinates"
+								}
+							]
+						},
+						{
+							"displayName": "Output Path",
+							"name": "outputPath",
+							"type": "string",
+							"default": "",
+							"displayOptions": {
+								"show": {
+									"type": [
+										"postalAddress"
+									],
+									"@version": [
+										6
+									]
+								}
+							},
+							"placeholder": "e.g. addressChecked",
+							"description": "Path of the field to write the result to, in dot notation. Leave empty to replace the input field; set it to keep the original address."
+						},
+						{
+							"displayName": "Minimum Precision",
+							"name": "minimumPrecision",
+							"type": "options",
+							"default": "housenumber",
+							"displayOptions": {
+								"show": {
+									"type": [
+										"postalAddress"
+									],
+									"@version": [
+										6
+									]
+								}
+							},
+							"description": "Precision required when the input gives a house number. An input without a number is always checked at street level.",
+							"options": [
+								{
+									"name": "House Number",
+									"value": "housenumber",
+									"description": "The house number must exist in the national address base"
+								},
+								{
+									"name": "Street",
+									"value": "street",
+									"description": "The street must exist; an unknown house number is accepted"
+								}
+							]
+						},
+						{
+							"displayName": "Accept Corrections",
+							"name": "acceptCorrections",
+							"type": "boolean",
+							"default": true,
+							"displayOptions": {
+								"show": {
+									"type": [
+										"postalAddress"
+									],
+									"@version": [
+										6
+									]
+								}
+							},
+							"description": "Whether to write an address the national base had to correct (postcode, municipality, street spelling). The corrected fields are named in _format, never their values."
+						},
+						{
+							"displayName": "On Service Error",
+							"name": "onServiceError",
+							"type": "options",
+							"default": "throw",
+							"displayOptions": {
+								"show": {
+									"type": [
+										"postalAddress"
+									],
+									"@version": [
+										6
+									]
+								}
+							},
+							"description": "What to do when the geocoding service cannot answer — after its retries. A service failure is never read as an invalid address.",
+							"options": [
+								{
+									"name": "Fail the Item",
+									"value": "throw",
+									"description": "The item fails. With On Error set to stop the workflow, the node fails and its Retry On Fail setting can replay it; set to continue, the item goes out as an error item, never unchecked."
+								},
+								{
+									"name": "Tag the Item",
+									"value": "tag",
+									"description": "The value is kept, the failure is written to _format, and the item goes out normally"
+								}
+							]
+						},
+						{
+							"displayName": "Add Country Line",
+							"name": "includeCountryLine",
+							"type": "boolean",
+							"default": false,
+							"displayOptions": {
+								"show": {
+									"type": [
+										"postalAddress"
+									],
+									"@version": [
+										6
+									]
+								}
+							},
+							"description": "Whether to add FRANCE as the last line, for mail posted from abroad"
+						},
+						{
+							"displayName": "Remove Accents",
+							"name": "stripAccents",
+							"type": "boolean",
+							"default": true,
+							"displayOptions": {
+								"show": {
+									"type": [
+										"postalAddress"
+									],
+									"@version": [
+										6
+									]
+								}
+							},
+							"description": "Whether to remove accents from lines 4 to 7. The standard does not require it; postal reference files are written that way."
+						},
+						{
+							"displayName": "Advanced",
+							"name": "advanced",
+							"type": "collection",
+							"placeholder": "Add Setting",
+							"default": {},
+							"displayOptions": {
+								"show": {
+									"type": [
+										"postalAddress"
+									],
+									"@version": [
+										6
+									]
+								}
+							},
+							"options": [
+								{
+									"displayName": "Ambiguity Margin",
+									"name": "ambiguityMargin",
+									"type": "number",
+									"default": 0.05,
+									"typeOptions": {
+										"minValue": 0,
+										"maxValue": 1,
+										"numberPrecision": 3
+									},
+									"description": "Score gap under which two different places matching the input equally make it ambiguous. Calibrated safe range: 0.005 to 0.5."
+								},
+								{
+									"displayName": "Maximum Retries",
+									"name": "maxRetries",
+									"type": "number",
+									"default": 3,
+									"typeOptions": {
+										"minValue": 0,
+										"maxValue": 5
+									},
+									"description": "Retries after a timeout, a server error or a request to slow down, with an exponential backoff"
+								},
+								{
+									"displayName": "Minimum Score",
+									"name": "minScore",
+									"type": "number",
+									"default": 0.5,
+									"typeOptions": {
+										"minValue": 0,
+										"maxValue": 1,
+										"numberPrecision": 2
+									},
+									"description": "Lowest relevance score accepted — a safety net only: the verdict compares the answer with the input. Calibrated safe range: 0.30 to 0.62."
+								},
+								{
+									"displayName": "Requests per Second",
+									"name": "requestsPerSecond",
+									"type": "number",
+									"default": 40,
+									"typeOptions": {
+										"minValue": 1,
+										"maxValue": 50
+									},
+									"description": "Maximum requests started per second. The public service accepts 50 per IP address."
+								},
+								{
+									"displayName": "Service URL",
+									"name": "baseUrl",
+									"type": "string",
+									"default": "https://data.geopf.fr/geocodage",
+									"description": "Base URL of the geocoding service (HTTPS). The default is the free service of the French State; an instance with the same interface may be used instead."
+								},
+								{
+									"displayName": "Street Similarity",
+									"name": "streetSimilarity",
+									"type": "number",
+									"default": 0.8,
+									"typeOptions": {
+										"minValue": 0,
+										"maxValue": 1,
+										"numberPrecision": 2
+									},
+									"description": "Similarity under which two street names are different streets. Must stay above 2/3; calibrated default 0.8."
+								},
+								{
+									"displayName": "Timeout (Ms)",
+									"name": "timeoutMs",
+									"type": "number",
+									"default": 10000,
+									"typeOptions": {
+										"minValue": 1000,
+										"maxValue": 60000
+									},
+									"description": "Time allowed per request, in milliseconds"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"displayName": "On Field Error",
+			"name": "onFieldError",
+			"type": "options",
+			"default": "tag",
+			"displayOptions": {
+				"show": {
+					"@version": [
+						6
+					]
+				}
+			},
+			"description": "What to do when a transformation cannot be applied. Never applies to a configuration error — invalid path, unknown type, invalid mask — which always fails the node.",
+			"options": [
+				{
+					"name": "Tag the Item",
+					"value": "tag",
+					"description": "The value is kept, the diagnostic is written to _format, and the item goes out normally"
+				},
+				{
+					"name": "Fail the Item",
+					"value": "throw",
+					"description": "The item fails; with On Error set to continue using the error output, it goes to that output and the other items are still processed"
+				},
+				{
+					"name": "Keep Silently",
+					"value": "keep",
+					"description": "The value is kept and no diagnostic is written — a deliberate silence"
+				}
+			]
+		},
+		{
+			"displayName": "On Missing Field",
+			"name": "onMissingField",
+			"type": "options",
+			"default": "tag",
+			"displayOptions": {
+				"show": {
+					"@version": [
+						6
+					]
+				}
+			},
+			"description": "What to do when the path is valid but absent from the item. In typeVersion 5 it was skipped silently, without a trace.",
+			"options": [
+				{
+					"name": "Tag the Item",
+					"value": "tag"
+				},
+				{
+					"name": "Skip Without Trace",
+					"value": "skip"
+				},
+				{
+					"name": "Fail the Item",
+					"value": "error"
+				}
+			]
+		},
+		{
+			"displayName": "Options",
+			"name": "options",
+			"type": "collection",
+			"placeholder": "Add Option",
+			"default": {},
+			"displayOptions": {
+				"show": {
+					"@version": [
+						6
+					]
+				}
+			},
+			"options": [
+				{
+					"displayName": "Enrich Metadata",
+					"name": "enrichMetadata",
+					"type": "boolean",
+					"default": true,
+					"description": "Whether to write the _format trace and a metadata.messageHistory entry on each item"
+				},
+				{
+					"displayName": "Trace Values",
+					"name": "traceValues",
+					"type": "boolean",
+					"default": false,
+					"description": "Whether to add the before/after values to _format, truncated to 64 characters. These values are personal data — names, phone numbers — hence off by default."
+				}
+			]
+		}
+	]
+}
