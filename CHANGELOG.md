@@ -1,68 +1,65 @@
 # Changelog
 
-Tous les changements notables de ce projet seront documentés dans ce fichier.
+All notable changes to this package are documented here. The format follows
+[Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the package adheres to
+[Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-Le format est basé sur [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/),
-et ce projet adhère au [Versioning Sémantique](https://semver.org/lang/fr/).
+The node's own **typeVersions** (5 and 6) are not package versions: a saved workflow keeps
+the typeVersion it was created with, whatever the package version.
 
-## [0.1.0] - 2025-11-29
+## [1.0.0] — 2026-10-26
 
-### 🎉 Publication initiale
+A rewrite. Existing workflows keep working on typeVersion 5; new nodes get typeVersion 6.
 
-Première publication du node FormatTemplate sur NPM sous le scope @rderet.
+### Added
 
-### ✨ Fonctionnalités
+- **typeVersion 6**, the default for new nodes:
+  - one decision per item — a value that cannot be transformed is never approximated;
+  - a `_format` trace on every item, with stable diagnostic codes (`FT_*`) and no copy of
+    the data;
+  - policies **On Field Error** (tag, fail the item, keep) and **On Missing Field** (tag,
+    skip, fail the item); configuration errors fail the node before the first item;
+  - phone: `national`, `international`, `e164` or a custom mask, the numbering plans of
+    every country — 245 territories, generated from libphonenumber's metadata at a pinned
+    version, with no runtime dependency — and a refusal instead of a truncation when the
+    digits do not fit the plan (`FT_PHONE_LENGTH_MISMATCH`, `FT_PHONE_NOT_IN_PLAN`);
+  - text case: a `titleCase` mode and a locale;
+  - country: **On Unknown Country** and **Accept Unknown Two-Letter Codes**.
+- **Postal Address (France)** transformation, typeVersion 6: checks an address against the
+  *Base Adresse Nationale* through the free geocoding service of the Géoplateforme, confronts
+  the answer with the input, and writes it to the postal standard NF Z10-011 — or leaves it
+  untouched and says why. Retries with `Retry-After`, a rate ceiling, a per-execution cache,
+  and an **On Service Error** policy that keeps service outages apart from bad data.
+- Documentation: a guide per transformation (the postal-address guide also in French),
+  parameter matrix, diagnostics catalogue, migration guide, architecture and decision records.
+- Tests: unit, engine, architecture rules, documentation guards, and a recorded corpus of 55
+  addresses replayed offline.
+- Continuous integration (lint, tests, build) and npm publication with provenance.
 
-#### Handlers disponibles
-- **TextCaseHandler** : Transformation de casse (uppercase, lowercase, capitalize)
-- **PhoneHandler** : Formatage de numéros de téléphone avec patterns prédéfinis
-- **CountryHandler** : Conversion de noms de pays en codes ISO2
+### Changed
 
-#### Architecture
-- Système modulaire avec découverte automatique des handlers
-- Registry centralisé pour la gestion des transformations
-- Interface utilisateur dynamique basée sur les handlers disponibles
-- Support des chemins de propriétés imbriqués (ex: `client.address.country`)
+- **Country names resolve offline, in both typeVersions**, from an embedded ISO 3166-1 table.
+  0.1.x looked them up on an external API that stopped answering for full names: converting
+  `France` failed. This is the one behaviour change that reaches existing workflows.
+- Interface and messages in English (typeVersion 6). typeVersion 5 keeps its messages.
+- **Field Path**: a field dragged from the input panel is written as its path
+  (`customer.phone`), in both typeVersions. 0.1.x wrote an expression, which resolves to the
+  field's value: the node then looked for a field named after that value.
+- New icon.
+- Layered, modular architecture: kernel, engine, one folder per transformation, ports and
+  adapters; the network is reached from a single adapter.
 
-#### Infrastructure
-- Build TypeScript avec compilation optimisée
-- Linting avec ESLint et règles n8n-nodes-base
-- Support des icônes avec gulp
-- Configuration pnpm pour gestion des dépendances
+### Removed
 
-### 📦 Package NPM
-- **Nom** : @rderet/n8n-nodes-format-template
-- **Taille** : 31.4 kB (compressé) / 102.3 kB (décompressé)
-- **Registry** : https://registry.npmjs.org/
-- **Accès** : Public
+- The runtime auto-discovery of handlers (`AutoDiscovery`, `TransformHandlerRegistry`): it
+  never discovered anything. The list of transformations is a constant.
+- The call to `restcountries.com`.
 
-### 📚 Documentation
-- README complet avec exemples d'utilisation
-- Guide d'utilisation détaillé
-- Documentation technique et PRD
-- Procédure de publication NPM
-- Checklist de publication rapide
+## [0.1.2] and [0.1.1] — 2025-11-30
 
-### 🔧 Configuration
-- n8n API version 1
-- Node.js >= 18.10
-- pnpm >= 9.1
-- License MIT
+Published without a changelog entry.
 
----
+## [0.1.0] — 2025-11-29
 
-## Format des entrées
-
-Les versions suivent le format : [MAJOR.MINOR.PATCH]
-
-### Types de changements
-- **Added** (Ajouté) : Nouvelles fonctionnalités
-- **Changed** (Modifié) : Modifications de fonctionnalités existantes
-- **Deprecated** (Déprécié) : Fonctionnalités bientôt supprimées
-- **Removed** (Supprimé) : Fonctionnalités supprimées
-- **Fixed** (Corrigé) : Corrections de bugs
-- **Security** (Sécurité) : Corrections de vulnérabilités
-
----
-
-*Maintenu par Raphael Deret (raphael.deret@mixtrio.net)*
+First publication: text case (upper, lower, capitalize), phone formatting with predefined
+patterns, country names to ISO 3166-1 alpha-2 codes, nested property paths.

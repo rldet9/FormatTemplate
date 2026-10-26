@@ -1,0 +1,2363 @@
+{
+	"$source": "Example numbers of libphonenumber v9.0.41 — Copyright (C) 2009 The Libphonenumber Authors, Apache License 2.0. The exampleNumber of each number type, published to illustrate the plan.",
+	"version": "9.0.41",
+	"territories": {
+		"AC": {
+			"callingCode": "247",
+			"examples": {
+				"fixedLine": "62889",
+				"mobile": "40123",
+				"uan": "542011"
+			}
+		},
+		"AD": {
+			"callingCode": "376",
+			"examples": {
+				"fixedLine": "712345",
+				"mobile": "312345",
+				"tollFree": "18001234",
+				"premiumRate": "912345"
+			}
+		},
+		"AE": {
+			"callingCode": "971",
+			"examples": {
+				"fixedLine": "22345678",
+				"mobile": "501234567",
+				"tollFree": "800123456",
+				"premiumRate": "900234567",
+				"sharedCost": "700012345",
+				"uan": "600212345"
+			}
+		},
+		"AF": {
+			"callingCode": "93",
+			"examples": {
+				"fixedLine": "234567890",
+				"mobile": "701234567"
+			}
+		},
+		"AG": {
+			"callingCode": "1",
+			"examples": {
+				"fixedLine": "2684601234",
+				"mobile": "2684641234",
+				"pager": "2684061234",
+				"tollFree": "8002123456",
+				"premiumRate": "9002123456",
+				"personalNumber": "5002345678",
+				"voip": "2684801234"
+			}
+		},
+		"AI": {
+			"callingCode": "1",
+			"examples": {
+				"fixedLine": "2644612345",
+				"mobile": "2642351234",
+				"pager": "2647241234",
+				"tollFree": "8002123456",
+				"premiumRate": "9002123456",
+				"personalNumber": "5002345678"
+			}
+		},
+		"AL": {
+			"callingCode": "355",
+			"examples": {
+				"fixedLine": "22345678",
+				"mobile": "672123456",
+				"tollFree": "8001234",
+				"premiumRate": "900123",
+				"sharedCost": "808123",
+				"personalNumber": "70021234"
+			}
+		},
+		"AM": {
+			"callingCode": "374",
+			"examples": {
+				"fixedLine": "10123456",
+				"mobile": "77123456",
+				"tollFree": "80012345",
+				"premiumRate": "90012345",
+				"sharedCost": "80112345",
+				"voip": "60271234"
+			}
+		},
+		"AO": {
+			"callingCode": "244",
+			"examples": {
+				"fixedLine": "222123456",
+				"mobile": "923123456"
+			}
+		},
+		"AR": {
+			"callingCode": "54",
+			"examples": {
+				"fixedLine": "1123456789",
+				"mobile": "91123456789",
+				"tollFree": "8001234567",
+				"premiumRate": "6001234567",
+				"uan": "8101234567"
+			}
+		},
+		"AS": {
+			"callingCode": "1",
+			"examples": {
+				"fixedLine": "6846221234",
+				"mobile": "6847331234",
+				"tollFree": "8002123456",
+				"premiumRate": "9002123456",
+				"personalNumber": "5002345678"
+			}
+		},
+		"AT": {
+			"callingCode": "43",
+			"examples": {
+				"fixedLine": "1234567890",
+				"mobile": "664123456",
+				"tollFree": "800123456",
+				"premiumRate": "900123456",
+				"sharedCost": "810123456",
+				"voip": "780123456"
+			}
+		},
+		"AU": {
+			"callingCode": "61",
+			"examples": {
+				"fixedLine": "212345678",
+				"mobile": "412345678",
+				"pager": "1631234",
+				"tollFree": "1800123456",
+				"premiumRate": "1900123456",
+				"sharedCost": "1300123456",
+				"voip": "147101234"
+			}
+		},
+		"AW": {
+			"callingCode": "297",
+			"examples": {
+				"fixedLine": "5212345",
+				"mobile": "5601234",
+				"tollFree": "8001234",
+				"premiumRate": "9001234",
+				"voip": "5011234"
+			}
+		},
+		"AX": {
+			"callingCode": "358",
+			"examples": {
+				"fixedLine": "181234567",
+				"mobile": "412345678",
+				"tollFree": "800123456",
+				"premiumRate": "600123456",
+				"uan": "10112345"
+			}
+		},
+		"AZ": {
+			"callingCode": "994",
+			"examples": {
+				"fixedLine": "123123456",
+				"mobile": "401234567",
+				"tollFree": "881234567",
+				"premiumRate": "900200123"
+			}
+		},
+		"BA": {
+			"callingCode": "387",
+			"examples": {
+				"fixedLine": "30212345",
+				"mobile": "61123456",
+				"tollFree": "80123456",
+				"premiumRate": "90123456",
+				"sharedCost": "82123456",
+				"uan": "70341234"
+			}
+		},
+		"BB": {
+			"callingCode": "1",
+			"examples": {
+				"fixedLine": "2464123456",
+				"mobile": "2462501234",
+				"tollFree": "8002123456",
+				"premiumRate": "9002123456",
+				"personalNumber": "5002345678",
+				"voip": "2463101234",
+				"uan": "2464301234"
+			}
+		},
+		"BD": {
+			"callingCode": "880",
+			"examples": {
+				"fixedLine": "27111234",
+				"mobile": "1812345678",
+				"tollFree": "8001234567",
+				"voip": "9604123456"
+			}
+		},
+		"BE": {
+			"callingCode": "32",
+			"examples": {
+				"fixedLine": "12345678",
+				"mobile": "450001234",
+				"tollFree": "80012345",
+				"premiumRate": "90012345",
+				"sharedCost": "78791234",
+				"uan": "78102345"
+			}
+		},
+		"BF": {
+			"callingCode": "226",
+			"examples": {
+				"fixedLine": "20491234",
+				"mobile": "70123456"
+			}
+		},
+		"BG": {
+			"callingCode": "359",
+			"examples": {
+				"fixedLine": "2123456",
+				"mobile": "43012345",
+				"tollFree": "80012345",
+				"premiumRate": "90123456",
+				"sharedCost": "70012345"
+			}
+		},
+		"BH": {
+			"callingCode": "973",
+			"examples": {
+				"fixedLine": "17001234",
+				"mobile": "36001234",
+				"tollFree": "80123456",
+				"premiumRate": "90123456",
+				"sharedCost": "84123456"
+			}
+		},
+		"BI": {
+			"callingCode": "257",
+			"examples": {
+				"fixedLine": "22201234",
+				"mobile": "79561234"
+			}
+		},
+		"BJ": {
+			"callingCode": "229",
+			"examples": {
+				"fixedLine": "0120211234",
+				"mobile": "0195123456",
+				"voip": "85751234",
+				"uan": "81123456"
+			}
+		},
+		"BL": {
+			"callingCode": "590",
+			"examples": {
+				"fixedLine": "590271234",
+				"mobile": "690001234",
+				"tollFree": "800012345",
+				"premiumRate": "810123456",
+				"voip": "976012345"
+			}
+		},
+		"BM": {
+			"callingCode": "1",
+			"examples": {
+				"fixedLine": "4414123456",
+				"mobile": "4413701234",
+				"tollFree": "8002123456",
+				"premiumRate": "9002123456",
+				"personalNumber": "5002345678"
+			}
+		},
+		"BN": {
+			"callingCode": "673",
+			"examples": {
+				"fixedLine": "2345678",
+				"mobile": "7123456",
+				"voip": "5345678"
+			}
+		},
+		"BO": {
+			"callingCode": "591",
+			"examples": {
+				"fixedLine": "22123456",
+				"mobile": "71234567",
+				"tollFree": "800171234",
+				"voip": "50123456"
+			}
+		},
+		"BQ": {
+			"callingCode": "599",
+			"examples": {
+				"fixedLine": "7151234",
+				"mobile": "3181234"
+			}
+		},
+		"BR": {
+			"callingCode": "55",
+			"examples": {
+				"fixedLine": "1123456789",
+				"mobile": "11961234567",
+				"tollFree": "800123456",
+				"premiumRate": "500123456",
+				"sharedCost": "40041234"
+			}
+		},
+		"BS": {
+			"callingCode": "1",
+			"examples": {
+				"fixedLine": "2423456789",
+				"mobile": "2423591234",
+				"tollFree": "8002123456",
+				"premiumRate": "9002123456",
+				"personalNumber": "5002345678",
+				"uan": "2422250123"
+			}
+		},
+		"BT": {
+			"callingCode": "975",
+			"examples": {
+				"fixedLine": "2345678",
+				"mobile": "17123456"
+			}
+		},
+		"BW": {
+			"callingCode": "267",
+			"examples": {
+				"fixedLine": "2401234",
+				"mobile": "71123456",
+				"tollFree": "0800012345",
+				"premiumRate": "9012345",
+				"voip": "79101234"
+			}
+		},
+		"BY": {
+			"callingCode": "375",
+			"examples": {
+				"fixedLine": "152450911",
+				"mobile": "294911911",
+				"tollFree": "8011234567",
+				"premiumRate": "9021234567",
+				"voip": "249123456"
+			}
+		},
+		"BZ": {
+			"callingCode": "501",
+			"examples": {
+				"fixedLine": "2221234",
+				"mobile": "6221234",
+				"tollFree": "08001234123"
+			}
+		},
+		"CA": {
+			"callingCode": "1",
+			"examples": {
+				"fixedLine": "5062345678",
+				"mobile": "5062345678",
+				"tollFree": "8002123456",
+				"premiumRate": "9002123456",
+				"personalNumber": "5219023456",
+				"voip": "6002012345",
+				"uan": "3101234"
+			}
+		},
+		"CC": {
+			"callingCode": "61",
+			"examples": {
+				"fixedLine": "891621234",
+				"mobile": "412345678",
+				"tollFree": "1800123456",
+				"premiumRate": "1900123456",
+				"sharedCost": "1300123456",
+				"voip": "147101234"
+			}
+		},
+		"CD": {
+			"callingCode": "243",
+			"examples": {
+				"fixedLine": "1234567",
+				"mobile": "991234567"
+			}
+		},
+		"CF": {
+			"callingCode": "236",
+			"examples": {
+				"fixedLine": "21612345",
+				"mobile": "70012345",
+				"premiumRate": "87761234"
+			}
+		},
+		"CG": {
+			"callingCode": "242",
+			"examples": {
+				"fixedLine": "222123456",
+				"mobile": "061234567",
+				"premiumRate": "800123456"
+			}
+		},
+		"CH": {
+			"callingCode": "41",
+			"examples": {
+				"fixedLine": "212345678",
+				"mobile": "781234567",
+				"pager": "740123456",
+				"tollFree": "800123456",
+				"premiumRate": "900123456",
+				"sharedCost": "840123456",
+				"personalNumber": "878123456",
+				"uan": "581234567",
+				"voicemail": "860123456789"
+			}
+		},
+		"CI": {
+			"callingCode": "225",
+			"examples": {
+				"fixedLine": "2123456789",
+				"mobile": "0123456789"
+			}
+		},
+		"CK": {
+			"callingCode": "682",
+			"examples": {
+				"fixedLine": "21234",
+				"mobile": "71234"
+			}
+		},
+		"CL": {
+			"callingCode": "56",
+			"examples": {
+				"fixedLine": "600123456",
+				"mobile": "221234567",
+				"tollFree": "800123456",
+				"sharedCost": "6001234567",
+				"voip": "441234567"
+			}
+		},
+		"CM": {
+			"callingCode": "237",
+			"examples": {
+				"fixedLine": "222123456",
+				"mobile": "671234567",
+				"tollFree": "88012345"
+			}
+		},
+		"CN": {
+			"callingCode": "86",
+			"examples": {
+				"fixedLine": "1012345678",
+				"mobile": "13123456789",
+				"tollFree": "8001234567",
+				"premiumRate": "16812345",
+				"sharedCost": "4001234567"
+			}
+		},
+		"CO": {
+			"callingCode": "57",
+			"examples": {
+				"fixedLine": "6012345678",
+				"mobile": "3211234567",
+				"tollFree": "18001234567",
+				"premiumRate": "19001234567"
+			}
+		},
+		"CR": {
+			"callingCode": "506",
+			"examples": {
+				"fixedLine": "22123456",
+				"mobile": "83123456",
+				"tollFree": "8001234567",
+				"premiumRate": "9001234567",
+				"voip": "40001234"
+			}
+		},
+		"CU": {
+			"callingCode": "53",
+			"examples": {
+				"fixedLine": "71234567",
+				"mobile": "51234567",
+				"tollFree": "8001234567",
+				"sharedCost": "8071234567"
+			}
+		},
+		"CV": {
+			"callingCode": "238",
+			"examples": {
+				"fixedLine": "2211234",
+				"mobile": "9911234",
+				"tollFree": "8001234",
+				"voip": "3401234"
+			}
+		},
+		"CW": {
+			"callingCode": "599",
+			"examples": {
+				"fixedLine": "94351234",
+				"mobile": "95181234",
+				"pager": "95581234",
+				"sharedCost": "6001234"
+			}
+		},
+		"CX": {
+			"callingCode": "61",
+			"examples": {
+				"fixedLine": "891641234",
+				"mobile": "412345678",
+				"tollFree": "1800123456",
+				"premiumRate": "1900123456",
+				"sharedCost": "1300123456",
+				"voip": "147101234"
+			}
+		},
+		"CY": {
+			"callingCode": "357",
+			"examples": {
+				"fixedLine": "22345678",
+				"mobile": "96123456",
+				"tollFree": "80001234",
+				"premiumRate": "90012345",
+				"sharedCost": "80112345",
+				"personalNumber": "70012345",
+				"uan": "77123456"
+			}
+		},
+		"CZ": {
+			"callingCode": "420",
+			"examples": {
+				"fixedLine": "212345678",
+				"mobile": "601123456",
+				"tollFree": "800123456",
+				"premiumRate": "900123456",
+				"sharedCost": "811234567",
+				"personalNumber": "700123456",
+				"voip": "910123456",
+				"uan": "972123456",
+				"voicemail": "93123456789"
+			}
+		},
+		"DE": {
+			"callingCode": "49",
+			"examples": {
+				"fixedLine": "30123456",
+				"mobile": "15123456789",
+				"pager": "16412345",
+				"tollFree": "8001234567890",
+				"premiumRate": "9001234567",
+				"sharedCost": "18012345",
+				"personalNumber": "70012345678",
+				"uan": "18500123456",
+				"voicemail": "177991234567"
+			}
+		},
+		"DJ": {
+			"callingCode": "253",
+			"examples": {
+				"fixedLine": "21360003",
+				"mobile": "77831001"
+			}
+		},
+		"DK": {
+			"callingCode": "45",
+			"examples": {
+				"fixedLine": "32123456",
+				"mobile": "34412345",
+				"tollFree": "80123456",
+				"premiumRate": "90123456"
+			}
+		},
+		"DM": {
+			"callingCode": "1",
+			"examples": {
+				"fixedLine": "7674201234",
+				"mobile": "7672251234",
+				"tollFree": "8002123456",
+				"premiumRate": "9002123456",
+				"personalNumber": "5002345678"
+			}
+		},
+		"DO": {
+			"callingCode": "1",
+			"examples": {
+				"fixedLine": "8092345678",
+				"mobile": "8092345678",
+				"tollFree": "8002123456",
+				"premiumRate": "9002123456",
+				"personalNumber": "5002345678"
+			}
+		},
+		"DZ": {
+			"callingCode": "213",
+			"examples": {
+				"fixedLine": "12345678",
+				"mobile": "551234567",
+				"tollFree": "800123456",
+				"premiumRate": "808123456",
+				"sharedCost": "801123456",
+				"voip": "983123456"
+			}
+		},
+		"EC": {
+			"callingCode": "593",
+			"examples": {
+				"fixedLine": "22123456",
+				"mobile": "991234567",
+				"tollFree": "18001234567",
+				"voip": "28901234"
+			}
+		},
+		"EE": {
+			"callingCode": "372",
+			"examples": {
+				"fixedLine": "3212345",
+				"mobile": "51234567",
+				"tollFree": "80012345",
+				"premiumRate": "9001234",
+				"personalNumber": "70012345"
+			}
+		},
+		"EG": {
+			"callingCode": "20",
+			"examples": {
+				"fixedLine": "234567890",
+				"mobile": "1001234567",
+				"tollFree": "8001234567",
+				"premiumRate": "9001234567"
+			}
+		},
+		"EH": {
+			"callingCode": "212",
+			"examples": {
+				"fixedLine": "528812345",
+				"mobile": "650123456",
+				"tollFree": "801234567",
+				"premiumRate": "891234567",
+				"voip": "592401234"
+			}
+		},
+		"ER": {
+			"callingCode": "291",
+			"examples": {
+				"fixedLine": "8370362",
+				"mobile": "7123456"
+			}
+		},
+		"ES": {
+			"callingCode": "34",
+			"examples": {
+				"fixedLine": "810123456",
+				"mobile": "612345678",
+				"tollFree": "800123456",
+				"premiumRate": "803123456",
+				"sharedCost": "901123456",
+				"personalNumber": "701234567",
+				"uan": "511234567"
+			}
+		},
+		"ET": {
+			"callingCode": "251",
+			"examples": {
+				"fixedLine": "111112345",
+				"mobile": "911234567"
+			}
+		},
+		"FI": {
+			"callingCode": "358",
+			"examples": {
+				"fixedLine": "131234567",
+				"mobile": "412345678",
+				"tollFree": "800123456",
+				"premiumRate": "600123456",
+				"uan": "10112345"
+			}
+		},
+		"FJ": {
+			"callingCode": "679",
+			"examples": {
+				"fixedLine": "3212345",
+				"mobile": "7012345",
+				"tollFree": "08001234567"
+			}
+		},
+		"FK": {
+			"callingCode": "500",
+			"examples": {
+				"fixedLine": "31234",
+				"mobile": "51234"
+			}
+		},
+		"FM": {
+			"callingCode": "691",
+			"examples": {
+				"fixedLine": "3201234",
+				"mobile": "3501234"
+			}
+		},
+		"FO": {
+			"callingCode": "298",
+			"examples": {
+				"fixedLine": "201234",
+				"mobile": "211234",
+				"tollFree": "802123",
+				"premiumRate": "901123",
+				"voip": "601234"
+			}
+		},
+		"FR": {
+			"callingCode": "33",
+			"examples": {
+				"fixedLine": "123456789",
+				"mobile": "612345678",
+				"tollFree": "801234567",
+				"premiumRate": "891123456",
+				"sharedCost": "884012345",
+				"voip": "912345678",
+				"uan": "806123456"
+			}
+		},
+		"GA": {
+			"callingCode": "241",
+			"examples": {
+				"fixedLine": "01441234",
+				"mobile": "06031234"
+			}
+		},
+		"GB": {
+			"callingCode": "44",
+			"examples": {
+				"fixedLine": "1212345678",
+				"mobile": "7400123456",
+				"pager": "7640123456",
+				"tollFree": "8001234567",
+				"premiumRate": "9012345678",
+				"personalNumber": "7012345678",
+				"voip": "5612345678",
+				"uan": "5512345678"
+			}
+		},
+		"GD": {
+			"callingCode": "1",
+			"examples": {
+				"fixedLine": "4732691234",
+				"mobile": "4734031234",
+				"tollFree": "8002123456",
+				"premiumRate": "9002123456",
+				"personalNumber": "5002345678"
+			}
+		},
+		"GE": {
+			"callingCode": "995",
+			"examples": {
+				"fixedLine": "322123456",
+				"mobile": "555123456",
+				"tollFree": "800123456",
+				"voip": "706123456"
+			}
+		},
+		"GF": {
+			"callingCode": "594",
+			"examples": {
+				"fixedLine": "594101234",
+				"mobile": "694201234",
+				"tollFree": "800012345",
+				"premiumRate": "890123456",
+				"voip": "976012345"
+			}
+		},
+		"GG": {
+			"callingCode": "44",
+			"examples": {
+				"fixedLine": "1481256789",
+				"mobile": "7781123456",
+				"pager": "7640123456",
+				"tollFree": "8001234567",
+				"premiumRate": "9012345678",
+				"personalNumber": "7012345678",
+				"voip": "5612345678",
+				"uan": "5512345678"
+			}
+		},
+		"GH": {
+			"callingCode": "233",
+			"examples": {
+				"fixedLine": "302345678",
+				"mobile": "231234567",
+				"tollFree": "80012345"
+			}
+		},
+		"GI": {
+			"callingCode": "350",
+			"examples": {
+				"fixedLine": "20012345",
+				"mobile": "57123456"
+			}
+		},
+		"GL": {
+			"callingCode": "299",
+			"examples": {
+				"fixedLine": "321000",
+				"mobile": "221234",
+				"tollFree": "801234",
+				"voip": "381234"
+			}
+		},
+		"GM": {
+			"callingCode": "220",
+			"examples": {
+				"fixedLine": "5661234",
+				"mobile": "3012345"
+			}
+		},
+		"GN": {
+			"callingCode": "224",
+			"examples": {
+				"fixedLine": "30241234",
+				"mobile": "601123456",
+				"voip": "722123456"
+			}
+		},
+		"GP": {
+			"callingCode": "590",
+			"examples": {
+				"fixedLine": "590201234",
+				"mobile": "690001234",
+				"tollFree": "800012345",
+				"premiumRate": "810123456",
+				"voip": "976012345"
+			}
+		},
+		"GQ": {
+			"callingCode": "240",
+			"examples": {
+				"fixedLine": "333091234",
+				"mobile": "222123456",
+				"tollFree": "800123456",
+				"premiumRate": "900123456"
+			}
+		},
+		"GR": {
+			"callingCode": "30",
+			"examples": {
+				"fixedLine": "2123456789",
+				"mobile": "6912345678",
+				"tollFree": "8001234567",
+				"premiumRate": "9091234567",
+				"sharedCost": "8011234567",
+				"personalNumber": "7012345678",
+				"uan": "5005000123"
+			}
+		},
+		"GT": {
+			"callingCode": "502",
+			"examples": {
+				"fixedLine": "22456789",
+				"mobile": "51234567",
+				"tollFree": "18001112222",
+				"premiumRate": "19001112222"
+			}
+		},
+		"GU": {
+			"callingCode": "1",
+			"examples": {
+				"fixedLine": "6713001234",
+				"mobile": "6713001234",
+				"tollFree": "8002123456",
+				"premiumRate": "9002123456",
+				"personalNumber": "5002345678"
+			}
+		},
+		"GW": {
+			"callingCode": "245",
+			"examples": {
+				"fixedLine": "443201234",
+				"mobile": "955012345",
+				"voip": "4012345"
+			}
+		},
+		"GY": {
+			"callingCode": "592",
+			"examples": {
+				"fixedLine": "2201234",
+				"mobile": "6091234",
+				"tollFree": "2891234",
+				"premiumRate": "9008123",
+				"voip": "5151234"
+			}
+		},
+		"HK": {
+			"callingCode": "852",
+			"examples": {
+				"fixedLine": "21234567",
+				"mobile": "51234567",
+				"pager": "71123456",
+				"tollFree": "800123456",
+				"premiumRate": "90012345678",
+				"personalNumber": "81123456",
+				"uan": "30161234"
+			}
+		},
+		"HN": {
+			"callingCode": "504",
+			"examples": {
+				"fixedLine": "22123456",
+				"mobile": "91234567",
+				"tollFree": "80021234567"
+			}
+		},
+		"HR": {
+			"callingCode": "385",
+			"examples": {
+				"fixedLine": "12345678",
+				"mobile": "921234567",
+				"tollFree": "800123456",
+				"premiumRate": "6001234",
+				"personalNumber": "74123456",
+				"uan": "62123456"
+			}
+		},
+		"HT": {
+			"callingCode": "509",
+			"examples": {
+				"fixedLine": "22453300",
+				"mobile": "34101234",
+				"tollFree": "80012345",
+				"voip": "98901234"
+			}
+		},
+		"HU": {
+			"callingCode": "36",
+			"examples": {
+				"fixedLine": "12345678",
+				"mobile": "201234567",
+				"tollFree": "80123456",
+				"premiumRate": "90123456",
+				"voip": "211234567",
+				"uan": "381234567"
+			}
+		},
+		"ID": {
+			"callingCode": "62",
+			"examples": {
+				"fixedLine": "218350123",
+				"mobile": "812345678",
+				"tollFree": "8001234567",
+				"premiumRate": "8091234567",
+				"sharedCost": "8041234567",
+				"uan": "8071123456"
+			}
+		},
+		"IE": {
+			"callingCode": "353",
+			"examples": {
+				"fixedLine": "2212345",
+				"mobile": "850123456",
+				"tollFree": "1800123456",
+				"premiumRate": "1520123456",
+				"sharedCost": "1850123456",
+				"personalNumber": "700123456",
+				"voip": "761234567",
+				"uan": "818123456",
+				"voicemail": "8551234567"
+			}
+		},
+		"IL": {
+			"callingCode": "972",
+			"examples": {
+				"fixedLine": "21234567",
+				"mobile": "502345678",
+				"tollFree": "1800123456",
+				"premiumRate": "1919123456",
+				"sharedCost": "1700123456",
+				"voip": "771234567",
+				"uan": "1599123456",
+				"voicemail": "15112340000"
+			}
+		},
+		"IM": {
+			"callingCode": "44",
+			"examples": {
+				"fixedLine": "1624756789",
+				"mobile": "7924123456",
+				"tollFree": "8081624567",
+				"premiumRate": "9016247890",
+				"personalNumber": "7012345678",
+				"voip": "5612345678",
+				"uan": "5512345678"
+			}
+		},
+		"IN": {
+			"callingCode": "91",
+			"examples": {
+				"fixedLine": "7410410123",
+				"mobile": "8123456789",
+				"tollFree": "1800123456",
+				"premiumRate": "1861123456789",
+				"sharedCost": "18603451234",
+				"uan": "1409305260"
+			}
+		},
+		"IO": {
+			"callingCode": "246",
+			"examples": {
+				"fixedLine": "3709100",
+				"mobile": "3801234"
+			}
+		},
+		"IQ": {
+			"callingCode": "964",
+			"examples": {
+				"fixedLine": "12345678",
+				"mobile": "7912345678"
+			}
+		},
+		"IR": {
+			"callingCode": "98",
+			"examples": {
+				"fixedLine": "2123456789",
+				"mobile": "9123456789",
+				"uan": "9601"
+			}
+		},
+		"IS": {
+			"callingCode": "354",
+			"examples": {
+				"fixedLine": "4101234",
+				"mobile": "6111234",
+				"tollFree": "8001234",
+				"premiumRate": "9001234",
+				"voip": "4921234",
+				"uan": "8091234",
+				"voicemail": "6891234"
+			}
+		},
+		"IT": {
+			"callingCode": "39",
+			"examples": {
+				"fixedLine": "0212345678",
+				"mobile": "3123456789",
+				"tollFree": "800123456",
+				"premiumRate": "899123456",
+				"sharedCost": "848123456",
+				"personalNumber": "1781234567",
+				"voip": "5512345678",
+				"voicemail": "33101234501"
+			}
+		},
+		"JE": {
+			"callingCode": "44",
+			"examples": {
+				"fixedLine": "1534456789",
+				"mobile": "7797712345",
+				"pager": "7640123456",
+				"tollFree": "8007354567",
+				"premiumRate": "9018105678",
+				"personalNumber": "7015115678",
+				"voip": "5612345678",
+				"uan": "5512345678"
+			}
+		},
+		"JM": {
+			"callingCode": "1",
+			"examples": {
+				"fixedLine": "8765230123",
+				"mobile": "8762101234",
+				"tollFree": "8002123456",
+				"premiumRate": "9002123456",
+				"personalNumber": "5002345678"
+			}
+		},
+		"JO": {
+			"callingCode": "962",
+			"examples": {
+				"fixedLine": "62001234",
+				"mobile": "790123456",
+				"pager": "746612345",
+				"tollFree": "80012345",
+				"premiumRate": "90012345",
+				"sharedCost": "85012345",
+				"personalNumber": "700123456",
+				"uan": "88101234"
+			}
+		},
+		"JP": {
+			"callingCode": "81",
+			"examples": {
+				"fixedLine": "312345678",
+				"mobile": "9012345678",
+				"pager": "2012345678",
+				"tollFree": "120123456",
+				"premiumRate": "990123456",
+				"personalNumber": "601234567",
+				"voip": "5012345678",
+				"uan": "570123456"
+			}
+		},
+		"KE": {
+			"callingCode": "254",
+			"examples": {
+				"fixedLine": "202012345",
+				"mobile": "712123456",
+				"tollFree": "800223456",
+				"premiumRate": "900223456"
+			}
+		},
+		"KG": {
+			"callingCode": "996",
+			"examples": {
+				"fixedLine": "312123456",
+				"mobile": "700123456",
+				"tollFree": "800123456"
+			}
+		},
+		"KH": {
+			"callingCode": "855",
+			"examples": {
+				"fixedLine": "23756789",
+				"mobile": "91234567",
+				"tollFree": "1800123456",
+				"premiumRate": "1900123456"
+			}
+		},
+		"KI": {
+			"callingCode": "686",
+			"examples": {
+				"fixedLine": "31234",
+				"mobile": "72001234",
+				"voip": "30010000"
+			}
+		},
+		"KM": {
+			"callingCode": "269",
+			"examples": {
+				"fixedLine": "7712345",
+				"mobile": "3212345",
+				"premiumRate": "8001234"
+			}
+		},
+		"KN": {
+			"callingCode": "1",
+			"examples": {
+				"fixedLine": "8692361234",
+				"mobile": "8697652917",
+				"tollFree": "8002123456",
+				"premiumRate": "9002123456",
+				"personalNumber": "5002345678"
+			}
+		},
+		"KP": {
+			"callingCode": "850",
+			"examples": {
+				"fixedLine": "21234567",
+				"mobile": "1921234567"
+			}
+		},
+		"KR": {
+			"callingCode": "82",
+			"examples": {
+				"fixedLine": "22123456",
+				"mobile": "1020000000",
+				"pager": "1523456789",
+				"tollFree": "801234567",
+				"premiumRate": "602345678",
+				"personalNumber": "5012345678",
+				"voip": "7012345678",
+				"uan": "15441234"
+			}
+		},
+		"KW": {
+			"callingCode": "965",
+			"examples": {
+				"fixedLine": "22345678",
+				"mobile": "50012345",
+				"tollFree": "1801234"
+			}
+		},
+		"KY": {
+			"callingCode": "1",
+			"examples": {
+				"fixedLine": "3452221234",
+				"mobile": "3453231234",
+				"tollFree": "8002345678",
+				"premiumRate": "9002345678",
+				"personalNumber": "5002345678"
+			}
+		},
+		"KZ": {
+			"callingCode": "7",
+			"examples": {
+				"fixedLine": "7123456789",
+				"mobile": "7710009998",
+				"tollFree": "8001234567",
+				"premiumRate": "8091234567",
+				"personalNumber": "8081234567",
+				"voip": "7511234567"
+			}
+		},
+		"LA": {
+			"callingCode": "856",
+			"examples": {
+				"fixedLine": "21212862",
+				"mobile": "2023123456"
+			}
+		},
+		"LB": {
+			"callingCode": "961",
+			"examples": {
+				"fixedLine": "1123456",
+				"mobile": "71123456",
+				"premiumRate": "90123456",
+				"sharedCost": "80123456"
+			}
+		},
+		"LC": {
+			"callingCode": "1",
+			"examples": {
+				"fixedLine": "7584305678",
+				"mobile": "7582845678",
+				"tollFree": "8002123456",
+				"premiumRate": "9002123456",
+				"personalNumber": "5002345678"
+			}
+		},
+		"LI": {
+			"callingCode": "423",
+			"examples": {
+				"fixedLine": "2345678",
+				"mobile": "660234567",
+				"tollFree": "8002222",
+				"premiumRate": "9002222",
+				"uan": "8702812",
+				"voicemail": "697861234"
+			}
+		},
+		"LK": {
+			"callingCode": "94",
+			"examples": {
+				"fixedLine": "112345678",
+				"mobile": "712345678",
+				"uan": "197312345"
+			}
+		},
+		"LR": {
+			"callingCode": "231",
+			"examples": {
+				"fixedLine": "21234567",
+				"mobile": "770123456",
+				"premiumRate": "332021234"
+			}
+		},
+		"LS": {
+			"callingCode": "266",
+			"examples": {
+				"fixedLine": "22123456",
+				"mobile": "50123456",
+				"tollFree": "80021234"
+			}
+		},
+		"LT": {
+			"callingCode": "370",
+			"examples": {
+				"fixedLine": "31234567",
+				"mobile": "61234567",
+				"tollFree": "80012345",
+				"premiumRate": "90012345",
+				"sharedCost": "80812345",
+				"personalNumber": "70012345",
+				"voip": "80123456",
+				"uan": "70712345"
+			}
+		},
+		"LU": {
+			"callingCode": "352",
+			"examples": {
+				"fixedLine": "27123456",
+				"mobile": "628123456",
+				"tollFree": "80012345",
+				"premiumRate": "90012345",
+				"sharedCost": "80112345",
+				"voip": "20201234"
+			}
+		},
+		"LV": {
+			"callingCode": "371",
+			"examples": {
+				"fixedLine": "63123456",
+				"mobile": "21234567",
+				"tollFree": "80123456",
+				"premiumRate": "90123456",
+				"sharedCost": "81123456"
+			}
+		},
+		"LY": {
+			"callingCode": "218",
+			"examples": {
+				"fixedLine": "212345678",
+				"mobile": "912345678"
+			}
+		},
+		"MA": {
+			"callingCode": "212",
+			"examples": {
+				"fixedLine": "520123456",
+				"mobile": "650123456",
+				"tollFree": "801234567",
+				"premiumRate": "891234567",
+				"voip": "592401234"
+			}
+		},
+		"MC": {
+			"callingCode": "377",
+			"examples": {
+				"fixedLine": "99123456",
+				"mobile": "612345678",
+				"tollFree": "90123456"
+			}
+		},
+		"MD": {
+			"callingCode": "373",
+			"examples": {
+				"fixedLine": "22212345",
+				"mobile": "62112345",
+				"tollFree": "80012345",
+				"premiumRate": "90012345",
+				"sharedCost": "80812345",
+				"voip": "30123456",
+				"uan": "80312345"
+			}
+		},
+		"ME": {
+			"callingCode": "382",
+			"examples": {
+				"fixedLine": "30234567",
+				"mobile": "60123456",
+				"tollFree": "80080002",
+				"premiumRate": "94515151",
+				"voip": "78108780",
+				"uan": "77273012"
+			}
+		},
+		"MF": {
+			"callingCode": "590",
+			"examples": {
+				"fixedLine": "590271234",
+				"mobile": "690001234",
+				"tollFree": "800012345",
+				"premiumRate": "810123456",
+				"voip": "976012345"
+			}
+		},
+		"MG": {
+			"callingCode": "261",
+			"examples": {
+				"fixedLine": "202123456",
+				"mobile": "321234567",
+				"voip": "221234567"
+			}
+		},
+		"MH": {
+			"callingCode": "692",
+			"examples": {
+				"fixedLine": "2471234",
+				"mobile": "2351234",
+				"voip": "6351234"
+			}
+		},
+		"MK": {
+			"callingCode": "389",
+			"examples": {
+				"fixedLine": "22012345",
+				"mobile": "72345678",
+				"tollFree": "80012345",
+				"premiumRate": "50012345",
+				"sharedCost": "80123456"
+			}
+		},
+		"ML": {
+			"callingCode": "223",
+			"examples": {
+				"fixedLine": "20212345",
+				"mobile": "65012345",
+				"tollFree": "80012345"
+			}
+		},
+		"MM": {
+			"callingCode": "95",
+			"examples": {
+				"fixedLine": "1234567",
+				"mobile": "92123456",
+				"tollFree": "8008001234",
+				"voip": "13331234"
+			}
+		},
+		"MN": {
+			"callingCode": "976",
+			"examples": {
+				"fixedLine": "53123456",
+				"mobile": "88123456",
+				"voip": "75123456"
+			}
+		},
+		"MO": {
+			"callingCode": "853",
+			"examples": {
+				"fixedLine": "28212345",
+				"mobile": "66123456",
+				"tollFree": "0800501"
+			}
+		},
+		"MP": {
+			"callingCode": "1",
+			"examples": {
+				"fixedLine": "6702345678",
+				"mobile": "6702345678",
+				"tollFree": "8002123456",
+				"premiumRate": "9002123456",
+				"personalNumber": "5002345678"
+			}
+		},
+		"MQ": {
+			"callingCode": "596",
+			"examples": {
+				"fixedLine": "596301234",
+				"mobile": "696201234",
+				"tollFree": "800012345",
+				"premiumRate": "810123456",
+				"voip": "976612345"
+			}
+		},
+		"MR": {
+			"callingCode": "222",
+			"examples": {
+				"fixedLine": "35123456",
+				"mobile": "22123456",
+				"tollFree": "80012345"
+			}
+		},
+		"MS": {
+			"callingCode": "1",
+			"examples": {
+				"fixedLine": "6644912345",
+				"mobile": "6644923456",
+				"tollFree": "8002123456",
+				"premiumRate": "9002123456",
+				"personalNumber": "5002345678"
+			}
+		},
+		"MT": {
+			"callingCode": "356",
+			"examples": {
+				"fixedLine": "21001234",
+				"mobile": "96961234",
+				"pager": "71171234",
+				"tollFree": "80071234",
+				"premiumRate": "50037123",
+				"voip": "35501234",
+				"uan": "50112345"
+			}
+		},
+		"MU": {
+			"callingCode": "230",
+			"examples": {
+				"fixedLine": "54480123",
+				"mobile": "52512345",
+				"pager": "2190123",
+				"tollFree": "8001234",
+				"premiumRate": "3012345",
+				"voip": "3201234"
+			}
+		},
+		"MV": {
+			"callingCode": "960",
+			"examples": {
+				"fixedLine": "6701234",
+				"mobile": "7712345",
+				"tollFree": "8001234567",
+				"premiumRate": "9001234567",
+				"uan": "4001234"
+			}
+		},
+		"MW": {
+			"callingCode": "265",
+			"examples": {
+				"fixedLine": "1234567",
+				"mobile": "991234567"
+			}
+		},
+		"MX": {
+			"callingCode": "52",
+			"examples": {
+				"fixedLine": "2001234567",
+				"mobile": "2221234567",
+				"tollFree": "8001234567",
+				"premiumRate": "9001234567",
+				"sharedCost": "3001234567",
+				"personalNumber": "5001234567"
+			}
+		},
+		"MY": {
+			"callingCode": "60",
+			"examples": {
+				"fixedLine": "323856789",
+				"mobile": "123456789",
+				"tollFree": "1300123456",
+				"premiumRate": "1600123456",
+				"voip": "1546012345"
+			}
+		},
+		"MZ": {
+			"callingCode": "258",
+			"examples": {
+				"fixedLine": "21123456",
+				"mobile": "821234567",
+				"tollFree": "800123456"
+			}
+		},
+		"NA": {
+			"callingCode": "264",
+			"examples": {
+				"fixedLine": "61221234",
+				"mobile": "811234567",
+				"tollFree": "800123456",
+				"premiumRate": "870123456",
+				"voip": "88612345"
+			}
+		},
+		"NC": {
+			"callingCode": "687",
+			"examples": {
+				"fixedLine": "201234",
+				"mobile": "751234",
+				"tollFree": "050012",
+				"premiumRate": "366711"
+			}
+		},
+		"NE": {
+			"callingCode": "227",
+			"examples": {
+				"fixedLine": "20201234",
+				"mobile": "93123456",
+				"tollFree": "08123456",
+				"premiumRate": "09123456"
+			}
+		},
+		"NF": {
+			"callingCode": "672",
+			"examples": {
+				"fixedLine": "106609",
+				"mobile": "381234"
+			}
+		},
+		"NG": {
+			"callingCode": "234",
+			"examples": {
+				"fixedLine": "2033123456",
+				"mobile": "8021234567",
+				"tollFree": "80017591759",
+				"uan": "7001234567"
+			}
+		},
+		"NI": {
+			"callingCode": "505",
+			"examples": {
+				"fixedLine": "21234567",
+				"mobile": "81234567",
+				"tollFree": "18001234"
+			}
+		},
+		"NL": {
+			"callingCode": "31",
+			"examples": {
+				"fixedLine": "101234567",
+				"mobile": "612345678",
+				"pager": "662345678",
+				"tollFree": "8001234",
+				"premiumRate": "9061234",
+				"voip": "851234567",
+				"uan": "14020"
+			}
+		},
+		"NO": {
+			"callingCode": "47",
+			"examples": {
+				"fixedLine": "21234567",
+				"mobile": "40612345",
+				"tollFree": "80012345",
+				"premiumRate": "82012345",
+				"sharedCost": "81021234",
+				"personalNumber": "88012345",
+				"voip": "85012345",
+				"uan": "02000",
+				"voicemail": "81212345"
+			}
+		},
+		"NP": {
+			"callingCode": "977",
+			"examples": {
+				"fixedLine": "14567890",
+				"mobile": "9841234567",
+				"tollFree": "16600101234"
+			}
+		},
+		"NR": {
+			"callingCode": "674",
+			"examples": {
+				"fixedLine": "4441234",
+				"mobile": "5551234"
+			}
+		},
+		"NU": {
+			"callingCode": "683",
+			"examples": {
+				"fixedLine": "7012",
+				"mobile": "8884012"
+			}
+		},
+		"NZ": {
+			"callingCode": "64",
+			"examples": {
+				"fixedLine": "32345678",
+				"mobile": "211234567",
+				"tollFree": "800123456",
+				"premiumRate": "900123456",
+				"personalNumber": "701234567",
+				"uan": "83012378"
+			}
+		},
+		"OM": {
+			"callingCode": "968",
+			"examples": {
+				"fixedLine": "23123456",
+				"mobile": "92123456",
+				"tollFree": "80071234",
+				"premiumRate": "90012345"
+			}
+		},
+		"PA": {
+			"callingCode": "507",
+			"examples": {
+				"fixedLine": "2001234",
+				"mobile": "61234567",
+				"tollFree": "8001234",
+				"premiumRate": "8601234"
+			}
+		},
+		"PE": {
+			"callingCode": "51",
+			"examples": {
+				"fixedLine": "11234567",
+				"mobile": "912345678",
+				"tollFree": "80012345",
+				"premiumRate": "80512345",
+				"sharedCost": "80112345",
+				"personalNumber": "80212345"
+			}
+		},
+		"PF": {
+			"callingCode": "689",
+			"examples": {
+				"fixedLine": "40412345",
+				"mobile": "87123456",
+				"tollFree": "800012345",
+				"voip": "49901234",
+				"uan": "440123"
+			}
+		},
+		"PG": {
+			"callingCode": "675",
+			"examples": {
+				"fixedLine": "3123456",
+				"mobile": "70123456",
+				"pager": "2700123",
+				"tollFree": "1801234",
+				"voip": "2751234"
+			}
+		},
+		"PH": {
+			"callingCode": "63",
+			"examples": {
+				"fixedLine": "232345678",
+				"mobile": "9051234567",
+				"tollFree": "180012345678"
+			}
+		},
+		"PK": {
+			"callingCode": "92",
+			"examples": {
+				"fixedLine": "2123456789",
+				"mobile": "3012345678",
+				"tollFree": "80012345",
+				"premiumRate": "90012345",
+				"personalNumber": "122044444",
+				"uan": "21111825888"
+			}
+		},
+		"PL": {
+			"callingCode": "48",
+			"examples": {
+				"fixedLine": "123456789",
+				"mobile": "512345678",
+				"pager": "641234567",
+				"tollFree": "800123456",
+				"premiumRate": "701234567",
+				"sharedCost": "801234567",
+				"voip": "391234567",
+				"uan": "804123456"
+			}
+		},
+		"PM": {
+			"callingCode": "508",
+			"examples": {
+				"fixedLine": "430123",
+				"mobile": "551234",
+				"tollFree": "800012345",
+				"premiumRate": "810123456"
+			}
+		},
+		"PR": {
+			"callingCode": "1",
+			"examples": {
+				"fixedLine": "7872345678",
+				"mobile": "7872345678",
+				"tollFree": "8002345678",
+				"premiumRate": "9002345678",
+				"personalNumber": "5002345678"
+			}
+		},
+		"PS": {
+			"callingCode": "970",
+			"examples": {
+				"fixedLine": "22234567",
+				"mobile": "599123456",
+				"tollFree": "1800123456",
+				"sharedCost": "1700123456"
+			}
+		},
+		"PT": {
+			"callingCode": "351",
+			"examples": {
+				"fixedLine": "212345678",
+				"mobile": "912345678",
+				"pager": "622212345",
+				"tollFree": "800123456",
+				"premiumRate": "760123456",
+				"sharedCost": "808123456",
+				"personalNumber": "884123456",
+				"voip": "301234567",
+				"uan": "707123456",
+				"voicemail": "600110000"
+			}
+		},
+		"PW": {
+			"callingCode": "680",
+			"examples": {
+				"fixedLine": "2771234",
+				"mobile": "6201234"
+			}
+		},
+		"PY": {
+			"callingCode": "595",
+			"examples": {
+				"fixedLine": "212345678",
+				"mobile": "961456789",
+				"tollFree": "98000123456",
+				"voip": "870012345",
+				"uan": "201234567"
+			}
+		},
+		"QA": {
+			"callingCode": "974",
+			"examples": {
+				"fixedLine": "44123456",
+				"mobile": "33123456",
+				"pager": "2123456",
+				"tollFree": "8001234"
+			}
+		},
+		"RE": {
+			"callingCode": "262",
+			"examples": {
+				"fixedLine": "262161234",
+				"mobile": "692123456",
+				"tollFree": "801234567",
+				"premiumRate": "891123456",
+				"sharedCost": "810123456",
+				"voip": "939901234"
+			}
+		},
+		"RO": {
+			"callingCode": "40",
+			"examples": {
+				"fixedLine": "211234567",
+				"mobile": "712034567",
+				"tollFree": "800123456",
+				"premiumRate": "900123456",
+				"sharedCost": "801123456",
+				"uan": "372123456"
+			}
+		},
+		"RS": {
+			"callingCode": "381",
+			"examples": {
+				"fixedLine": "10234567",
+				"mobile": "601234567",
+				"tollFree": "80012345",
+				"premiumRate": "90012345",
+				"uan": "700123456"
+			}
+		},
+		"RU": {
+			"callingCode": "7",
+			"examples": {
+				"fixedLine": "3011234567",
+				"mobile": "9123456789",
+				"tollFree": "8001234567",
+				"premiumRate": "8091234567",
+				"personalNumber": "8081234567"
+			}
+		},
+		"RW": {
+			"callingCode": "250",
+			"examples": {
+				"fixedLine": "250123456",
+				"mobile": "720123456",
+				"tollFree": "800123456",
+				"premiumRate": "900123456"
+			}
+		},
+		"SA": {
+			"callingCode": "966",
+			"examples": {
+				"fixedLine": "112345678",
+				"mobile": "512345678",
+				"tollFree": "8001234567",
+				"premiumRate": "925012345",
+				"sharedCost": "920012345"
+			}
+		},
+		"SB": {
+			"callingCode": "677",
+			"examples": {
+				"fixedLine": "40123",
+				"mobile": "7421234",
+				"tollFree": "18123",
+				"voip": "51123"
+			}
+		},
+		"SC": {
+			"callingCode": "248",
+			"examples": {
+				"fixedLine": "4217123",
+				"mobile": "2510123",
+				"tollFree": "8000000",
+				"premiumRate": "8512345",
+				"voip": "6412345"
+			}
+		},
+		"SD": {
+			"callingCode": "249",
+			"examples": {
+				"fixedLine": "153123456",
+				"mobile": "911231234"
+			}
+		},
+		"SE": {
+			"callingCode": "46",
+			"examples": {
+				"fixedLine": "8123456",
+				"mobile": "701234567",
+				"pager": "740123456",
+				"tollFree": "20123456",
+				"premiumRate": "9001234567",
+				"sharedCost": "771234567",
+				"personalNumber": "751234567",
+				"uan": "102345678",
+				"voicemail": "254123456789"
+			}
+		},
+		"SG": {
+			"callingCode": "65",
+			"examples": {
+				"fixedLine": "61234567",
+				"mobile": "81234567",
+				"tollFree": "18001234567",
+				"premiumRate": "19001234567",
+				"voip": "31234567",
+				"uan": "70001234567"
+			}
+		},
+		"SH": {
+			"callingCode": "290",
+			"examples": {
+				"fixedLine": "22158",
+				"mobile": "51234",
+				"voip": "26212"
+			}
+		},
+		"SI": {
+			"callingCode": "386",
+			"examples": {
+				"fixedLine": "12345678",
+				"mobile": "31234567",
+				"tollFree": "80123456",
+				"premiumRate": "90123456",
+				"voip": "59012345"
+			}
+		},
+		"SJ": {
+			"callingCode": "47",
+			"examples": {
+				"fixedLine": "79123456",
+				"mobile": "41234567",
+				"tollFree": "80012345",
+				"premiumRate": "82012345",
+				"sharedCost": "81021234",
+				"personalNumber": "88012345",
+				"voip": "85012345",
+				"uan": "02000",
+				"voicemail": "81212345"
+			}
+		},
+		"SK": {
+			"callingCode": "421",
+			"examples": {
+				"fixedLine": "221234567",
+				"mobile": "912123456",
+				"pager": "9090123",
+				"tollFree": "800123456",
+				"premiumRate": "900123456",
+				"sharedCost": "850123456",
+				"voip": "690123456",
+				"uan": "961234567"
+			}
+		},
+		"SL": {
+			"callingCode": "232",
+			"examples": {
+				"fixedLine": "22221234",
+				"mobile": "25123456"
+			}
+		},
+		"SM": {
+			"callingCode": "378",
+			"examples": {
+				"fixedLine": "0549886377",
+				"mobile": "66661212",
+				"premiumRate": "71123456",
+				"voip": "58001110"
+			}
+		},
+		"SN": {
+			"callingCode": "221",
+			"examples": {
+				"fixedLine": "301012345",
+				"mobile": "701234567",
+				"tollFree": "800123456",
+				"premiumRate": "884123456",
+				"sharedCost": "810123456",
+				"voip": "933301234"
+			}
+		},
+		"SO": {
+			"callingCode": "252",
+			"examples": {
+				"fixedLine": "4012345",
+				"mobile": "71123456"
+			}
+		},
+		"SR": {
+			"callingCode": "597",
+			"examples": {
+				"fixedLine": "211234",
+				"mobile": "7412345",
+				"tollFree": "8012345",
+				"premiumRate": "9012345",
+				"voip": "561234"
+			}
+		},
+		"SS": {
+			"callingCode": "211",
+			"examples": {
+				"fixedLine": "181234567",
+				"mobile": "977123456"
+			}
+		},
+		"ST": {
+			"callingCode": "239",
+			"examples": {
+				"fixedLine": "2221234",
+				"mobile": "9812345"
+			}
+		},
+		"SV": {
+			"callingCode": "503",
+			"examples": {
+				"fixedLine": "21234567",
+				"mobile": "70123456",
+				"tollFree": "8001234",
+				"premiumRate": "9001234"
+			}
+		},
+		"SX": {
+			"callingCode": "1",
+			"examples": {
+				"fixedLine": "7215425678",
+				"mobile": "7215205678",
+				"tollFree": "8002123456",
+				"premiumRate": "9002123456",
+				"personalNumber": "5002345678"
+			}
+		},
+		"SY": {
+			"callingCode": "963",
+			"examples": {
+				"fixedLine": "112345678",
+				"mobile": "944567890"
+			}
+		},
+		"SZ": {
+			"callingCode": "268",
+			"examples": {
+				"fixedLine": "22171234",
+				"mobile": "76123456",
+				"tollFree": "08001234",
+				"premiumRate": "900012345",
+				"voip": "70012345"
+			}
+		},
+		"TA": {
+			"callingCode": "290",
+			"examples": {
+				"fixedLine": "8999"
+			}
+		},
+		"TC": {
+			"callingCode": "1",
+			"examples": {
+				"fixedLine": "6497121234",
+				"mobile": "6492311234",
+				"tollFree": "8002345678",
+				"premiumRate": "9002345678",
+				"personalNumber": "5002345678",
+				"voip": "6497101234"
+			}
+		},
+		"TD": {
+			"callingCode": "235",
+			"examples": {
+				"fixedLine": "22501234",
+				"mobile": "63012345"
+			}
+		},
+		"TG": {
+			"callingCode": "228",
+			"examples": {
+				"fixedLine": "22212345",
+				"mobile": "90112345"
+			}
+		},
+		"TH": {
+			"callingCode": "66",
+			"examples": {
+				"fixedLine": "21234567",
+				"mobile": "812345678",
+				"tollFree": "1800123456",
+				"premiumRate": "1900123456",
+				"voip": "601234567"
+			}
+		},
+		"TJ": {
+			"callingCode": "992",
+			"examples": {
+				"fixedLine": "372123456",
+				"mobile": "917123456"
+			}
+		},
+		"TK": {
+			"callingCode": "690",
+			"examples": {
+				"fixedLine": "3101",
+				"mobile": "7290"
+			}
+		},
+		"TL": {
+			"callingCode": "670",
+			"examples": {
+				"fixedLine": "2112345",
+				"mobile": "77212345",
+				"tollFree": "8012345",
+				"premiumRate": "9012345",
+				"personalNumber": "7012345"
+			}
+		},
+		"TM": {
+			"callingCode": "993",
+			"examples": {
+				"fixedLine": "12345678",
+				"mobile": "66123456"
+			}
+		},
+		"TN": {
+			"callingCode": "216",
+			"examples": {
+				"fixedLine": "30010123",
+				"mobile": "20123456",
+				"tollFree": "80101234",
+				"premiumRate": "88123456",
+				"sharedCost": "81101234"
+			}
+		},
+		"TO": {
+			"callingCode": "676",
+			"examples": {
+				"fixedLine": "20123",
+				"mobile": "7715123",
+				"tollFree": "0800222",
+				"voip": "5510123"
+			}
+		},
+		"TR": {
+			"callingCode": "90",
+			"examples": {
+				"fixedLine": "2123456789",
+				"mobile": "5012345678",
+				"pager": "5123456789",
+				"tollFree": "8001234567",
+				"premiumRate": "9001234567",
+				"personalNumber": "5922121234",
+				"voip": "8500123456",
+				"uan": "4441444"
+			}
+		},
+		"TT": {
+			"callingCode": "1",
+			"examples": {
+				"fixedLine": "8682211234",
+				"mobile": "8682911234",
+				"tollFree": "8002345678",
+				"premiumRate": "9002345678",
+				"personalNumber": "5002345678",
+				"voicemail": "8686191234"
+			}
+		},
+		"TV": {
+			"callingCode": "688",
+			"examples": {
+				"fixedLine": "20123",
+				"mobile": "901234"
+			}
+		},
+		"TW": {
+			"callingCode": "886",
+			"examples": {
+				"fixedLine": "221234567",
+				"mobile": "912345678",
+				"tollFree": "800123456",
+				"premiumRate": "203123456",
+				"personalNumber": "990123456",
+				"voip": "7012345678",
+				"uan": "500123456"
+			}
+		},
+		"TZ": {
+			"callingCode": "255",
+			"examples": {
+				"fixedLine": "222345678",
+				"mobile": "621234567",
+				"tollFree": "800123456",
+				"premiumRate": "900123456",
+				"sharedCost": "840123456",
+				"voip": "412345678"
+			}
+		},
+		"UA": {
+			"callingCode": "380",
+			"examples": {
+				"fixedLine": "311234567",
+				"mobile": "501234567",
+				"tollFree": "800123456",
+				"premiumRate": "900212345",
+				"voip": "891234567"
+			}
+		},
+		"UG": {
+			"callingCode": "256",
+			"examples": {
+				"fixedLine": "312345678",
+				"mobile": "712345678",
+				"tollFree": "800123456",
+				"premiumRate": "901123456"
+			}
+		},
+		"US": {
+			"callingCode": "1",
+			"examples": {
+				"fixedLine": "2015550123",
+				"mobile": "2015550123",
+				"tollFree": "8002345678",
+				"premiumRate": "9002345678",
+				"personalNumber": "5002345678"
+			}
+		},
+		"UY": {
+			"callingCode": "598",
+			"examples": {
+				"fixedLine": "21231234",
+				"mobile": "94231234",
+				"tollFree": "8001234",
+				"premiumRate": "9001234",
+				"uan": "21123"
+			}
+		},
+		"UZ": {
+			"callingCode": "998",
+			"examples": {
+				"fixedLine": "669050123",
+				"mobile": "912345678"
+			}
+		},
+		"VA": {
+			"callingCode": "39",
+			"examples": {
+				"fixedLine": "0669812345",
+				"mobile": "3123456789",
+				"tollFree": "800123456",
+				"premiumRate": "899123456",
+				"sharedCost": "848123456",
+				"personalNumber": "1781234567",
+				"voip": "5512345678",
+				"voicemail": "33101234501"
+			}
+		},
+		"VC": {
+			"callingCode": "1",
+			"examples": {
+				"fixedLine": "7842661234",
+				"mobile": "7844301234",
+				"tollFree": "8002345678",
+				"premiumRate": "9002345678",
+				"personalNumber": "5002345678",
+				"voip": "7845101234"
+			}
+		},
+		"VE": {
+			"callingCode": "58",
+			"examples": {
+				"fixedLine": "2121234567",
+				"mobile": "4121234567",
+				"tollFree": "8001234567",
+				"premiumRate": "9001234567",
+				"uan": "5010123456"
+			}
+		},
+		"VG": {
+			"callingCode": "1",
+			"examples": {
+				"fixedLine": "2842291234",
+				"mobile": "2843001234",
+				"tollFree": "8002345678",
+				"premiumRate": "9002345678",
+				"personalNumber": "5002345678"
+			}
+		},
+		"VI": {
+			"callingCode": "1",
+			"examples": {
+				"fixedLine": "3406421234",
+				"mobile": "3406421234",
+				"tollFree": "8002345678",
+				"premiumRate": "9002345678",
+				"personalNumber": "5002345678"
+			}
+		},
+		"VN": {
+			"callingCode": "84",
+			"examples": {
+				"fixedLine": "2101234567",
+				"mobile": "912345678",
+				"tollFree": "1800123456",
+				"premiumRate": "1900123456",
+				"voip": "672012345",
+				"uan": "1992000"
+			}
+		},
+		"VU": {
+			"callingCode": "678",
+			"examples": {
+				"fixedLine": "22123",
+				"mobile": "5912345",
+				"tollFree": "81123",
+				"voip": "9010123",
+				"uan": "30123"
+			}
+		},
+		"WF": {
+			"callingCode": "681",
+			"examples": {
+				"fixedLine": "721234",
+				"mobile": "821234",
+				"tollFree": "800012345",
+				"voip": "921234",
+				"voicemail": "401234"
+			}
+		},
+		"WS": {
+			"callingCode": "685",
+			"examples": {
+				"fixedLine": "22123",
+				"mobile": "7212345",
+				"tollFree": "800123"
+			}
+		},
+		"XK": {
+			"callingCode": "383",
+			"examples": {
+				"fixedLine": "28012345",
+				"mobile": "43201234",
+				"tollFree": "80001234",
+				"premiumRate": "90001234"
+			}
+		},
+		"YE": {
+			"callingCode": "967",
+			"examples": {
+				"fixedLine": "1234567",
+				"mobile": "712345678"
+			}
+		},
+		"YT": {
+			"callingCode": "262",
+			"examples": {
+				"fixedLine": "269601234",
+				"mobile": "639012345",
+				"tollFree": "801234567",
+				"voip": "939801234"
+			}
+		},
+		"ZA": {
+			"callingCode": "27",
+			"examples": {
+				"fixedLine": "101234567",
+				"mobile": "711234567",
+				"tollFree": "801234567",
+				"premiumRate": "862345678",
+				"sharedCost": "860123456",
+				"voip": "871234567",
+				"uan": "861123456"
+			}
+		},
+		"ZM": {
+			"callingCode": "260",
+			"examples": {
+				"fixedLine": "211234567",
+				"mobile": "955123456",
+				"tollFree": "800123456",
+				"voip": "630123456"
+			}
+		},
+		"ZW": {
+			"callingCode": "263",
+			"examples": {
+				"fixedLine": "1312345",
+				"mobile": "712345678",
+				"tollFree": "8001234",
+				"voip": "8686123456"
+			}
+		}
+	}
+}

@@ -1,0 +1,381 @@
+{
+	"$comment": "Calibration corpus of the postal-address transformation. Public places only (town halls, institutions, monuments) — no private person's address. `expected` is the verdict a careful human gives, decided before looking at the algorithm's output: `verified`, `corrected`, `imprecise`, `mismatch`, `ambiguous`, `not_found`; `rejected` accepts any of the last four; `parse:<CODE>` means the input is refused before any lookup. `query` is what the input parser sends to the geocoder: the corpus test checks it, the recorder uses it.",
+	"cases": [
+		{
+			"id": "V01",
+			"input": "12 rue de la Paix 75002 Paris",
+			"expected": "verified",
+			"note": "a plain, complete address",
+			"query": "12 rue de la Paix 75002 Paris"
+		},
+		{
+			"id": "V02",
+			"input": "8 bd du port amiens",
+			"expected": "verified",
+			"note": "abbreviated street type, no postcode; correct answer scored only 0.597 on 2026-10-25",
+			"query": "8 bd du port amiens"
+		},
+		{
+			"id": "V03",
+			"input": "20 avenue de Ségur 75007 Paris",
+			"expected": "verified",
+			"query": "20 avenue de Ségur 75007 Paris"
+		},
+		{
+			"id": "V04",
+			"input": "55 rue du Faubourg Saint-Honoré 75008 Paris",
+			"expected": "verified",
+			"note": "Élysée Palace",
+			"query": "55 rue du Faubourg Saint-Honoré 75008 Paris"
+		},
+		{
+			"id": "V05",
+			"input": "126 rue de l'Université 75007 Paris",
+			"expected": "verified",
+			"note": "National Assembly",
+			"query": "126 rue de l'Université 75007 Paris"
+		},
+		{
+			"id": "V06",
+			"input": "15 rue de Vaugirard 75006 Paris",
+			"expected": "verified",
+			"note": "Senate",
+			"query": "15 rue de Vaugirard 75006 Paris"
+		},
+		{
+			"id": "V07",
+			"input": "5 avenue Anatole France 75007 Paris",
+			"expected": "verified",
+			"note": "Eiffel Tower",
+			"query": "5 avenue Anatole France 75007 Paris"
+		},
+		{
+			"id": "V08",
+			"input": "1 place de la Comédie 69001 Lyon",
+			"expected": "verified",
+			"note": "Lyon town hall",
+			"query": "1 place de la Comédie 69001 Lyon"
+		},
+		{
+			"id": "V09",
+			"input": "1 place du Capitole 31000 Toulouse",
+			"expected": "verified",
+			"note": "Toulouse town hall",
+			"query": "1 place du Capitole 31000 Toulouse"
+		},
+		{
+			"id": "V10",
+			"input": "2 rue de l'Hôtel de Ville 44000 Nantes",
+			"expected": "verified",
+			"note": "Nantes town hall",
+			"query": "2 rue de l'Hôtel de Ville 44000 Nantes"
+		},
+		{
+			"id": "V11",
+			"input": "Place Stanislas 54000 Nancy",
+			"expected": "verified",
+			"note": "no house number: street level is the most the input asks",
+			"query": "Place Stanislas 54000 Nancy"
+		},
+		{
+			"id": "V12",
+			"input": "Place Bellecour 69002 Lyon",
+			"expected": "verified",
+			"query": "Place Bellecour 69002 Lyon"
+		},
+		{
+			"id": "V13",
+			"input": "Quai du Port 13002 Marseille",
+			"expected": "verified",
+			"query": "Quai du Port 13002 Marseille"
+		},
+		{
+			"id": "V14",
+			"input": "Place Pey Berland 33000 Bordeaux",
+			"expected": "verified",
+			"query": "Place Pey Berland 33000 Bordeaux"
+		},
+		{
+			"id": "V15",
+			"input": "Place de la Victoire 97400 Saint-Denis",
+			"expected": "rejected",
+			"note": "the base knows an avenue of that name, not a square: another street, never accepted (expectation revised on 2026-10-25 after reading the base)",
+			"query": "Place de la Victoire 97400 Saint-Denis"
+		},
+		{
+			"id": "V16",
+			"input": "Cours Napoléon 20000 Ajaccio",
+			"expected": "verified",
+			"note": "Corsica",
+			"query": "Cours Napoléon 20000 Ajaccio"
+		},
+		{
+			"id": "V17",
+			"input": "Mairie de Lille\nPlace Augustin Laurent\n59000 Lille",
+			"expected": "corrected",
+			"note": "the town hall square is in 59800, not 59000: postcode corrected (expectation revised on 2026-10-25 after reading the base)",
+			"query": "Place Augustin Laurent 59000 Lille"
+		},
+		{
+			"id": "V18",
+			"input": "Appartement 12\nBâtiment B\n10 rue de la Paix\n75002 Paris",
+			"expected": "verified",
+			"note": "line 2 and line 3 complements, kept and never sent",
+			"query": "10 rue de la Paix 75002 Paris"
+		},
+		{
+			"id": "V19",
+			"input": {
+				"street": "126 rue de l'Université",
+				"postcode": "75007",
+				"city": "Paris"
+			},
+			"expected": "verified",
+			"note": "object input",
+			"query": "126 rue de l'Université 75007 Paris"
+		},
+		{
+			"id": "V20",
+			"input": {
+				"address": "1 place du Capitole",
+				"postalCode": "31000",
+				"city": "Toulouse",
+				"country": "France"
+			},
+			"expected": "verified",
+			"note": "object input with a country",
+			"query": "1 place du Capitole 31000 Toulouse"
+		},
+		{
+			"id": "V21",
+			"input": "55 r du fbg st honoré 75008 paris",
+			"expected": "verified",
+			"note": "abbreviations everywhere",
+			"query": "55 r du fbg st honoré 75008 paris"
+		},
+		{
+			"id": "V22",
+			"input": "20 avenue de Ségur, 75007 Paris, France",
+			"expected": "verified",
+			"note": "commas and a trailing country",
+			"query": "20 avenue de Ségur 75007 Paris"
+		},
+		{
+			"id": "V23",
+			"input": "1 place du Maréchal de Lattre de Tassigny 75016 Paris",
+			"expected": "imprecise",
+			"note": "the base knows the square but not its number 1 (and writes postcode 75116) (expectation revised on 2026-10-25 after reading the base)",
+			"query": "1 place du Maréchal de Lattre de Tassigny 75016 Paris"
+		},
+		{
+			"id": "V24",
+			"input": "12 rue de la Paix 75002 Paris 2e",
+			"expected": "verified",
+			"note": "district written in the city",
+			"query": "12 rue de la Paix 75002 Paris 2e"
+		},
+		{
+			"id": "V25",
+			"input": "1 place du capitole toulouse",
+			"expected": "verified",
+			"note": "no postcode: completed, not corrected",
+			"query": "1 place du capitole toulouse"
+		},
+		{
+			"id": "V26",
+			"input": "10 appt 3 rue de la Paix 75002 Paris",
+			"expected": "rejected",
+			"note": "garbled single line: the parser must not invent a street",
+			"query": "10 appt 3 rue de la Paix 75002 Paris"
+		},
+		{
+			"id": "V27",
+			"input": "Place de la Mairie 42230 Saint-Étienne",
+			"expected": "verified",
+			"note": "former municipality (Saint-Victor-sur-Loire): it goes on line 5",
+			"query": "Place de la Mairie 42230 Saint-Étienne"
+		},
+		{
+			"id": "V28",
+			"input": "Place Napoléon 50100 Cherbourg-en-Cotentin",
+			"expected": "verified",
+			"note": "merged municipality: line 5 carries the former one if the base names it",
+			"query": "Place Napoléon 50100 Cherbourg-en-Cotentin"
+		},
+		{
+			"id": "C01",
+			"input": "12 rue de la Pais 75002 Paris",
+			"expected": "corrected",
+			"note": "spelling of the street",
+			"query": "12 rue de la Pais 75002 Paris"
+		},
+		{
+			"id": "C02",
+			"input": "126 rue de l'Université 75008 Paris",
+			"expected": "corrected",
+			"note": "wrong postcode, same department",
+			"query": "126 rue de l'Université 75008 Paris"
+		},
+		{
+			"id": "C03",
+			"input": "15 rue de Vaugirard 75006 Pari",
+			"expected": "corrected",
+			"note": "spelling of the city",
+			"query": "15 rue de Vaugirard 75006 Pari"
+		},
+		{
+			"id": "C04",
+			"input": "20 avenue de Ségur 75015 Paris",
+			"expected": "imprecise",
+			"note": "number 20 is not in 75015: the base answers the avenue without a number (expectation revised on 2026-10-25 after reading the base)",
+			"query": "20 avenue de Ségur 75015 Paris"
+		},
+		{
+			"id": "C05",
+			"input": "place de Gaulle 59800 Lille",
+			"expected": "corrected",
+			"note": "name shortened by the user: every typed word is in the official name, which holds more",
+			"query": "place de Gaulle 59800 Lille"
+		},
+		{
+			"id": "I01",
+			"input": "1 bis rue des Écoles 75005 Paris",
+			"expected": "imprecise",
+			"note": "number unknown to the base; the second answer is a house number on another street",
+			"query": "1 bis rue des Écoles 75005 Paris"
+		},
+		{
+			"id": "I02",
+			"input": "999 rue de Rivoli 75001 Paris",
+			"expected": "imprecise",
+			"note": "number that does not exist",
+			"query": "999 rue de Rivoli 75001 Paris"
+		},
+		{
+			"id": "I03",
+			"input": "250 rue de la Paix 75002 Paris",
+			"expected": "imprecise",
+			"note": "number that does not exist",
+			"query": "250 rue de la Paix 75002 Paris"
+		},
+		{
+			"id": "M01",
+			"input": "3 bis avenue du Général de Gaulle 59000 Lille",
+			"expected": "mismatch",
+			"note": "the base answers a square, in another postcode, without a number (0.575 on 2026-10-25)",
+			"query": "3 bis avenue du Général de Gaulle 59000 Lille"
+		},
+		{
+			"id": "M02",
+			"input": "5 rue Anatole France 75007 Paris",
+			"expected": "rejected",
+			"note": "it is an avenue in Paris; a street of that name exists in other towns",
+			"query": "5 rue Anatole France 75007 Paris"
+		},
+		{
+			"id": "M03",
+			"input": "55 rue du Faubourg Saint-Honoré 13001 Marseille",
+			"expected": "rejected",
+			"note": "a Paris street with a Marseille postcode and city",
+			"query": "55 rue du Faubourg Saint-Honoré 13001 Marseille"
+		},
+		{
+			"id": "M04",
+			"input": "15 rue de Vaugirard 69002 Lyon",
+			"expected": "rejected",
+			"note": "a Paris street with a Lyon postcode and city",
+			"query": "15 rue de Vaugirard 69002 Lyon"
+		},
+		{
+			"id": "M05",
+			"input": "8 bd du port lille",
+			"expected": "rejected",
+			"note": "the street of V02, in another city",
+			"query": "8 bd du port lille"
+		},
+		{
+			"id": "M06",
+			"input": "12 rue de la Paix Royale 75002 Paris",
+			"expected": "rejected",
+			"note": "an extra word that names another real street (rue Royale): the name shares too little to be the same street",
+			"query": "12 rue de la Paix Royale 75002 Paris"
+		},
+		{
+			"id": "A01",
+			"input": "1 rue de la Gare",
+			"expected": "rejected",
+			"note": "thousands of towns have one",
+			"query": "1 rue de la Gare"
+		},
+		{
+			"id": "A02",
+			"input": "Place de la Mairie",
+			"expected": "rejected",
+			"query": "Place de la Mairie"
+		},
+		{
+			"id": "A03",
+			"input": "12 grande rue",
+			"expected": "rejected",
+			"query": "12 grande rue"
+		},
+		{
+			"id": "N01",
+			"input": "azertyuiop qsdfghjklm",
+			"expected": "rejected",
+			"query": "azertyuiop qsdfghjklm"
+		},
+		{
+			"id": "N02",
+			"input": "999 rue imaginaire du docteur personne 75001 Paris",
+			"expected": "rejected",
+			"query": "999 rue imaginaire du docteur personne 75001 Paris"
+		},
+		{
+			"id": "P01",
+			"input": "75 rue de Vaugirard 75270 Paris Cedex 06",
+			"expected": "parse:FT_ADDRESS_SPECIAL_DISTRIBUTION"
+		},
+		{
+			"id": "P02",
+			"input": "BP 18\n33506 Libourne Cedex",
+			"expected": "parse:FT_ADDRESS_SPECIAL_DISTRIBUTION"
+		},
+		{
+			"id": "P03",
+			"input": "10 Downing Street, London, United Kingdom",
+			"expected": "parse:FT_ADDRESS_COUNTRY_UNSUPPORTED"
+		},
+		{
+			"id": "P04",
+			"input": {
+				"street": "1600 Pennsylvania Avenue NW",
+				"city": "Washington",
+				"country": "US"
+			},
+			"expected": "parse:FT_ADDRESS_COUNTRY_UNSUPPORTED"
+		},
+		{
+			"id": "P05",
+			"input": 42,
+			"expected": "parse:FT_ADDRESS_INPUT_UNREADABLE"
+		},
+		{
+			"id": "P06",
+			"input": "75002 Paris",
+			"expected": "parse:FT_ADDRESS_INPUT_UNREADABLE"
+		},
+		{
+			"id": "P07",
+			"input": "",
+			"expected": "parse:FT_VALUE_EMPTY"
+		},
+		{
+			"id": "P08",
+			"input": {
+				"foo": "bar"
+			},
+			"expected": "parse:FT_ADDRESS_INPUT_UNREADABLE"
+		}
+	]
+}

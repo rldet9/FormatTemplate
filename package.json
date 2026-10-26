@@ -1,54 +1,69 @@
 {
-  "name": "@rderet/n8n-nodes-format-template",
-  "version": "0.1.0",
-  "description": "n8n node for data transformation and formatting with extensible handlers.",
-  "keywords": [
-    "n8n-community-node-package",
-    "n8n",
-    "data-transformation",
-    "formatting",
-    "text-case",
-    "phone-formatting",
-    "country-codes"
-  ],
-  "license": "MIT",
-  "homepage": "https://github.com/rldet9/FormatTemplate",
-  "author": {
-    "name": "Raphael Deret",
-    "email": "raphael.deret@mixtrio.net"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/rldet9/FormatTemplate.git"
-  },
-  "scripts": {
-    "build": "n8n-node build",
-    "build:watch": "tsc --watch",
-    "dev": "n8n-node dev",
-    "lint": "n8n-node lint",
-    "lint:fix": "n8n-node lint --fix",
-    "release": "n8n-node release",
-    "prepublishOnly": "n8n-node prerelease"
-  },
-  "files": [
-    "dist"
-  ],
-  "n8n": {
-    "n8nNodesApiVersion": 1,
-    "strict": true,
-    "credentials": [],
-    "nodes": [
-      "dist/nodes/FormatTemplate/FormatTemplate.node.js"
-    ]
-  },
-  "devDependencies": {
-    "@n8n/node-cli": "*",
-    "eslint": "9.32.0",
-    "prettier": "3.6.2",
-    "release-it": "^19.0.4",
-    "typescript": "5.9.2"
-  },
-  "peerDependencies": {
-    "n8n-workflow": "*"
-  }
+	"name": "@rderet/n8n-nodes-format-template",
+	"version": "1.0.0",
+	"description": "n8n node that normalizes fields in place: phone numbers, text case, ISO country codes, and French postal addresses checked against the national address base.",
+	"keywords": [
+		"n8n-community-node-package",
+		"n8n",
+		"data-normalization",
+		"phone-formatting",
+		"text-case",
+		"country-codes",
+		"postal-address",
+		"address-verification",
+		"geocoding",
+		"france"
+	],
+	"license": "MIT",
+	"homepage": "https://github.com/rldet9/FormatTemplate#readme",
+	"bugs": {
+		"url": "https://github.com/rldet9/FormatTemplate/issues"
+	},
+	"author": {
+		"name": "Raphael Deret",
+		"email": "raphael.deret@mixtrio.net"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/rldet9/FormatTemplate.git"
+	},
+	"engines": {
+		"node": ">=20.15"
+	},
+	"scripts": {
+		"build": "n8n-node build",
+		"build:watch": "tsc --watch",
+		"dev": "n8n-node dev",
+		"lint": "n8n-node lint",
+		"lint:fix": "n8n-node lint --fix",
+		"test": "jest",
+		"prepublishOnly": "n8n-node prerelease"
+	},
+	"files": [
+		"dist",
+		"NOTICE",
+		"LICENSES"
+	],
+	"n8n": {
+		"n8nNodesApiVersion": 1,
+		"strict": true,
+		"credentials": [],
+		"nodes": [
+			"dist/nodes/FormatTemplate/FormatTemplate.node.js"
+		]
+	},
+	"devDependencies": {
+		"@n8n/node-cli": "^0.13.0",
+		"@types/jest": "^30.0.0",
+		"@types/node": "^25.0.10",
+		"eslint": "9.32.0",
+		"jest": "^30.2.0",
+		"n8n-workflow": "^1.120.7",
+		"prettier": "3.6.2",
+		"ts-jest": "^29.4.6",
+		"typescript": "5.9.2"
+	},
+	"peerDependencies": {
+		"n8n-workflow": "*"
+	}
 }

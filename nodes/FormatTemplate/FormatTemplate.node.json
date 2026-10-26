@@ -1,18 +1,14 @@
 {
-	"node": "n8n-nodes-base.FormatTemplate",
-	"nodeVersion": "1.0",
+	"node": "@rderet/n8n-nodes-format-template.formatTemplate",
+	"nodeVersion": "6.0",
 	"codexVersion": "1.0",
-	"categories": ["Miscellaneous"],
+	"categories": ["Data Transformation"],
 	"resources": {
-		"credentialDocumentation": [
-			{
-				"url": ""
-			}
-		],
 		"primaryDocumentation": [
 			{
-				"url": ""
+				"url": "https://github.com/rldet9/FormatTemplate#readme"
 			}
 		]
-	}
+	},
+	"alias": ["format", "phone", "country", "iso2", "case", "address", "postal", "geocoding", "normalize", "normalisation"]
 }
