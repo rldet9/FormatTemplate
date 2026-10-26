@@ -1,6 +1,6 @@
 # Format Template — node communautaire n8n
 
-[![npm](https://img.shields.io/npm/v/@rderet/n8n-nodes-format-template)](https://www.npmjs.com/package/@rderet/n8n-nodes-format-template)
+[![npm](https://img.shields.io/npm/v/@mixtrio/n8n-nodes-format-template)](https://www.npmjs.com/package/@mixtrio/n8n-nodes-format-template)
 [![CI](https://github.com/rldet9/FormatTemplate/actions/workflows/ci.yml/badge.svg)](https://github.com/rldet9/FormatTemplate/actions/workflows/ci.yml)
 [![Licence : MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.md)
 
@@ -37,8 +37,13 @@ selon la norme postale.
 ## Installation
 
 Dans n8n : **Settings → Community Nodes → Install**, puis saisir
-`@rderet/n8n-nodes-format-template`. Voir le guide de n8n sur
+`@mixtrio/n8n-nodes-format-template`. Voir le guide de n8n sur
 [l'installation des nodes communautaires](https://docs.n8n.io/integrations/community-nodes/installation/).
+
+Vous venez de `@rderet/n8n-nodes-format-template` (0.1.x, déprécié) ? n8n nomme un node d'après son paquet : les
+deux s'installent côte à côte. Pour déplacer un workflow, remplacez `@rderet/n8n-nodes-format-template.formatTemplate`
+par `@mixtrio/n8n-nodes-format-template.formatTemplate` dans son JSON. Ses nodes gardent la typeVersion 5 ; le seul
+changement qu'ils voient est la résolution hors ligne des noms de pays.
 
 Développé et testé avec n8n 2.x.
 

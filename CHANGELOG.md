@@ -9,7 +9,19 @@ the typeVersion it was created with, whatever the package version.
 
 ## [1.0.0] — 2026-10-26
 
-A rewrite. Existing workflows keep working on typeVersion 5; new nodes get typeVersion 6.
+A rewrite, under a new package name. A node keeps the typeVersion it was saved with:
+typeVersion 5 keeps the behaviour of 0.1.x, except that country names now resolve offline (see
+*Changed*), and new nodes get typeVersion 6.
+
+**New package name: `@mixtrio/n8n-nodes-format-template`.**
+
+- Versions 0.1.x were published as `@rderet/n8n-nodes-format-template`, now deprecated.
+- n8n names a community node after its package. The new package therefore installs alongside the old one, and
+  its node is a different node type.
+- A workflow built with 0.1.x keeps running on the old package until its nodes are moved. To move one,
+  replace `@rderet/n8n-nodes-format-template.formatTemplate` with
+  `@mixtrio/n8n-nodes-format-template.formatTemplate` in the workflow's JSON. The node keeps its
+  typeVersion 5.
 
 ### Added
 

@@ -52,7 +52,7 @@
       },
       "id": "5ab6b682-c00a-5890-b6c9-f3aab51a91f6",
       "name": "Format Template",
-      "type": "@rderet/n8n-nodes-format-template.formatTemplate",
+      "type": "@mixtrio/n8n-nodes-format-template.formatTemplate",
       "typeVersion": 6,
       "position": [
         440,

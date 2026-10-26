@@ -1,6 +1,6 @@
 # Format Template — n8n community node
 
-[![npm](https://img.shields.io/npm/v/@rderet/n8n-nodes-format-template)](https://www.npmjs.com/package/@rderet/n8n-nodes-format-template)
+[![npm](https://img.shields.io/npm/v/@mixtrio/n8n-nodes-format-template)](https://www.npmjs.com/package/@mixtrio/n8n-nodes-format-template)
 [![CI](https://github.com/rldet9/FormatTemplate/actions/workflows/ci.yml/badge.svg)](https://github.com/rldet9/FormatTemplate/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.md)
 
@@ -36,8 +36,13 @@ postal standard.
 ## Installation
 
 In n8n: **Settings → Community Nodes → Install**, then enter
-`@rderet/n8n-nodes-format-template`. See n8n's guide to
+`@mixtrio/n8n-nodes-format-template`. See n8n's guide to
 [installing community nodes](https://docs.n8n.io/integrations/community-nodes/installation/).
+
+Coming from `@rderet/n8n-nodes-format-template` (0.1.x, deprecated)? n8n names a node after its package, so the
+two install side by side. Move a workflow by replacing `@rderet/n8n-nodes-format-template.formatTemplate` with
+`@mixtrio/n8n-nodes-format-template.formatTemplate` in its JSON. Its nodes keep typeVersion 5; the one change
+they see is that country names now resolve offline.
 
 Developed and tested against n8n 2.x.
 

@@ -1,5 +1,5 @@
 {
-	"name": "@rderet/n8n-nodes-format-template",
+	"name": "@mixtrio/n8n-nodes-format-template",
 	"version": "1.0.0",
 	"description": "n8n node that normalizes fields in place: phone numbers, text case, ISO country codes, and French postal addresses checked against the national address base.",
 	"keywords": [
