@@ -1,5 +1,5 @@
 {
-	"node": "@rderet/n8n-nodes-format-template.formatTemplate",
+	"node": "@mixtrio/n8n-nodes-format-template.formatTemplate",
 	"nodeVersion": "6.0",
 	"codexVersion": "1.0",
 	"categories": ["Data Transformation"],

@@ -5,7 +5,8 @@ name: Release
 # Staged Packages > Approve, or `npm stage approve <stage-id>`. Nothing reaches the
 # registry without that approval.
 # Authentication: the repository secret NPM_TOKEN, a granular npm token with read and
-# write (or stage-only) access to this package only. It needs no "Bypass 2FA", which
+# write (or stage-only) access to this package only — or to the @mixtrio scope, until
+# the package's first version exists. It needs no "Bypass 2FA", which
 # npm is withdrawing from direct publishing. Granular write tokens expire after 90 days
 # at most: the first step fails early when it has.
 
