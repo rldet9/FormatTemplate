@@ -1,9 +1,13 @@
 name: Release
 
-# Publishes to npm with a provenance attestation when a version tag is pushed.
-# Authentication: the repository secret NPM_TOKEN, a granular npm token with write
-# access to this package only, created with "Bypass 2FA". Granular write tokens
-# expire after 90 days at most: the first step fails early when it has.
+# Stages the package on npm, with a provenance attestation, when a version tag is pushed.
+# A maintainer then publishes it by approving the staged version with 2FA: on npmjs.com,
+# Staged Packages > Approve, or `npm stage approve <stage-id>`. Nothing reaches the
+# registry without that approval.
+# Authentication: the repository secret NPM_TOKEN, a granular npm token with read and
+# write (or stage-only) access to this package only. It needs no "Bypass 2FA", which
+# npm is withdrawing from direct publishing. Granular write tokens expire after 90 days
+# at most: the first step fails early when it has.
 
 on:
   push:
@@ -28,12 +32,17 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
           cache: npm
 
+      - name: Use npm 11 (staged publishing needs 11.15.0 or later)
+        run: |
+          npm install --global npm@11
+          node -e "const [a, b] = process.argv[1].split('.').map(Number); if (a < 11 || (a === 11 && b < 15)) { console.error('npm ' + process.argv[1] + ' is too old for npm stage publish'); process.exit(1); }" "$(npm --version)"
+
       - name: Check the npm token
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           if ! npm whoami; then
-            echo "::error::The NPM_TOKEN secret is missing, revoked or expired. Create a new granular token on npmjs.com (write access to this package, Bypass 2FA) and update the repository secret."
+            echo "::error::The NPM_TOKEN secret is missing, revoked or expired. Create a new granular token on npmjs.com (read and write access to this package) and update the repository secret."
             exit 1
           fi
 
@@ -60,9 +69,18 @@ jobs:
       - name: Check the declared nodes were built
         run: node -e "const p = require('./package.json'); const fs = require('fs'); const missing = p.n8n.nodes.filter((f) => !fs.existsSync(f)); if (missing.length) { console.error('declared but not built:', missing); process.exit(1); }"
 
-      - name: Publish with provenance
+      - name: Stage with provenance
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           # `prepublishOnly` runs `n8n-node prerelease`, which refuses a publish without it.
           RELEASE_MODE: 'true'
-        run: npm publish --provenance --access public
+        run: npm stage publish --provenance --access public
+
+      - name: Ask for the approval
+        run: |
+          {
+            echo "### ${GITHUB_REF_NAME} is staged on npm, not published yet"
+            echo
+            echo "A maintainer approves it with 2FA: npmjs.com > Staged Packages > Approve,"
+            echo "or \`npm stage approve <stage-id>\` (\`npm stage list\` gives the id)."
+          } >> "$GITHUB_STEP_SUMMARY"
